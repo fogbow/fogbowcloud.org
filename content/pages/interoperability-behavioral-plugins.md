@@ -1,14 +1,14 @@
-Title: Customising and deployment
-url: customazing-deployment
-save_as: customazing-deployment.html
-section: customazing-deployment
-index: 1
+Title: Interoperability and behavioral plugins
+url: interoperability-behavioral-plugins
+save_as: interoperability-behavioral-plugins.html
+section: install
+index: 7
 
 # Plugins
 
-The manager component was designed to be agnostic to the underlying cloud technology. There is an interoperability plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow's orders to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbow makes available some plugins, and new ones can be contributed by the fogbow developers' community.
+The **Fogbow Manager** (FM) component has been designed to be agnostic to the underlying cloud technology. This is achieved by the introduction of an interoperability plugin layer between the FM and the cloud. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, Fogbow makes available some plugins, and new ones can be contributed by the Fogbow developers' community.
 
-In addition to interoperability plugins, there are also behavioural plugins. These are used to specify the way each fogbow manager should act when serving client's orders.
+In addition to interoperability plugins, there are also behavioral plugins. These are used to specify the way each FM should act when serving client's orders.
 
 ## Identity Plugin
 
@@ -18,7 +18,7 @@ Make sure to have the identity plugin ports opened in your network firewall conf
 
 ### Configure
 
-As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), when the installation is done, rename the file ```manager.conf.example``` to ```manager.conf```. You need to configure the Identity Plugin according to the Identity Provider you are using. The following sections go through the configuration for the Identity Plugins that come along with the Fogbow Manager. You can configure different plugins for local and federation identity providers.
+As instructed in the [Install and Configure Fogbow Manager](http://www.fogbowcloud.org/install-manager) section of the documentation, when the installation is done, rename the file ```manager.conf.example``` to ```manager.conf```. You need to configure the Identity Plugin according to the Identity Provider you are using. The following sections go through the configuration for the Identity Plugins that are currently available. You can configure different plugins for local and federation identity providers.
 
 #####Keystone Identity Plugin
 
@@ -105,7 +105,7 @@ path_trust_anchors=/path/trust/anchors
 path_vomsdir=/path/voms/dir
 
 ```
-Note: The VOMS Plugin uses the <a href="https://github.com/italiangrid/voms-api-java" target=_blank>VOMS API Java</a>. This API only works with JREs provided by Oracle with the <a href="http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters" target=_blank>unlimited strength file installed</a>.
+Note: The VOMS plugin uses the <a href="https://github.com/italiangrid/voms-api-java" target=_blank>VOMS API Java</a>. This API only works with JREs provided by Oracle with the <a href="http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters" target=_blank>unlimited strength file installed</a>.
 
 ##### No Cloud Identity Plugin
 Cloud Compute Plugin describe a scenary that does not exist an cloud that is associate to a Fogbow manager.
@@ -162,7 +162,7 @@ The Compute Plugin is responsible for requesting, getting, and deleting instance
 
 ### Configure
 
-As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), after installation move the file ```manager.conf.example``` to ```manager.conf```. You need to add the compute plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. 
+You need to add the compute plugin contents according to plugin that will be used. These examples show the required properties for the plugins currently available. 
 
 ##### OpenStack OCCI Compute Plugin
 
