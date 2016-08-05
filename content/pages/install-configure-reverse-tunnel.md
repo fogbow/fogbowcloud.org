@@ -63,7 +63,7 @@ The ```idle_token_timeout``` property defines the expiration time of a tunnel po
 The ```check_ssh_servers_interval``` propoerty defines the period interval in seconds to verify token expirations.
 
 ## Run
-To start the reverse tunnel server, run the start-tunnel-server script inside ```./bin```.
+To start the reverse tunnel server, run the ```start-tunnel-server``` script inside ```./bin```.
 ``` shell
 ./bin/start-tunnel-server
 ```
