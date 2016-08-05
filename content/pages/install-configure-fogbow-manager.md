@@ -6,7 +6,7 @@ index: 3
 
 # Install and configure the Fogbow Manager
 
-The Fogbow Manager is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follows.
+The Fogbow Manager is distributed in two forms: as source code, or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follows.
 
 ## Install from source
 To get the lastest stable version of the component, download it from our repository:
