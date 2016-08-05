@@ -6,7 +6,7 @@ index: 1
 
 # General architecture
 
-The architecture of a fogbow federation of private clouds is based on two main components: the membership manager, called the Fogbow Rendezvous (FR) and the allocation manager, called the Fogbow Manager (FM). The federation of a private cloud requires the deployment of one instance of the FM component for each private cloud that is to be federated. This component may be configured to interact either with a FR that runs at its local site, or with one that runs at a remote site.
+The architecture of a fogbow federation of private clouds is based on two main components: the membership manager, called the <B>Fogbow Rendezvous</B> (FR) and the allocation manager, called the <B>Fogbow Manager</B> (FM). The federation of a private cloud requires the deployment of one instance of the FM component for each private cloud that is to be federated. This component may be configured to interact either with a FR that runs at its local site, or with one that runs at a remote site.
 
 <center>![General architecture]({filename}/images/general.png)</center>
 
@@ -28,6 +28,6 @@ Despite the fact that members of the federation will be trading resources potent
 
 <center>![Communication protocol]({filename}/images/communication.png)</center>
 
-Another issue that arises from the fact that federation members could be isolated by NATs and firewalls is the lack of connectivity to VM instances from the outside world. Fogbow addresses this issue with a third service, named the Fogbow Reverse Tunnel (FRT). The FRT is responsible for tunnelling service ports from the domain’s intranet to its DMZ. The deployment of this service is mandatory, unless the underlying cloud is able to provide public IP addresses to all VM instances it creates. The FRT can also be used by the VM instances to create other tunnels on demand. For example, a VM instance that needs to provide a service through a web-based interface will have to create a tunnel for the HTTP protocol, so that the users of this service are able to access it from the Internet.
+Another issue that arises from the fact that federation members could be isolated by NATs and firewalls is the lack of connectivity to VM instances from the outside world. Fogbow addresses this issue with a third service, named the <B>Fogbow Reverse Tunnel</B> (FRT). The FRT is responsible for tunnelling service ports from the domain’s intranet to its DMZ. The deployment of this service is mandatory, unless the underlying cloud is able to provide public IP addresses to all VM instances it creates. The FRT can also be used by the VM instances to create other tunnels on demand. For example, a VM instance that needs to provide a service through a web-based interface will have to create a tunnel for the HTTP protocol, so that the users of this service are able to access it from the Internet.
 
 <center>![Dealing with remote connections]({filename}/images/FRT.png)</center>
