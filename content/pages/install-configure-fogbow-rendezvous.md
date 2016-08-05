@@ -1,5 +1,5 @@
 Title: Install and configure Fogbow Rendezvous
-url: install-configure-rendezvous
+url: install-configure-fogbow-rendezvous
 save_as: install-configure-fogbow-rendezvous.html
 section: install
 index: 4
@@ -7,10 +7,10 @@ index: 4
 Install and configure the Fogbow Rendezvous
 ==========
 
-The Fogbow Rendevouz is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
+The **Fogbow Rendevouz** (FR) is distributed in two forms: as source code, or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follows.
 
 ## Install from source
-To get the lastest stable version of the component, download it from our repository
+To get the lastest stable version of the component, download it from our repository:
 
 ``` shell
 wget https://github.com/fogbow/fogbow-rendezvous/archive/master.zip
@@ -37,7 +37,7 @@ dpkg -i fogbow-rendezvous_$version.deb
 ```
 
 ## Configure
-After the installation, move the file ```rendezvous.conf.example``` to ```rendezvous.conf``` and edit its contents:
+After the installation, move the file ```rendezvous.conf.example``` to ```rendezvous.conf``` and edit its contents as appropriate:
 ``` shell
 # XMPP address of your Rendezvous Component
 xmpp_jid=my-rendezvous.internal.mydomain
@@ -46,7 +46,7 @@ xmpp_jid=my-rendezvous.internal.mydomain
 xmpp_password=rendezvous_password
 
 # Address of the host running the XMPP server.
-xmpp_host=123.1.1.1
+xmpp_host=IP_of_external.domain
 
 # XMPP server port (to listen for components communication)
 xmpp_port=5347
@@ -74,11 +74,11 @@ iamalive_max_message_lost=3
 white_list_class=org.fogbowcloud.rendezvous.core.plugins.whitelist.AcceptAnyWhiteListPlugin
 ``` 
 
-Remember that the **xmpp_jid** and **xmpp_password** must match the values assigned during the [Install and configure XMPP](install-configure-xmpp.md) section of our documentation.
+Remember that the ```xmpp_jid``` and ```xmpp_password``` must match the values assigned when installing the XMPP server (refer to the [Install and configure XMPP](install-configure-xmpp.md) section of our documentation).
 
 After adding the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to the XMPP server IP address, as shown in the example below.
 ``` shell
-my-rendezvous.internal.mydomain        22      IN      A       123.1.1.1
+my-rendezvous.internal.mydomain        22      IN      A       IP_of_external.domain
 ```
 
 ## Run
