@@ -9,7 +9,7 @@ Install and configure XMPP
 The Extensible Messaging and Presence Protocol (<a href="https://en.wikipedia.org/wiki/XMPP" target="_blank">XMPP</a>) is a protocol for message-oriented communication based on XML (Extensible Markup Language). In Fogbow we have two XMPP server components: the **Fogbow Manager** and the **Fogbow Rendezvous**. An XMPP server components is a software module capable of communicating with an XMPP server using the appropriate protocol.
 
 ## Install
-Fogbow XMPP components are not tied to any particular server implementation. For the sake of simplicity, this document covers the installation and use of the [prosody](http://prosody.im/) XMPP server which has been used in Fogbow federations operated by the Fogbow team. To install it, in a debian-based distribution, run the following commands:
+Fogbow XMPP components are not tied to any particular server implementation. For the sake of simplicity, this document covers the installation and use of the <a href="http://prosody.im/" target="_blank">prosody</a> XMPP server which has been used in Fogbow federations operated by the Fogbow team. To install it, in a debian-based distribution, run the following commands:
 ``` shell
 $ apt-get update
 $ apt-get install prosody
