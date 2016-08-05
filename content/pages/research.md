@@ -6,7 +6,7 @@ index: 5
 
 ## Research
 
-There is a great deal of research effort behind the materialization of Fogbow, most of which has been made by the <a href"http://lsd.ufcg.edu.br/"> target="_blank" Distributed System Laboratory</a> of the <a href="http://www.ufcg.edu.br/"> target="_blank" Federal University of Campina Grande</a>, in Brazil. This has been possible thanks to funding received from many sources, including <a href="http://www.cnpq.br"> target="_blank" CNPq</a>, through the <a href="http://eubrazilcloudconnect.eu/> target="_blank" EUBrazil Cloud Connect project</a>, and <a href="http://www.finep.gov.br"> target="_blank" FINEP</a>, through the CICN project.
+There is a great deal of research effort behind the materialization of Fogbow, most of which has been made by the <a href="http://lsd.ufcg.edu.br/"> target="_blank" Distributed System Laboratory</a> of the <a href="http://www.ufcg.edu.br/"> target="_blank" Federal University of Campina Grande</a>, in Brazil. This has been possible thanks to funding received from many sources, including <a href="http://www.cnpq.br"> target="_blank" CNPq</a>, through the <a href="http://eubrazilcloudconnect.eu/> target="_blank" EUBrazil Cloud Connect project</a>, and <a href="http://www.finep.gov.br"> target="_blank" FINEP</a>, through the CICN project.
 
 ### Research papers
 
