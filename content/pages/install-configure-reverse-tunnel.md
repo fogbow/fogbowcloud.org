@@ -48,7 +48,7 @@ idle_token_timeout=86400
 check_ssh_servers_interval=120
 ```
 
-The <font face="Courier New, Courier, monospace">http_port</font> propoerty defines the port used to run the HTTP service of the Reverse Tunnel. This service handles requests to create and get tunneled ports.
+The ```http_port``` property defines the port used to run the HTTP service of the Reverse Tunnel. This service handles requests to create and get tunneled ports.
 
 The reverse tunnel service employs multiple tunnel servers to balance the service load. The service allocates one port to each of these servers. The tunnel_port_range property defines the range of servers' ports. 
 
