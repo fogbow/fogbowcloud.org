@@ -76,13 +76,13 @@ white_list_class=org.fogbowcloud.rendezvous.core.plugins.whitelist.AcceptAnyWhit
 
 Remember that the ```xmpp_jid``` and ```xmpp_password``` must match the values assigned when installing the XMPP server (refer to the [Install and configure XMPP](install-configure-xmpp.md) section of our documentation).
 
-After adding the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to the XMPP server IP address, as shown in the example below.
+After adding the FR to your XMPP server, you need to add a new entry in your DNS to resolve the FR name to the XMPP server IP address, as shown in the example below.
 ``` shell
 my-rendezvous.internal.mydomain        22      IN      A       IP_of_external.domain
 ```
 
 ## Run
-To start the rendezvous component, run the start-rendezvous script inside ```./bin```.
+To start the FR, run the ```start-rendezvous``` script inside ```./bin```.
 ``` shell
 ./bin/start-rendezvous
 ```
