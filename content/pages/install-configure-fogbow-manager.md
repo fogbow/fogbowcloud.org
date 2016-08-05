@@ -6,7 +6,7 @@ index: 3
 
 # Install and configure the Fogbow Manager
 
-The Fogbow Manager is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
+The Fogbow Manager is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follows.
 
 ## Install from source
 To get the lastest stable version of the component, download it from our repository:
@@ -37,11 +37,13 @@ dpkg -i fogbow-manager_$version.deb
 ```
 
 ## Configure
-After the installation, edit the file ```manager.conf```. In this file, some general properties, such as XMPP addresses and ports, as well as the set of plugins that define the behaviour of the Fogbow Manager are specified. Some of these properties need to be adjusted to match your particular cloud infrastructure provider. To ease the configuration procedure, we distribute template files for each cloud provider currenlty supported by the Fogbow middleware: ```manager.conf.cloudstack.example```,```manager.conf.opennebula.example```,```manager.conf.openstack.example``` and ```manager.conf.azure.example```. In this document, we cover in more details the general properties that might need to be changed and the main cloud-specific plugin properties. A complete overview of the Fogbow Manager plugins is given in the <a  href="/install-configure-plugins" target="_blank">Configure Fogbow Manager's Plugins </a> section of our documentation.
+After the installation, edit the file ```manager.conf```. In this file, some general properties, such as XMPP addresses and ports, as well as the set of plugins that define the behaviour of the Fogbow Manager are specified. Some of these properties need to be adjusted to match your particular cloud infrastructure provider. To ease the configuration procedure, we distribute template files for each cloud provider currently supported: ```manager.conf.cloudstack.example```,```manager.conf.opennebula.example```,```manager.conf.openstack.example``` and ```manager.conf.azure.example```.
+
+In this document, we cover in more details the general properties that might need to be changed and the main cloud-specific plugin properties. A complete overview of the Fogbow Manager plugins is given in the <a  href="/install-configure-plugins" target="_blank">Configure Fogbow Manager's Plugins</a> section of our documentation.
 
 ### General properties
 
-The XMPP properties below indicate the XMMP server that the **Fogbow Manager** must contact to communicate in the federation. These properties also indicate the **Fogbow Rendezvous** associated with the **Fogbow Manager**.
+The XMPP properties below indicate the XMMP server that the **Fogbow Manager** (FM) must contact to communicate with its associated **Fogbow Rendezvous** (FR), as well as with other FM in the federation. These properties also indicate the FR associated with the FM.
 
 ```bash
 # jid of the Fogbow Manager XMPP component
@@ -51,24 +53,24 @@ xmpp_jid=my-manager.internal.mydomain
 xmpp_password=manager_password
 
 # XMPP server IP address
-xmpp_host=123.1.1.1
+xmpp_host=IP_of_external.domain
 
-# Port in which the XMPP server will be listening.
+# Port in which the XMPP server will be listening
 xmpp_port=5347
 
 # jid of your Rendezvous XMPP component
 rendezvous_jid=my-rendezvous.internal.mydomain
 ```
 
-The **xmpp_jid**, **xmpp_password** and **rendezvous_jid** properties above must match the values assigned during the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation.
+The ```xmpp_jid```, ```xmpp_password``` and ```rendezvous_jid``` properties above must match the values assigned when the XMPP server was installed (refer to the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation).
 
-Following, you need to add a new entry in your DNS to resolve the given **Fogbow Manager** component name to the IP address of the XMPP server like in the example below.
+Following, you need to add a new entry in your DNS to resolve the FM component name to the IP address of the XMPP server like in the example below.
 
 ``` shell
-my-manager.internal.mydomain        22      IN      A       123.1.1.1
+my-manager.internal.mydomain        22      IN      A       IP_of_external.domain
 ```
 
-**Time intervals:** The Fogbow Manager executes some background tasks, such as resource monitoring, periodically. All the time interval properties are defined in the class ```org.fogbowcloud.manager.core.ConfigurationConstants``` and have default period values specified in the class ```org.fogbowcloud.manager.core.ManagerController```. The default values of any property can be overwritten in the configuration file as shown below:
+**Time intervals:** The FM periodically executes some background tasks, such as resource monitoring. All the time interval properties are defined in the class ```org.fogbowcloud.manager.core.ConfigurationConstants``` and have default period values specified in the class ```org.fogbowcloud.manager.core.ManagerController```. The default values of any of these properties can be overwritten in the configuration file as shown below:
 
 ```bash
 # The scheduler_period property is the time interval (in milliseconds) in which
@@ -80,7 +82,7 @@ scheduler_period=30000
 accounting_update_period=300000
 ```
 
-**SSH tunnel properties:** These properties configure the Fogbow Reverse Tunnel (FRT) service to provide public IP access to the VMs created by the Fogbow Manager in its intranet. The example below shows how these properties should be set, considering the example presented in the <a  href="/install-configure-frt" target="_blank">Install and configure Fogbow Reverse Tunnel </a> section of our documentation:
+**SSH tunnel properties:** These properties configure the **Fogbow Reverse Tunnel** (FRT) service to provide public IP access to the VMs created by the FM. The example below shows how these properties should be set, considering the example presented in the <a  href="/install-configure-frt" target="_blank">Install and configure Fogbow Reverse Tunnel</a> section of our documentation:
 
 ```bash
 # The token_host_public_address property defines the public IP address of the FRT service
@@ -97,7 +99,7 @@ token_host_port=2222
 token_host_http_port=2223
 ```
 
-**Manager HTTP port:** This property indicates the HTTP port to which the Fogbow Manager component endpoint will be listening to requests.
+**Manager HTTP port:** This property indicates the HTTP port in which the FM endpoint will be listening for requests.
 
 ```bash
 # The http_port property indicates http port of the Fogbow Manager service endpoint
@@ -106,7 +108,7 @@ http_port = 8182
 
 ### Cloud-specific plugins
 
-In this section, we show the configuration of the cloud-specific plugins. Theses plugins configure not only the usage of compute, network and storage resources but also how users are identified in each cloud provider. In the examples below, the values identified with the **$** symbol must be replaced according with the deploy made the fogbow user. We distributed full configuration examples (```manager.conf.[cloudstack,opennebula,openstack,azure].example```) for each cloud provider in the **Fogbow Manager** source code.
+In this section, we show the configuration of the cloud-specific plugins. Theses plugins configure not only the usage of compute, network and storage resources but also how users are identified in each cloud provider. In the examples below, the values identified with the **$** symbol must be replaced according with the specificities of each deploy. The FM distribution contains configuration examples (```manager.conf.[cloudstack,opennebula,openstack,azure].example```) for each cloud orchestrator supported.
 
 #### OpenStack
 ```bash
@@ -247,7 +249,7 @@ mapper_defaults_keystore_password=$keystore_pass
 ```
 
 ## Run 
-To start the manager component, run the start-manager script inside ```bin```.
+To start the FM, run the start-manager script inside ```bin```.
 
 ```bash
 ./bin/start-manager
