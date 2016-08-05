@@ -249,7 +249,7 @@ mapper_defaults_keystore_password=$keystore_pass
 ```
 
 ## Run 
-To start the FM, run the start-manager script inside ```bin```.
+To start the FM, run the ```start-manager``` script inside ```bin```.
 
 ```bash
 ./bin/start-manager
