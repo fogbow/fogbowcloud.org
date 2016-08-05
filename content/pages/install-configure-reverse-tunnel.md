@@ -7,10 +7,10 @@ index: 2
 Install and configure the Fogbow Reverse Tunnel
 ==========
 
-The reverse tunneling service provides public IP access to virtual machines created in the private cloud, even if the local cloud offers only private IPs to these virtual machines. The Fogbow Reverse Tunnel is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow
+The reverse tunneling service provides public IP access to virtual machines created in the private cloud, when the local cloud offers only private IPs to these virtual machines. The Fogbow Reverse Tunnel is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follows.
 
 ## Install from source
-To get the lastest stable version of the component, download it from our repository
+To get the lastest stable version of the component, download it from our repository:
 
 ``` shell
 wget https://github.com/fogbow/fogbow-reverse-tunnel/archive/master.zip
