@@ -7,10 +7,10 @@ index: 2
 Fogbow CLI
 ==========
 
-The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members; create, retrive and delete instance, network, create storage and create orders.
+The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members; create, retrive and delete instance, network, storage and attachment; and create orders.
 
 ##Installation
-Follow these steps, <a  href="/install-configure-manager" target="_blank">Instalation and configuration Fogbow cli</a> .
+Follow these steps, <a  href="/install-configure-fogbow-cli" target="_blank">Instalation and configuration Fogbow cli</a> .
 
 ## Member operations (```member```)
 
@@ -52,6 +52,7 @@ Get the usage of the federation member
 * **--usage** (required)
 * **--memberId** (required)
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+
 Example:
 ```bash
 $ fogbow-cli member --url http://localhost:8182 --usage --memberId id123 --auth-token mytoken
@@ -84,7 +85,6 @@ Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"
 ## Token operations (```token```)
 
 ### Create a new Token
-
 Create a new user token.
 
 Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:
@@ -95,8 +95,6 @@ Note: to pass the credentials and the identity plugin endpoint it is necessary t
 * **-Dpassword=** (optional): dynamic parameter
 * **-Dusername=** (optional): dynamic parameter
 * **-DtenantName=** (optional): dynamic parameter
-
-Note: if a password is not provided, it will be requested in the console.
 
 Example:
 ```bash
@@ -127,7 +125,6 @@ Others credentails:
 ## Request operations (```request```)
 
 ### Get order 
-
 Get all instance orders associated to a particular user's token.
 
 * **--get** (required)
@@ -143,7 +140,6 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 ```
 
 Get detailed information about a single instance order.
-
 * **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
@@ -153,7 +149,24 @@ Example:
 ```bash
 $ fogbow-cli order --get --auth-token mytoken --id orderid --url http://localhost:8182
 
-
+Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Order new Instances"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/fogbow_request/"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from org.fogbowcloud.request.state org.fogbowcloud.request.instance-id org.fogbowcloud.credentials.publickey.data org.fogbowcloud.request.user-data org.fogbowcloud.request.extra-user-data org.fogbowcloud.request.extra-user-data-content-type org.fogbowcloud.request.requirements org.fogbowcloud.request.batch-id org.fogbowcloud.request.requesting-member org.fogbowcloud.request.providing-member org.fogbowcloud.order.resource-kind org.fogbowcloud.order.storage-size"
+X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.request.state="fulfilled" 
+X-OCCI-Attribute: org.fogbowcloud.request.valid-from="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.request.requirements="Glue2CloudComputeManagerID=="servers-cloud3.lsd.ufcg.edu.br"" 
+X-OCCI-Attribute: occi.core.id="c575e6f2-a590-4595-8894-02a8e63bd214" 
+X-OCCI-Attribute: org.fogbowcloud.request.type="one-time" 
+X-OCCI-Attribute: org.fogbowcloud.request.valid-until="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.request.providing-member="manager.one.member.com" 
+X-OCCI-Attribute: org.fogbowcloud.credentials.publickey.data="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind="storage" 
+X-OCCI-Attribute: org.fogbowcloud.request.requesting-member="manager.two.member.com" 
+X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data-content-type="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.request.user-data="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.order.storage-size="80" 
+X-OCCI-Attribute: org.fogbowcloud.request.batch-id="25a0fd51-7b47-452a-9daa-ef40d1277f80" 
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count="1" 
+X-OCCI-Attribute: org.fogbowcloud.request.instance-id="9e80c942-9fbd-4c06-b8b7-ed7573544425@manager.one.member.com"
 ```
 
 ### Create order 
