@@ -158,11 +158,11 @@ federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.shibbole
 
 ## Compute Plugin
 
-The Compute Plugin is responsible for requesting, getting, and deleting instances at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at ```manager.conf``` file are correct. If not, the behaviour of federation may not be the expected.
+The Compute Plugin is responsible for requesting, getting, and deleting instances in the local cloud.
 
 ### Configure
 
-You need to add the compute plugin contents according to plugin that will be used. These examples show the required properties for the plugins currently available. 
+Different plugins can require different information depending on their implementation. The values identified with the $ symbol must be replaced according with the specificities of each deploy. The examples below show the required properties for the plugins currently available. 
 
 ##### OpenStack OCCI Compute Plugin
 
@@ -204,23 +204,17 @@ compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ##### OpenStack Nova V2 Compute Plugin
 ```bash
 # Plugin class
-compute_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackNovaV2ComputePlugin
-
+compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
 # Nova V2 API URL
-compute_novav2_url=http://localhost:8774
+compute_novav2_url=http://$address:$nova_port
 
-# Small Flavour Identifier
-compute_novav2_flavor_small=1
-
-# Medium Flavour Identifier
-compute_novav2_flavor_medium=2
-
-# Large Flavour Identifier
-compute_novav2_flavor_large=3
+# Image Store Service
+compute_glancev2_url=http://$address:$glance_port
+compute_glancev2_image_visibility=private
 
 # Network id (This property is required only if user project has more 
 # than one network available)
-compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+compute_novav2_network_id=$network_id
 ```
 
 ##### OpenNebula Compute Plugin
