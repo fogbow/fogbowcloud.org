@@ -30,7 +30,7 @@ federation.member.three.com
 ```
 
 ### Get quota
-Get the quota of the federation member
+Get the quota of the federation member.
 
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--quota** (required)
@@ -284,7 +284,7 @@ Ok
 ```
 
 ### Create instance
-Create a instance
+Create a instance.
 
 * **--create** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
@@ -364,7 +364,7 @@ Ok
 ```
 
 ### Create storage
-Create a storage
+Create a storage.
 
 * **--create** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
@@ -444,7 +444,7 @@ Ok
 ```
 
 ### Create network
-Create a network
+Create a network.
 
 * **--create** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
@@ -508,7 +508,7 @@ Ok
 ```
 
 ### Create attachment 
-Create a new attachment
+Create a new attachment.
 
 * **--create** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
@@ -523,7 +523,7 @@ X-OCCI-Location: http://locahost:8182/243029582-8907667-123457-0765345C@manager.
 ```
 
 ## Accounting operations (```accounting```)
-Get accounting
+Get accounting.
 
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
