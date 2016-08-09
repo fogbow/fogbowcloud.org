@@ -49,17 +49,17 @@ local_proxy_account_tenant_name=$tenant_name
 # Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
 # Cloud identity endpoint
-local_identity_url=http://localhost:2633/RPC2
+local_identity_url=http://$address:port/RPC2
 
 # Federation Identity plugin class
 federation_identity_class=org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
 # Federation Identity endpoint
-federation_identity_url=http://localhost:2633/RPC2
+federation_identity_url=http://$address:port/RPC2
 
 # Proxy account for remote order @ the local identity provider 
-local_proxy_account_user_name=fogbow
+local_proxy_account_user_name=$user_name
 # Password of such account
-local_proxy_account_password=fogbow
+local_proxy_account_password=$user_pass
 
 ```
 
@@ -74,7 +74,7 @@ federation_identity_class=org.fogbowcloud.manager.core.plugins.x509.X509Identity
 
 # Directory where are the certificates of Certificate Authorities (CA). 
 # They are certificates that you trust.
-x509_ca_dir_path=/path/to/ca/directory
+x509_ca_dir_path=$path_to_ca_directory
 ```
 
 #####VOMS Plugin
@@ -89,7 +89,7 @@ federation_identity_class=org.fogbowcloud.manager.core.plugins.voms.VomsIdentity
 # Directory where are the VOMS server information. 
 # List of voms servers in order to issue a proxy. 
 # Default : "~/.glite/vomses"
-path_vomses=/path/vomes
+path_vomses=$path_vomes
 
 # Directory where are the certificates of Certificate Authorities (CA). 
 # They are certificates that you trust.
@@ -98,11 +98,11 @@ path_vomses=/path/vomes
 # These files need to have read permission grant to the user that runs
 # the fogbow manager
 # Default : "/etc/grid-security/certificates"
-path_trust_anchors=/path/trust/anchors
+path_trust_anchors=$path_trust_anchors
 
 # Directory where are the certificates of VOMS that you trust.
 # Default : "/etc/grid-security/vomsdir"
-path_vomsdir=/path/voms/dir
+path_vomsdir=$path_voms_dir
 
 ```
 Note: The VOMS plugin uses the <a href="https://github.com/italiangrid/voms-api-java" target=_blank>VOMS API Java</a>. This API only works with JREs provided by Oracle with the <a href="http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters" target=_blank>unlimited strength file installed</a>.
@@ -119,7 +119,7 @@ local_identity_class=org.fogbowcloud.manager.core.plugins.identity.nocloud.NoClo
 # Federation Identity plugin class
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.simpletoken.SimpleTokenIdentityPlugin
 # Token to check
-simple_token_identity_valid_token_id=9398ybc43r-c9871btr7
+simple_token_identity_valid_token_id=$token_id
 ```
 
 ##### EC2 Identity Plugin
