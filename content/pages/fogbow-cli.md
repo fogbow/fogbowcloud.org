@@ -297,7 +297,7 @@ Create a instance
 ```bash
 $ fogbow-cli instance --create --auth-token mytoken --url http://localhost:8182 --flavor m1-small --image fogbow-ubuntu --publicKey /tmp/pkey --userDataFile /tmp/userdatafile
 
-X-OCCI-Location: federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
+X-OCCI-Location: http://localhost:8182/federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
 ```
 
 ## Storage operations (```storage```)
@@ -329,6 +329,11 @@ Example:
 ```bash
 $ fogbow-cli storage --get --auth-token mytoken --id storageid --url http://localhost:10000
 
+Category: storage; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Storage Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/storage/"; attributes="occi.storage.state{immutable} occi.storage.size"; actions="http://schemas.ogf.org/occi/infrastructure/storage/action#online http://schemas.ogf.org/occi/infrastructure/storage/action#offline http://schemas.ogf.org/occi/infrastructure/storage/action#backup http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot http://schemas.ogf.org/occi/infrastructure/storage/action#resize"
+X-OCCI-Attribute: occi.storage.size="80"
+X-OCCI-Attribute: occi.core.id="9e80c942-9fbd-4c06-b8b7-ed7573544425"
+X-OCCI-Attribute: occi.storage.name="null"
+X-OCCI-Attribute: occi.storage.status="in-use"
 
 ```
 
@@ -370,7 +375,7 @@ Create a storage
 ```bash
 $ fogbow-cli storage --create --auth-token mytoken --url http://localhost:8182 --size 20
 
-X-OCCI-Location: federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
+X-OCCI-Location: http://localhost:8182/federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
 ```
 
 ## Network operations (```network```)
@@ -402,7 +407,14 @@ Example:
 ```bash
 $ fogbow-cli network --get --auth-token mytoken --id networkid --url http://localhost:10000
 
-...
+Category: Network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Network Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/storage/"; attributes="occi.storage.state{immutable} occi.storage.size"; actions="http://schemas.ogf.org/occi/infrastructure/storage/action#online http://schemas.ogf.org/occi/infrastructure/storage/action#offline http://schemas.ogf.org/occi/infrastructure/storage/action#backup http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot http://schemas.ogf.org/occi/infrastructure/storage/action#resize"
+X-OCCI-Attribute: occi.network.vlan="Not defined"
+X-OCCI-Attribute: occi.core.id="9e80c942-9fbd-4c06-b8b7-ed7573544425"
+X-OCCI-Attribute: occi.network.label="Not defined"
+X-OCCI-Attribute: occi.network.state="active"
+X-OCCI-Attribute: occi.network.address="0.0.0.0/24"
+X-OCCI-Attribute: occi.network.gateway="0.0.0.0"
+X-OCCI-Attribute: occi.network.allocation="dynamic"
 ```
 
 ### Delete all networks
@@ -445,7 +457,7 @@ Create a network
 ```bash
 $ fogbow-cli network --create --auth-token mytoken --url http://localhost:8182 --cird 10.10.10.0/24 --gateway 10.10.10.10 --allocation dynamic
 
-X-OCCI-Location: federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
+X-OCCI-Location: http://localhost:8182/federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
 ```
 
 ## Attachment operations (```attachment```)
@@ -508,7 +520,7 @@ Create a new attachment
 ```bash
 $ fogbow-cli attachment --create --auth-token mytoken --url http://localhost:8182 --computeId computeid --storageId storageid
 
-X-OCCI-Location: http://locahost:8182/243029582-8907667-123457-0765345C@provading_member
+X-OCCI-Location: http://locahost:8182/243029582-8907667-123457-0765345C@manager.com
 ```
 
 ## Accounting operations (```accounting```)
