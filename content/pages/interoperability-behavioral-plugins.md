@@ -512,11 +512,19 @@ Cloud Compute Plugin describe a scenary that does not exist an cloud  that is as
 network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetworkPlugin
 ```
 ##### EC2 Cloud Network Plugin
-```bash
+```bash 
 # Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.ec2.EC2NetworkPlugin
 network_ec2_region=
 ```
+##### CloudStack Network Plugin
+```bash 
+network_class=org.fogbowcloud.manager.core.plugins.network.cloudstack.CloudStackNetworkPlugin
+network_cloudstack_api_url=https://$address/client/api
+network_cloudstack_zone_id=$zone_id
+network_cloudstack_netoffering_id=$offering_id
+```
+
 
 ## Accounting Plugin
 The Accounting Plugin is responsible for accounting of the instances and storages. 
