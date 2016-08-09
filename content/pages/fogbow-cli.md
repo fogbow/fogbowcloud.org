@@ -486,7 +486,7 @@ Get detailed information about a single attachment.
 
 Example: 
 ```bash
-$ fogbow-cli attachment --get --auth-token mytoken --id networkid --url http://localhost:10000
+$ fogbow-cli attachment --get --auth-token mytoken --id attachmentid --url http://localhost:10000
 
 occi.core.source=587V5356-3432434-324324-3243242f
 occi.core.target=13029582-8907667-123457-0765345c
@@ -503,7 +503,7 @@ Delete a single attachment.
 * **--id** (required): attachment id
 
 ```bash
-$ fogbow-cli attachment --delete --auth-token mytoken --id networkid --url http://localhost:8182
+$ fogbow-cli attachment --delete --auth-token mytoken --id attachmentid --url http://localhost:8182
 
 Ok
 ```
@@ -518,7 +518,7 @@ Create a new attachment
 * **--storageId** (required)
 
 ```bash
-$ fogbow-cli attachment --create --auth-token mytoken --url http://localhost:8182 --computeId computeid --storageId storageid
+$ fogbow-cli attachment --create --auth-token mytoken --url http://localhost:8182 --computeId instanceid --storageId storageid
 
 X-OCCI-Location: http://locahost:8182/243029582-8907667-123457-0765345C@manager.com
 ```
