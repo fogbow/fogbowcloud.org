@@ -177,7 +177,8 @@ mapper_defaults_secretKey=$user_secret_key
 #### Opennebula
 ```bash
 ## Compute Plugin
-compute_class=org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaComputePlugin compute_one_url=http://$address:$port/RPC2
+compute_class=org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaComputePlugin 
+compute_one_url=http://$address:$port/RPC2
 compute_one_network_id=$network_id
 compute_one_datastore_id=$datastore_id
 # Below properties allow the FM to copy download VM images to OpenNebula controller machine
