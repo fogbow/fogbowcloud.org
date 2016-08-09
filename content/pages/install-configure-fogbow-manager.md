@@ -240,11 +240,34 @@ mapper_defaults_keystore_password=$keystore_pass
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
 
+```
+#### Amazon EC2
+
+```bash
+## Compute Plugin
+compute_class=org.fogbowcloud.manager.core.plugins.compute.ec2.EC2ComputePlugin
+compute_ec2_region=$ec2_region
+compute_ec2_security_group_id=$ec2_secutiry_group_id
+compute_ec2_subnet_id=$ec2_subnet_id
+compute_ec2_image_bucket_name=$s3_bucket_name
+compute_ec2_max_vcpu=$num_max_vcpu
+compute_ec2_max_ram=$num_max_ram
+compute_ec2_max_instances=$num_max_instances
+
+# Network Plugin
+network_class=org.fogbowcloud.manager.core.plugins.network.ec2.EC2NetworkPlugin
+
+## Storage Plugin
+storage_class=org.fogbowcloud.manager.core.plugins.storage.ec2.EC2StoragePlugin
+storage_ec2_availability_zone=$ec2_storage_availability_zone_id
+
 ## Identity
-# federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
-mapper_defaults_subscription_id=$subscription_id
-mapper_defaults_keystore_path=$path_to_keystore
-mapper_defaults_keystore_password=$keystore_pass
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.nocloud.NoCloudIdentityPlugin
+
+## Local Identity
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.ec2.EC2IdentityPlugin
+mapper_defaults_accessKey=$ec2_access_key
+mapper_defaults_secretKey=$ec2_secret_key
 
 ```
 
