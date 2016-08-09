@@ -31,7 +31,7 @@ Component "my-rendezvous.internal.mydomain"
 ```
 
 ## Run
-After editing the prosody configuration, run the command below to restart it.
+Now, run the command below to restart the prosody server.
 ``` shell
 $ service prosody restart
 ```
