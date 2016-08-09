@@ -334,7 +334,6 @@ X-OCCI-Attribute: occi.storage.size="80"
 X-OCCI-Attribute: occi.core.id="9e80c942-9fbd-4c06-b8b7-ed7573544425"
 X-OCCI-Attribute: occi.storage.name="null"
 X-OCCI-Attribute: occi.storage.status="in-use"
-
 ```
 
 ### Delete all storages
@@ -391,8 +390,8 @@ Example:
 ```bash
 $ fogbow-cli network --get --auth-token  mytoken --url http://localhost:8182
 
-X-OCCI-Location: 3I235356-3432434-324324-3243242f
-X-OCCI-Location: 4B869582-8907667-123457-0765345c
+X-OCCI-Location: 3I235356-3432434-324324-3243242f@manager.com
+X-OCCI-Location: 4B869582-8907667-123457-0765345c@manager.com
 ```
 
 ### Get a single network
@@ -472,8 +471,8 @@ Get all attachment associated to a particular user's token.
 ```bash
 $ fogbow-cli attachment --get --auth-token mytoken --url http://localhost:10000
 
-X-OCCI-Location: 687V5356-3432434-324324-3243242f
-X-OCCI-Location: 09129582-8907667-123457-0765345c
+X-OCCI-Location: 687V5356-3432434-324324-3243242f@manager.com
+X-OCCI-Location: 09129582-8907667-123457-0765345c@manager.com
 ```
 
 ### Get a single attachment
