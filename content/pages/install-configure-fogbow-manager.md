@@ -114,23 +114,23 @@ In this section, we show the configuration of the cloud-specific plugins. Theses
 ```bash
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
-compute_novav2_url=http://$address:$port
-compute_glancev2_url=http://$address:$port
+compute_novav2_url=http://$address:$nova_port
+compute_glancev2_url=http://$address:$glance_port
 compute_glancev2_image_visibility=private
 compute_novav2_network_id=$network_id
 
 ## Network Plugin
 network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
-network_openstack_v2_url=http://$address:$port
+network_openstack_v2_url=http://$address:$neutron_port
 external_gateway_info=$gateway_id
 
 ## Storage Plugin
 storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
-storage_v2_url=http://$address:$port
+storage_v2_url=http://$address:$storage_port
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
-local_identity_url=http://$address:$port
+local_identity_url=http://$address:$keystone_port
 
 ## Local Credentials
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
@@ -139,6 +139,10 @@ federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcrede
 mapper_defaults_username=$user_name
 mapper_defaults_password=$user_pass
 mapper_defaults_tenantname=$tenant_name
+
+## Federation Identity
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
+federation_identity_url=http://$address:$keystone_port
 ```
 
 #### CloudStack
