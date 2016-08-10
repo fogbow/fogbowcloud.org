@@ -58,4 +58,92 @@ Endpoint | Method | Header fields | Description
 /compute/{compute_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an compute by its ID
 /compute | DELETE | **X-Auth-Token:** User's authentication token | Delete all user's computes
 /compute/{compute_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific compute by ID
-/compute | POST | ... | Description
+/compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Description
+
+#### Storage: /storage
+
+Endpoint | Method | Header fields | Description
+------------ | ------------- | ------------ | -------------
+/storage | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's storages
+/storage/{storage_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an storage by its ID
+/storage/{storage_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific storage by ID
+/storage | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Create a storage
+
+
+OCCI Categories for Storage
+
+Category name  | Description
+------------ | ------------
+storage; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | Storage category
+
+
+OCCI Attributes for Storage
+
+Attribute name | Type | Description
+------------ | ------------ | ------------
+occi.storage.size | int | Storage size
+
+#### Network: /network
+
+Endpoint | Method | Header fields | Description
+------------ | ------------- | ------------ | -------------
+/network | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's networks
+/network/{network_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an network by its ID
+/network/{network_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific network by ID
+/network | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Create a network
+
+
+OCCI Categories for Network
+
+Category name  | Description
+------------ | ------------
+network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | Storage category
+
+
+OCCI Attributes for Network
+
+Attribute name | Type | Description
+------------ | ------------ | ------------
+occi.network.address | String | CIRD - ###.###.###.###/##
+occi.network.gateway | String | ###.###.###.###
+
+#### Attachment: /storage/link
+
+Endpoint | Method | Header fields | Description
+------------ | ------------- | ------------ | -------------
+/storage/link | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's attachments
+/storage/link/{storagelink_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an attachment by its ID
+/storage/link/{storagelink_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific attachment by ID
+/storage/link/ | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Create a attachment
+
+OCCI Categories for attachmente
+
+Category name  | Description
+------------ | ------------
+storagelink; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | Storage category
+
+
+OCCI Attributes for attachment
+
+Attribute name | Type | Description
+------------ | ------------ | ------------
+occi.core.source | String | Compute id
+occi.core.target | String | Storage id
+
+#### Members: /member
+
+Endpoint | Method | Header fields | Description
+------------ | ------------- | ------------ | -------------
+/member | GET | **X-Auth-Token:** User's authentication token | Fetch the list of federation members
+/member/{member_id}/quota | GET | **X-Auth-Token:** User's authentication token | Fetch an quota of member by its ID
+/member/{member_id}/usage | GET | **X-Auth-Token:** User's authentication token | Fetch an usage of member by its ID
+
+#### Members: /member
+
+Endpoint | Method | Header fields | Description
+------------ | ------------- | ------------ | -------------
+/member | GET | **X-Auth-Token:** User's authentication token | Fetch the list of federation members
+/member/{member_id}/quota | GET | **X-Auth-Token:** User's authentication token | Fetch an quota of member by its ID
+/member/{member_id}/usage | GET | **X-Auth-Token:** User's authentication token | Fetch an usage of member by its ID
+/member/accounting/compute | GET | **X-Auth-Token:** User's authentication token | Fetch a accounting of compute
+/member/accounting/compute | GET | **X-Auth-Token:** User's authentication token | Fetch a accounting of storage
