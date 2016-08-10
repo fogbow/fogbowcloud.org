@@ -316,7 +316,7 @@ compute_cloudstack_expunge_on_destroy=true
 
 ## Image Storage Plugin
 
-The Fogbow orders accepted by the FM contain, among other attributes, the id of the virtual machine image that will execute the order. These ids are federation-wide values and pontencially are not recognized at the underlying local cloud. The Image Storage plugin is responsible to translate the image id described in the order and associate it to a valid local image identifier.
+The Fogbow orders accepted by the FM contain, among other attributes, the id of the virtual machine image that will execute the order. These ids are federation-wide values and potencially are not recognized at the underlying local cloud. The Image Storage plugin is responsible to translate the image id described in the order and associate it to a valid local image identifier.
 
 ##### VMCatcher Storage Plugin
 
@@ -358,31 +358,29 @@ image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_EXPIRE="/var/lib/vmcatcher/cache
 ```
 
 ##### HTTP Download Image Storage Plugin
-This plugin allows users to request instances using an image URL, that should be an absolute URL or a suffix that will be appended to the base URL configured, then the plugin tries to download and register the new image in the cloud if it doesn't exists.
+This plugin allows to indicate public accessible URLs that the FM can use to download virtual machines when they are missing in its local cloud.
 
 ```bash
 image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
 
 # Base URL of the image repository like the EGI Applications Database
-# If the user supplies an relative URL in the request, the base URL will be used to find the image
-image_storage_http_base_url=http://appliance-repo.egi.eu/images
+# If the user supplies a relative URL in the request, the base URL will be used to find the image (e.g http://vmappliance-repo.egi.eu/images)
+image_storage_http_base_url=http://$vmstore
 
 # Path to the temporary directory where the images should be downloaded to
-image_storage_http_tmp_storage=/tmp/
+image_storage_http_tmp_storage=$tmp_path_to_store_vm
 ```
 
-##### Static Image Storage Plugin
+##### Static Image Storage
+
+In addition to the Image Storage plugins is is also possible to statically configure the FM to associate the image federation id to a local identifier, as indicated below.
+
 ```bash
-image_storage_static_fogbow-linux-x86=
-image_storage_static_fogbow-ubuntu-12.04-with-java=
+image_storage_static_fogbow-linux-x86=$local_id_x86
+image_storage_static_fogbow-ubuntu-12.04-with-java=$local_id_javavm
 ```
 
-As you can see above, you can statically configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses global image identifiers in requests. For example, if the user requests for one instance of **image-ubuntu** in cloud A and that cloud does not have such image, the request is passed on to another cloud, cloud B, and will be fulfilled only if the manager in cloud B was configured with **image-ubuntu** or it previously fetched such image from a VM marketplace. A list of the most commom image names used by current fogbow installations follows on:
-
- * **fogbow-linux-x86**: Cirros 0.3.3 image; cirros as username; and cubswin:) as password
- * **fogbow-ubuntu-12.04-with-java**: Ubuntu 12.04 image (standard ubuntu cloud image with java); ubuntu as username; SSH login via publickey.
-
-Furthermore, Fogbow also expects that all images configured at manager have **cloud-init** working properly.
+Furthermore, the FM also expects that all images configured at manager have **cloud-init** working properly.
 
 ## Authorization Plugin
 
