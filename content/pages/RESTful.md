@@ -181,13 +181,12 @@ Category name  | required | Description
 ------------ | ------------ | ------------
 network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | required | Storage category
 
-
 OCCI Attributes for Network
 
 Attribute name | Type | required | Description
 ------------ | ------------ | ------------ | ------------
-occi.network.address | String | required | CIRD - ###.###.###.###/##
-occi.network.gateway | String | optional | ###.###.###.###
+occi.network.address | String | required | IP address in CIDR notation
+occi.network.gateway | String | optional | IP address of network gateway
 
 #### Attachment: /storage/link
 
@@ -203,7 +202,6 @@ OCCI Categories for attachmente
 Category name  | required | Description
 ------------ | ------------ | ------------
 storagelink; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | required | Storage category
-
 
 OCCI Attributes for attachment
 
