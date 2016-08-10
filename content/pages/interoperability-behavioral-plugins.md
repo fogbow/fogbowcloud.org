@@ -489,25 +489,28 @@ storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStack
 ```
 
 ## Network Plugin
-The Network Plugin is responsible for requesting, getting, and deleting network at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at ```manager.conf``` file are correct. If not, the behaviour of federation may not be the expected.
+The Network Plugin is responsible for requesting, getting, and deleting networking resources in the local cloud. Different plugins require different information depending on their implementation. Below we show examples for the current supported clouds providers. The values identified with the $ symbol must be replaced according with the specificities of each deploy.
 
 ### Configure
 ##### OpenStack V2 Network Plugin
 ```bash
 # Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
-network_openstack_v2_url=http://localhost:9696
-external_gateway_info=ea51ed0c-0e8a-448d-8202-c79777109ffe
+# URL of OpenStack networking API
+network_openstack_v2_url=http://$address:$neutron_port
+# ID of the networking gateway that will be associated with the networking resource
+external_gateway_info=$gateway_id
 ```
 ##### Opennebula Network Plugin
 ```bash
 # Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebulaNetworkPlugin
-network_one_bridge=br0
+# Id of the Opennenula bridge
+network_one_bridge=$bridge_id
+
 ```
 ##### No Cloud Network Plugin
-Cloud Compute Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
-
+The NoCloud Network plugin is applied when the FM does not have cloud resources associated with it.
 ```bash
 # Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetworkPlugin
@@ -516,16 +519,29 @@ network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetwor
 ```bash 
 # Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.ec2.EC2NetworkPlugin
-network_ec2_region=
 ```
 ##### CloudStack Network Plugin
 ```bash 
+# Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.cloudstack.CloudStackNetworkPlugin
+# URL of CloudStack API
 network_cloudstack_api_url=https://$address/client/api
+# ID of the CloudStack zone to create networking resources
 network_cloudstack_zone_id=$zone_id
+# ID of the template used to create networking resources
 network_cloudstack_netoffering_id=$offering_id
 ```
 
+##### AWS Network Plugin
+```bash
+# Network Plugin class
+network_class=org.fogbowcloud.manager.core.plugins.network.ec2.EC2NetworkPlugin
+```
+##### Azure Network Plugin
+```bash
+# Network Plugin class
+network_class=org.fogbowcloud.manager.core.plugins.network.azure.AzureNetworkPlugin
+```
 
 ## Accounting Plugin
 The Accounting Plugin is responsible for accounting of the instances and storages. 
