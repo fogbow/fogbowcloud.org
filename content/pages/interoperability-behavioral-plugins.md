@@ -687,39 +687,42 @@ capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontrolle
 ```
 
 ## Mapper Plugin
-Policy to map a federation user in one determinate user in the cloud. 
-### Configure
-This mapping is done with a identificator, that will be determinated per one of plugins, and the credentials referent to local identity plugin. When not possible to find a identificator per plugin is used a identificator default mandatorily.
+The Mapper plugin determines the policy used to map a federation user into an user in the local cloud. 
 
-Formulate : 
-mapper_ + {identificator} + _ + {credential}
+### Configure
+The mapping is defined based on a *identificator* and on the specific credential of each local identity plugin. It uses the sintax *mapper_ + {identificator} + _ + {credential}* to specify the mappig. Below, we show examples for the current available plugins:
 
 ```bash
 # Openstack credentials: username, password, tenantName
 # Identificator: defaults
-mapper_defaults_username=fogbow
-mapper_defaults_password=fogbow
-mapper_defaults_tenantName=fogbow
-
+mapper_defaults_username=$user_name
+mapper_defaults_password=$user_pass
+mapper_defaults_tenantName=$tenant_name
 # Identificator: other
-# mapper_other_username=
-# mapper_other_password=
-# mapper_other_tenantName=
+# mapper_other_username=$other_user_name
+# mapper_other_password=$other_user_pass
+# mapper_other_tenantName=$other_tenant_name
 
 # Opennebula credentials: username, password
 # Identificator: defaults
-mapper_defaults_username=fogbow
-mapper_defaults_password=fogbowpass
+mapper_defaults_username=$user_name
+mapper_defaults_password=$user_pass
 
-# EC2 credentals: accessKey, secretKey
+# EC2 credentials: accessKey, secretKey
 # Identificator: defaults
-mapper_defaults_accessKey=AKIALSKQLKFD7AHQLKEUO
-mapper_defaults_secretKey=Iuaooiad&891/2309asd0123+akplkdh
+mapper_defaults_accessKey=$access_key
+mapper_defaults_secretKey=$secret_key
 
-# EC2 credentals: apiKey, secretKey
+# Azure credentials: subscription_id, keystore_path, keystore_password
 # Identificator: defaults
-mapper_defaults_apiKey=user_api_key
-mapper_defaults_secretKey=user_secret_key
+mapper_defaults_subscription_id=$subscription_id
+mapper_defaults_keystore_path=$keystore_path
+mapper_defaults_keystore_password=$keystore_pass
+
+## CloudStack credentials: apiKey, secretKey
+mapper_defaults_apiKey=$user_api_key
+mapper_defaults_secretKey=$user_secret_key
+
 ```
 
 ##### Federation User Based Mapper Plugin
