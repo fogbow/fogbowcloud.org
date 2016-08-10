@@ -51,6 +51,12 @@ flavor_name; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="
 image_name; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | required for compute | Image name category
 fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin" | optional | Public key category
 
+OCCI Link for Order
+
+Link name  | Required | Description
+------------ | ------------ | ------------
+</ network/network_value >; rel="http://schemas.ogf.org/occi/infrastructure#network"; category="http://schemas.ogf.org/occi/infrastructure#network" | optional | Link 
+
 OCCI Attributes for Order
 
 Attribute name | Type | Required | Description
@@ -65,6 +71,8 @@ occi.network.gateway | string | optional | Network gateway
 occi.network.allocation | string | optional | Accepted values: dynamic or static
 org.fogbowcloud.order.resource-kind | string | required | Kind of resource to be created: compute, storage or network
 org.fogbowcloud.request.requirements | string | optional | Expression with minimum requirements to create resources
+org.openstack.credentials.publickey.data | string | optional | Public key data
+org.openstack.credentials.publickey.name | string | optional | Public key name
 
 Examples:
 
@@ -81,6 +89,8 @@ X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data={base64 encoded script
 X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data-content-type=text/x-shellscript
 X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=compute
 X-OCCI-Attribute: org.fogbowcloud.request.requirements="Glue2CloudComputeManagerID==\"manager.one.member.com\"" 
+X-OCCI-Attribute: org.openstack.credentials.publickey.data={public_key}
+X-OCCI-Attribute: org.openstack.credentials.publickey.name=mypublickey
 ```
 
 Create order type storage.
@@ -111,21 +121,25 @@ Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
 /compute | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's computes
 /compute/{compute_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an compute by its ID
-/compute | DELETE | **X-Auth-Token:** User's authentication token | Delete all user's computes
 /compute/{compute_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific compute by ID
-/compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Description
+/compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> 
 
 OCCI Categories for Compute
 
-Category name  | Description
------------- | ------------
-compute; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | Compute category
+Category name  | required | Description
+------------ | ------------ | ------------
+compute; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | required | Compute category
+flavor_name; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin" | required | Flavor name category
+image_name; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | required | Image name category
 
 OCCI Attributes for Compute
 
-Attribute name | Type | Description
------------- | ------------ | ------------
-... | int | ...
+Attribute name | Type | required | Description
+------------ | ------------ | ------------ | ------------
+org.fogbowcloud.request.extra-user-data | string | optional | <a  href="http://cloudinit.readthedocs.io/en/latest/topics/format.html" target="_blank">User data in cloud-init format</a>. Base64 encoded
+org.fogbowcloud.request.extra-user-data-content-type | string | optional | Type of the user data as specified in cloud-init documentation
+org.openstack.credentials.publickey.data | string | optional | Public key data
+org.openstack.credentials.publickey.name | string | optional | Public key name
 
 #### Storage: /storage
 
