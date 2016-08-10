@@ -690,7 +690,7 @@ capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontrolle
 The Mapper plugin determines the policy used to map a federation user into an user in the local cloud. 
 
 ### Configure
-The mapping is defined based on a *identificator* and on the specific credential of each local identity plugin. It uses the sintax *mapper_ + {identificator} + _ + {credential}* to specify the mappig. Below, we show examples for the current available plugins:
+The mapping is defined based on a *identificator* and on the specific credential of each local identity plugin. It uses the sintax *mapper_ + {identificator} + _ + {credential}* to specify the mapping. Below, we show examples for the current available plugins:
 
 ```bash
 # Openstack credentials: username, password, tenantName
@@ -726,25 +726,25 @@ mapper_defaults_secretKey=$user_secret_key
 ```
 
 ##### Federation User Based Mapper Plugin
-This mapping is done per intermediate of the user name logged like identificator.
+In the Federation User Based Mapper plugin the user name present in the token is used as *identificator*.
 
 ```bash
 # Mapper class
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.FederationUserBasedMapperPlugin
 
 # Example 
-# Identificator: fulado
-mapper_fulano_username=fogbow
-mapper_fulano_password=fogbow
-mapper_fulano_tenantName=fogbow
+# Identificator: tokenuser
+mapper_tokenuser_username=$user_name
+mapper_tokenuser_password=$user_pass
+mapper_tokenuser_tenantName=$tenant_name
 
 # defaults
-mapper_defaults_username=fogbowDefault
-mapper_defaults_password=fogbowDefault
-mapper_defaults_tenantName=fogbowDefaults
+mapper_defaults_username=$default_user_name
+mapper_defaults_password=$default_user_pass
+mapper_defaults_tenantName=$default_tenant_name
 ```
 ##### Member Based Mapper Plugin
-This mapping is done per intermediate of the federation member that order the resource.
+In the Member Based Mapper plugin, the federation member is used as *identificator*.
 
 ```bash
 # Mapper class
@@ -752,17 +752,17 @@ federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcrede
 
 # Example 
 # Identificator: manager.com.br
-mapper_manager.com.br_username=fogbow
-mapper_manager.com.br_password=fogbow
-mapper_manager.com.br_tenantName=fogbow
+mapper_manager.com.br_username=$user_name
+mapper_manager.com.br_password=$user_pass
+mapper_manager.com.br_tenantName=$tenant_name
 
 # defaults
-mapper_defaults_username=fogbowDefault
-mapper_defaults_password=fogbowDefault
-mapper_defaults_tenantName=fogbowDefaults
+mapper_defaults_username=$default_user_name
+mapper_defaults_password=$default_user_pass
+mapper_defaults_tenantName=$default_tenant_name
 ```
 ##### Simple Mapper Plugin
-This mapping is done only with the default.
+In Simple Mapper plugin, only the default identifier is applied.
 
 ```bash
 # Mapper class
@@ -770,12 +770,13 @@ federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcrede
 
 # Example 
 # Identificator: defaults
-mapper_defaults_username=fogbow
-mapper_defaults_defaults_password=fogbow
-mapper_defaults_tenantName=fogbow
+mapper_defaults_username=$default_user_name
+mapper_defaults_defaults_password=$default_user_pass
+mapper_defaults_tenantName=$default_tenant_name
 ```
+
 ##### VOBased Mapper Plugin
-This mapping is done with de CN of the VOMS user token.
+In the VOBased Mapper Plugin, the *CN* of the VOMS token is used as identifier.
 
 ```bash
 # Mapper class
@@ -783,40 +784,40 @@ federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcrede
 
 # Example 
 # Identificador: CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR
-mapper_CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR_username=fogbow
-mapper_CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR_password=fogbow
-mapper_CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR_tenantName=fogbow
+mapper_CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR_username=$user_name
+mapper_CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR_password=$user_pass
+mapper_CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR_tenantName=$tenant_name
 
 # defaults
-mapper_defaults_username=fogbowDefault
-mapper_defaults_defaults_password=fogbowDefault
-mapper_defaults_tenantName=fogbowDefaults
+mapper_defaults_username=$default_user_name
+mapper_defaults_defaults_password=$default_user_pass
+mapper_defaults_tenantName=$default_tenant_name
 ```
 
 ## Prioritization Plugin
-The Prioritization Plugin is responsible for prioritizing a request over another with lower priority.
-It only comes into play when the quota for creating new resources is exceeded.
-In these cases, it must verify if in that given time there is any fulfilled/ongoing request from a member with lower priority than the new requester.
-If this condition is true, that request must preempted so that the new request can be met.
+
+The Prioritization Plugin is responsible for prioritizing a order over another with lower priority. It only comes into play when the quota for creating new resources is exceeded. In these cases, it must verify if in that given time there is any fulfilled/ongoing order from a member with lower priority than the new requester. If this condition is true, that order must preempted so that the new order can be met.
 
 ### Configure
-##### Priotize Remove Order Plugin
-Priotize the remote orders.
+
+Below we show examples for the available prioritization plugins. The values identified with the $ symbol must be replaced according with the specificities of each deploy.
+
+##### Prioritize Remote Order Plugin
+As the name indicates, the Prioritize Remote Order plugin prioritizes the remote orders over local ones.
 
 ```bash
 # Priorization Plugin class
 remote_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.PriotizeRemoteOrderPlugin
 ```
 ##### Two Fold Prioritization Plugin
-This plugin allows a more refined prioritization policy by allowing that two other plugins be used by composition.
-One is used for prioritization of locar orders, and the other for prioritization of remote orders.
+Two Fold Prioritization plugin allows a more refined prioritization policy by allowing that two other plugins are used in composition. One is used for prioritization of locar orders, and the other for prioritization of remote orders.
 ```bash
 # Priorization Plugin class
 remote_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.TwoFoldPrioritizationPlugin
 ```
 
 ##### Nof Prioritization Plugin
-This plugin uses the Network of Favors as policy. Roughly, the Network of Favors prioritizes members from which it owes more favors.
+The Nof Prioritization plugin uses the Network of Favors as policy. Roughly, the Network of Favors prioritizes members from which it owes more favors.
 ```bash
 # Priorization Plugin class
 remote_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.nof.NoFPrioritizationPlugin
@@ -825,8 +826,7 @@ nof_trustworthy=false
 ```
 
 ##### FCFS Prioritization Plugin
-This plugin doesn't perform any prioritization. The first request to come is the first to be served. 
-Obviously, the request is only met if there is free quota.
+FCFS Prioritization plugin does not perform any prioritization. The first request to come is the first to be served.
 ```bash
 # Priorization Plugin class
 local_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.fcfs.FCFSPrioritizationPlugin
