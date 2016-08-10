@@ -617,43 +617,61 @@ member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberP
 ```
 
 ## Capacity controller plugin
-...
+
+The Capacity controller plugin is responsible for calculating a virtual resource quota for each federation member. Its main going is to avoid free riding. It is specially important in scenarios of low resource contention, i.e. when there are exceeding resources and thus the prioritization (plugin) by itself wouldn't be enough to avoid free riding. For more details on thi plugin refer to http://www.sciencedirect.com/science/article/pii/S0045790616301082.
 
 ### Configure
+
+Different plugins require different information depending on their implementation. Below we show examples for the current available plugin. The values identified with the $ symbol must be replaced according with the specificities of each deploy.
+
 ##### Fairness Driven Capacity Controller Plugin
 ```bash
 # Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.FairnessDrivenCapacityController
 ```
 ##### Global Fairness Driven Controller Plugin
+
+Fairness is a measure of the level of reciprocity to the resources a federation memeber provides, either to another federation member or to the federation as a whole (it is given by the amount of resources consumed divided by the amount of resources donated).
+
+Global Fairness Driven Controller plugin uses exclusively the global fairness (fairness towards the whole federation) in order to decide wether to increase or decrease the amount of resources it should donate to the federation, i.e., the virtual quota. Note that in this implementation a federation member keeps only one single quota to the whole federation.
+
+The configuration of this plugin includes:
+* the minimum fairness threshold: a non-negative value indicating the minimum level of fairness desired;
+* the maximum fairness threshold: a non-negative value indicating the maximum level of fairness desired (recommended values are *0.75* for the minimum and *0.95* for the maximum, representing that the desired fairness is between 75% and 95%);
+* the delta value: the grain used to increase or decrease the virtual quota (recommended values are *0.01* for long term participation and *0.05* for short term participation);
+* the maximum capacity: the maximum number of processing instances it is willing to donate.
+
 ```bash
 # Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.GlobalFairnessDrivenController
-controller_delta=
-controller_minimum_threshold=
-controller_maximum_threshold=
-controller_maximum_capacity=
+controller_delta=$delta
+controller_minimum_threshold=$min_threshold
+controller_maximum_threshold=$max_threshold
+controller_maximum_capacity=$max_capacity
 ```
-##### Hill Climbing Algorithm Plugin
-```bash
-# Capacity Controller class
-capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.HillClimbingAlgorithm
-```
+
 ##### Pairwise Fairnesse Driven Controller Plugin
+
+Pairwise Fairnesse Driven Controller plugin uses exclusively the pairwise fairness (fairness towards a single member in the federation) in order to decide wether to increase or decrease the virtual quota to the each other member. Note that in this implementation a member keeps multiple quotas, one single quota for each member within the federation. This plugin is configured just like the Global Fairness Driven Controller plugin. 
+
 ```bash
 # Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.PairwiseFairnessDrivenController
-controller_delta=
-controller_minimum_threshold=
-controller_maximum_threshold=
-controller_maximum_capacity=
+controller_delta=$delta
+controller_minimum_threshold=$min_threshold
+controller_maximum_threshold=$max_threshold
+controller_maximum_capacity=$max_capacity
 ```
 ##### Two Fold Capacity Controller Plugin
+
+The Two Fold Capacity Controller plugin reuses the Pairwise and Global approaches to attain better levels of fairness. The global fairness is used basically for newcommers or for members that has only donated without consuming (undefined fairness). The pairwise fairness is used for members that has already consumed any resource.
 ```bash
 # Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.TwoFoldCapacityController
 ```
 ##### Satisfaction Driven Capacity Controller Plugin
+The Satisfaction Driven Capacity Controller plugin imposes no constraint: it provides all its idle resources to the federation. The more it donates, the higher are the credits it will have with other members, and thus the higher will be its satisfaction. 
+
 ```bash
 # Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.satisfactiondriven.SatisfactionDrivenCapacityControllerPlugin
