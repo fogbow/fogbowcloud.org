@@ -618,11 +618,11 @@ member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberP
 
 ## Capacity controller plugin
 
-The Capacity controller plugin is responsible for calculating a virtual resource quota for each federation member. Its main going is to avoid free riding. It is specially important in scenarios of low resource contention, i.e. when there are exceeding resources and thus the prioritization (plugin) by itself wouldn't be enough to avoid free riding. For more details on thi plugin refer to http://www.sciencedirect.com/science/article/pii/S0045790616301082.
+The Capacity controller plugin is responsible for calculating a virtual resource quota for each federation member. Its main going is to avoid free riding. It is specially important in scenarios of low resource contention, i.e. when there are exceeding resources and thus the prioritization (plugin) by itself wouldn't be enough to avoid free riding. For more details on this plugin refer to http://www.sciencedirect.com/science/article/pii/S0045790616301082.
 
 ### Configure
 
-Different plugins require different information depending on their implementation. Below we show examples for the current available plugin. The values identified with the $ symbol must be replaced according with the specificities of each deploy.
+Below we show the current available plugins and the parameters we need to configure to tune them.
 
 ##### Fairness Driven Capacity Controller Plugin
 ```bash
