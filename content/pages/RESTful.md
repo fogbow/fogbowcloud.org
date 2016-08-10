@@ -9,6 +9,27 @@ Programmatic interface
 
 Fogbow provides a RESTful API that implements OGF's OCCI standard. This API also extends the OCCI standard to incorporate fucntionalities that are only meaningful in the context of a federation of cloud providers.
 
+##### Categories
+The categories should be passed in the request headers with the key **Category** and the value , as in the example below.
+
+`Category: {category value}`
+
+Each category should be passed in a different header.
+
+##### Links
+The links should be passed in the request headers with the key **Link** and the value , as in the example below.
+
+`Link: {link value}`
+
+Each category should be passed in a different header.
+
+##### OCCI Attributes
+The OCCI attributes should be passed in the request headers with the key **X-OCCI-Attribute** and the attribute name and value as its value, as in the example below.
+
+`X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=value`
+
+Each attribute should be passed in a different header.
+
 ### Resources
 
 #### Order: /fogbow_request
@@ -19,21 +40,16 @@ Endpoint | Method | Header fields | Description
 /fogbow_request/{order_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an order by its ID
 /fogbow_request | DELETE | **X-Auth-Token:** User's authentication token | Delete all user's orders
 /fogbow_request/{order_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific order by ID
-/fogbow_request | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Description
+/fogbow_request | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br>
 
-##### Categories
-The categories should be passed in the request headers with the key **Category** and the category name and value as its value, as in the example below.
+OCCI Categories for Order
 
-`Category: categoryName=value`
-
-Each category should be passed in a different header.
-
-##### OCCI Attributes
-The OCCI attributes should be passed in the request headers with the key **X-OCCI-Attribute** and the attribute name and value as its value, as in the example below.
-
-`X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=value`
-
-Each attribute should be passed in a different header.
+Category name  | Description
+------------ | ------------
+fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind" | Compute category
+{flavor}; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin" | Flavor name category
+{image}; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | Image name category
+fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin" | Public key category
 
 OCCI Attributes for Order
 
@@ -50,6 +66,42 @@ occi.network.allocation | string | Accepted values: dynamic or static
 org.fogbowcloud.order.resource-kind | string | Kind of resource to be created: compute, storage or network
 org.fogbowcloud.request.requirements | string | Expression with minimum requirements to create resources
 
+Examples:
+Compute 
+``` shell
+POST /fogbow_request
+Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"   (Required)
+{flavor}; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin  (Optional)
+{image}; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"   (Optional)
+fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin"   (Optional)
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count    (Optional)
+X-OCCI-Attribute: org.fogbowcloud.request.type    (Optional)
+X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data  (Optional)
+X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data-content-type (Optional)
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind   (Required)(Types: [compute], storage, network)
+X-OCCI-Attribute: org.fogbowcloud.request.requirements   (Optional)
+```
+Storage
+``` shell
+POST /fogbow_request
+Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"   (Required)
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count    (Optional)
+X-OCCI-Attribute: org.fogbowcloud.request.type    (Optional)
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind   (Required)(Types: compute, [storage], network)
+X-OCCI-Attribute: org.fogbowcloud.order.storage-size   (Required)
+```
+Network
+``` shell
+POST /fogbow_request
+Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"   (Required)
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count    (Optional)
+X-OCCI-Attribute: org.fogbowcloud.request.type    (Optional)
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind   (Required)(Types: compute, storage, [network])
+X-OCCI-Attribute: occi.network.address   (Required)
+X-OCCI-Attribute: occi.network.gateway    (Optional)
+X-OCCI-Attribute: occi.network.allocation    (Optional)
+```
+
 #### Compute: /compute
 
 Endpoint | Method | Header fields | Description
@@ -59,6 +111,18 @@ Endpoint | Method | Header fields | Description
 /compute | DELETE | **X-Auth-Token:** User's authentication token | Delete all user's computes
 /compute/{compute_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific compute by ID
 /compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Description
+
+OCCI Categories for Compute
+
+Category name  | Description
+------------ | ------------
+compute; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | Compute category
+
+OCCI Attributes for Compute
+
+Attribute name | Type | Description
+------------ | ------------ | ------------
+... | int | ...
 
 #### Storage: /storage
 
