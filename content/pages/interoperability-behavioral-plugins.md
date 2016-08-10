@@ -171,10 +171,10 @@ Different plugins can require different information depending on their implement
 compute_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackComputePlugin
 
 # Cloud OCCI endpoint
-compute_occi_url=http://localhost:8182
+compute_occi_url=http://$address:$v2_port
 
 # Cloud v2 compute endpoint
-compute_openstack_v2api_url=http://localhost:8182
+compute_openstack_v2api_url=http://$address:$v2_port
 
 # Associating local cloud flavors to fogbow flavors
 # Small flavor
@@ -198,7 +198,7 @@ compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
 # Network ID (This property is required only if user project has more 
 # than one network available)
 # Example:
-compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+compute_occi_network_id=$network_id
 ```
 
 ##### OpenStack Nova V2 Compute Plugin
@@ -224,7 +224,7 @@ compute_novav2_network_id=$network_id
 compute_class=org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaComputePlugin
 
 # Cloud opennebula compute endpoint
-compute_one_url=http://localhost:2633/RPC2
+compute_one_url=http://$addess:$port/RPC2
 
 # Associating properties flavors to fogbow flavors
 # Small flavor
@@ -237,24 +237,24 @@ compute_one_flavor_medium={mem=256, cpu=2}
 compute_one_flavor_large={mem=512, cpu=4}
 
 # Network ID to be used for instances
-compute_one_network_id=1
+compute_one_network_id=$network_id
 
 # Settings used by ONE compute plugin to register new images in the cloud
 # ID of datastore to register the image
-compute_one_datastore_id=1
+compute_one_datastore_id=$datastore_id
 # To register a new image, the image file needs to be in the some machine where ONE is running
 # If the fogbow manager is running in a different machine, set the SSH properties to transfer the image
 # Or if the fogbow manager is in the same machine, leave it blank
-compute_one_ssh_host=127.0.0.1
-compute_one_ssh_port=22
-compute_one_ssh_username=fogbow
+compute_one_ssh_host=$ssh_address
+compute_one_ssh_port=$ssh_port
+compute_one_ssh_username=$user_name
 # The SSH try to access using private key, set the path to ssh id_rsa file
-compute_one_ssh_key_file=/home/fogbow/.ssh/id_rsa
+compute_one_ssh_key_file=$path_to_rsa_key
 # Set the directory to copy images in remote host
-compute_one_ssh_target_temp_folder=/tmp/images
+compute_one_ssh_target_temp_folder=$path_to_images
 ```
 ##### No Cloud Compute Plugin
-Cloud Compute Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
+The NoCloud Compute plugin is applied when the FM does not have cloud resources associated with it.
 ```bash
 # Compute plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.compute.nocloud.NoCloudComputePlugin
@@ -264,19 +264,18 @@ compute_class=org.fogbowcloud.manager.core.plugins.compute.nocloud.NoCloudComput
 # Compute plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.compute.ec2.EC2ComputePlugin
 # Region where will create the VM
-compute_ec2_region=us-east-1
+compute_ec2_region=$ec2_region
 # Security group id given in the user's account
-compute_ec2_security_group_id=sg-12345678
+compute_ec2_security_group_id=$ec2_secutiry_group_id
 # Subnet id given in the user's account
-compute_ec2_subnet_id=subnet-12345678
-# 
-compute_ec2_image_bucket_name=s3-bucket-for-images
+compute_ec2_subnet_id=$ec2_subnet_id
+compute_ec2_image_bucket_name=$s3_bucket_name
 # amount maximum of vCPU
-compute_ec2_max_vcpu=10
+compute_ec2_max_vcpu=$num_max_vcpu
 # amount maximum of RAM
-compute_ec2_max_ram=10240
+compute_ec2_max_ram=$num_max_ram
 # amount maximum of instances
-compute_ec2_max_instances=10
+compute_ec2_max_instances=$num_max_instances
 ```
 
 ##### Azure Compute Plugin
@@ -284,15 +283,15 @@ compute_ec2_max_instances=10
 # Compute plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.compute.azure.AzureComputePlugin
 # Limit of vCPUs to use
-compute_azure_max_vcpu=10
+compute_azure_max_instances=$num_max_instances
 # Limit of memory to use
-compute_azure_max_ram=10240
+compute_azure_max_ram=$num_max_ram
 # Region in Azure to create VMs and resources
-compute_azure_region=East US
+compute_azure_region=$azure_region
 # Name of the storage account to create the VM storage disk
-compute_azure_storage_account_name=storage1
+compute_azure_storage_account_name=$storage_account_name
 # Access key of the configured storage account
-compute_azure_storage_key=abcd12345
+compute_azure_storage_key=$key_content
 ``` 
 
 ##### CloudStack Compute Plugin
@@ -313,7 +312,6 @@ compute_cloudstack_hypervisor=$hypervisor_type
 compute_cloudstack_image_download_os_type_id=$os_type_id
 # Defines if the VM should be completely removed on terminate
 compute_cloudstack_expunge_on_destroy=true
-
 ``` 
 
 ## Image Storage Plugin
