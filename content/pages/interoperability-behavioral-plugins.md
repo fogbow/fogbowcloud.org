@@ -388,25 +388,27 @@ The Authorization Plugin tells whether a given user (with a proper authenticated
 
 ### Configure
 
-The **federation_authorization_class** property must be set to a Authorization Plugin implementation. The Fogbow Manager comes with a single implementation that simply authorizes any user/token.
+The **federation_authorization_class** property must be set to a Authorization Plugin implementation, as shown in the examples below.
 
 ##### Allow All Authorization Plugin
 
+The Allow All pluging simply authorizes any user/token.
+
 ```bash
 # Federation Authorization plugin class
-federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.AllowAllAuthorizationPlugin
+federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.AllowAllAuthorizationPlugin
 ```
 ##### VO White List Authorization Plugin
 ```bash
 # Federation Authorization plugin class
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.voms.VOWhiteListAuthorizationPlugin
-authorization_vo_whitelist=memberOfListOne, memberOfListTwo, memberOfListThree
+authorization_vo_whitelist=$memberOfListOne,$memberOfListTwo,$memberOfListThree
 ```
 ##### Edu Person White List Authorization Plugin
 ```bash
 # Federation Authorization plugin class
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.eduperson.EduPersonWhitelistAuthorizationPlugin
-authorization_vo_whitelist=memberOfListOne, memberOfListTwo, memberOfListThree
+authorization_vo_whitelist=$memberOfListOne,$memberOfListTwo,$memberOfListThree
 ```
 
 ## Member Authorization Plugin
