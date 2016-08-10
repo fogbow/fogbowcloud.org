@@ -219,13 +219,5 @@ Endpoint | Method | Header fields | Description
 /member | GET | **X-Auth-Token:** User's authentication token | Fetch the list of federation members
 /member/{member_id}/quota | GET | **X-Auth-Token:** User's authentication token | Fetch an quota of member by its ID
 /member/{member_id}/usage | GET | **X-Auth-Token:** User's authentication token | Fetch an usage of member by its ID
-
-#### Members: /member
-
-Endpoint | Method | Header fields | Description
------------- | ------------- | ------------ | -------------
-/member | GET | **X-Auth-Token:** User's authentication token | Fetch the list of federation members
-/member/{member_id}/quota | GET | **X-Auth-Token:** User's authentication token | Fetch an quota of member by its ID
-/member/{member_id}/usage | GET | **X-Auth-Token:** User's authentication token | Fetch an usage of member by its ID
 /member/accounting/compute | GET | **X-Auth-Token:** User's authentication token | Fetch a accounting of compute
 /member/accounting/compute | GET | **X-Auth-Token:** User's authentication token | Fetch a accounting of storage
