@@ -40,7 +40,7 @@ Endpoint | Method | Header fields | Description
 /fogbow_request/{order_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an order by its ID
 /fogbow_request | DELETE | **X-Auth-Token:** User's authentication token | Delete all user's orders
 /fogbow_request/{order_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific order by ID
-/fogbow_request | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** **Link** **Category**<br> 
+/fogbow_request | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Link** <br> **Category**
 
 OCCI Categories for Order
 
