@@ -227,14 +227,14 @@ compute_azure_max_instances=$num_max_instances
 compute_azure_max_vcpu=$num_max_vcpu
 compute_azure_max_ram=$num_max_ram
 compute_azure_region=$azure_region
-compute_azure_storage_account_name=$storage_account_name
-compute_azure_storage_key=$key_content
 
 # Network Plugin
 network_class=org.fogbowcloud.manager.core.plugins.network.azure.AzureNetworkPlugin
 
 ## Storage Plugin
 storage_class=org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
+compute_azure_storage_account_name=$storage_account_name
+compute_azure_storage_key=$key_content
 
 ## Identity
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
