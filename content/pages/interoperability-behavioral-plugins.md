@@ -288,10 +288,6 @@ compute_azure_max_instances=$num_max_instances
 compute_azure_max_ram=$num_max_ram
 # Region in Azure to create VMs and resources
 compute_azure_region=$azure_region
-# Name of the storage account to create the VM storage disk
-compute_azure_storage_account_name=$storage_account_name
-# Access key of the configured storage account
-compute_azure_storage_key=$key_content
 ``` 
 
 ##### CloudStack Compute Plugin
@@ -445,41 +441,46 @@ member_authorization_whitelist_receive_from=$memberOfListOne,$memberOfListTwo,$m
 ```
 
 ## Storage Plugin
-The Storage Plugin is responsible for requesting, getting, and deleting storage at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at ```manager.conf``` file are correct. If not, the behaviour of federation may not be the expected.
+The Storage Plugin is responsible for requesting, getting, and deleting storage resouces in the local cloud.
 
 ### Configure
+
+Different plugins require different information depending on their implementation. Below we show examples for the current supported clouds providers. The values identified with the $ symbol must be replaced according with the specificities of each deploy.
 
 ##### OpenStack V2 Storage Plugin
 ```bash
 # Storage Plugin class
 storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
-storage_v2_url=http://localhost:8776
+storage_v2_url=http://$address:$storage_port
+
 ```
 ##### Opennebula Storage Plugin
 ```bash
 # Storage Plugin class
 storage_class=org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebulaStoragePlugin
-# Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)
-storage_one_datastore_default_device_prefix=vd
+## Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)
+storage_one_datastore_default_device_prefix=$prefix
 ```
 ##### No Cloud Storage Plugin
-Cloud Storage Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
+The NoCloud Compute plugin is applied when the FM does not have cloud resources associated with it.
 ```bash
 # Storage Plugin class
-storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
+storage_class=orgorg.fogbowcloud.manager.core.plugins.storage.nocloud.NoCloudStoragePlugin
 ```
 ##### EC2 Storage Plugin
 ```bash
 # Storage Plugin class
 storage_class=org.fogbowcloud.manager.core.plugins.storage.ec2.EC2StoragePlugin
-storage_ec2_availability_zone=us-east-1b
+storage_ec2_availability_zone=$ec2_storage_availability_zone_id
 ```
 ##### Azure Storage Plugin
 ```bash
 # Storage Plugin class
 storage_class=org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
-compute_azure_storage_account_name=
-compute_azure_storage_key=
+# Name of the storage account to create the VM storage disk
+compute_azure_storage_account_name=$storage_account_name
+# Access key of the configured storage account
+compute_azure_storage_key=$key_content
 ```
 ##### CloudStack Storage Plugin
 ```bash
