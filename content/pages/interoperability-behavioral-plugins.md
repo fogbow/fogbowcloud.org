@@ -413,26 +413,35 @@ authorization_vo_whitelist=$memberOfListOne,$memberOfListTwo,$memberOfListThree
 
 ## Member Authorization Plugin
 
+The Member Authorization plugin determines whether the FM can interact (receive or donate resources) to a given federation member.
+
 ### Configure
 The **member_validator_class** property must be set to a Member Authorization Plugin implementation.
 
-##### Default Member Authorization
+##### Default Member Authorization Plugin
+
+The Default Member Authorization plugin simply authorizes interaction with any federation member.
+
 ```bash
 # member validator class
 member_validator_class=org.fogbowcloud.manager.core.plugins.memberauthorization.DefaultMemberAuthorizationPlugin
 ```
 
-##### VOMS Member Authorization
+##### VOMS Member Authorization Plugin
 ```bash
 # member validator class
 member_validator_class=org.fogbowcloud.manager.core.plugins.memberauthorization.VOMSMemberAuthorizationPlugin
-member_validator_ca_dir=
+member_validator_ca_dir=$path_to_certificate_dir
 ```
 
-##### White List Member Authorization
+##### White List Member Authorization Plugin
+The White List Member Authorization plugin specifies a list of federations members that the FM can interact with.
+
 ```bash
 # member validator class
 member_validator_class=org.fogbowcloud.manager.core.plugins.memberauthorization.WhitelistMemberAuthorizationPlugin
+member_authorization_whitelist_donate_to=$memberOfListOne,$memberOfListTwo,$memberOfListThree
+member_authorization_whitelist_receive_from=$memberOfListOne,$memberOfListTwo,$memberOfListThree
 ```
 
 ## Storage Plugin
