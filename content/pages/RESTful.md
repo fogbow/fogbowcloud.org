@@ -40,7 +40,7 @@ Endpoint | Method | Header fields | Description
 /fogbow_request/{order_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an order by its ID
 /fogbow_request | DELETE | **X-Auth-Token:** User's authentication token | Delete all user's orders
 /fogbow_request/{order_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific order by ID
-/fogbow_request | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br>
+/fogbow_request | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** **Link** **Category**<br> 
 
 OCCI Categories for Order
 
@@ -91,6 +91,7 @@ X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=compute
 X-OCCI-Attribute: org.fogbowcloud.request.requirements="Glue2CloudComputeManagerID==\"manager.one.member.com\"" 
 X-OCCI-Attribute: org.openstack.credentials.publickey.data={public_key}
 X-OCCI-Attribute: org.openstack.credentials.publickey.name=mypublickey
+</ network/network00 >; rel="http://schemas.ogf.org/occi/infrastructure#network"; category="http://schemas.ogf.org/occi/infrastructure#network"
 ```
 
 Create order type storage.
@@ -122,7 +123,7 @@ Endpoint | Method | Header fields | Description
 /compute | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's computes
 /compute/{compute_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an compute by its ID
 /compute/{compute_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific compute by ID
-/compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> 
+/compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> 
 
 OCCI Categories for Compute
 
@@ -148,21 +149,21 @@ Endpoint | Method | Header fields | Description
 /storage | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's storages
 /storage/{storage_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an storage by its ID
 /storage/{storage_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific storage by ID
-/storage | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Create a storage
+/storage | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Categories** | Create a storage
 
 
 OCCI Categories for Storage
 
-Category name  | Description
------------- | ------------
-storage; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | Storage category
+Category name  | required | Description
+------------ | ------------ | ------------
+storage; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | required | Storage category
 
 
 OCCI Attributes for Storage
 
-Attribute name | Type | Description
------------- | ------------ | ------------
-occi.storage.size | int | Storage size
+Attribute name | Type | required | Description
+------------ | ------------ | ------------ | ------------
+occi.storage.size | int | required | Storage size
 
 #### Network: /network
 
@@ -171,22 +172,22 @@ Endpoint | Method | Header fields | Description
 /network | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's networks
 /network/{network_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an network by its ID
 /network/{network_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific network by ID
-/network | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Create a network
+/network | POST | **X-Auth-Token:** User's authentication token<br> **X-OCCI-Attributes** <br> **Categories** | Create a network
 
 
 OCCI Categories for Network
 
-Category name  | Description
------------- | ------------
-network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | Storage category
+Category name  | required | Description
+------------ | ------------ | ------------
+network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | required | Storage category
 
 
 OCCI Attributes for Network
 
-Attribute name | Type | Description
------------- | ------------ | ------------
-occi.network.address | String | CIRD - ###.###.###.###/##
-occi.network.gateway | String | ###.###.###.###
+Attribute name | Type | required | Description
+------------ | ------------ | ------------ | ------------
+occi.network.address | String | required | CIRD - ###.###.###.###/##
+occi.network.gateway | String | optional | ###.###.###.###
 
 #### Attachment: /storage/link
 
@@ -195,21 +196,21 @@ Endpoint | Method | Header fields | Description
 /storage/link | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's attachments
 /storage/link/{storagelink_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an attachment by its ID
 /storage/link/{storagelink_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific attachment by ID
-/storage/link/ | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes:** see list below <br> **Categories:** see list below | Create a attachment
+/storage/link/ | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Categories** | Create a attachment
 
 OCCI Categories for attachmente
 
-Category name  | Description
------------- | ------------
-storagelink; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | Storage category
+Category name  | required | Description
+------------ | ------------ | ------------
+storagelink; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | required | Storage category
 
 
 OCCI Attributes for attachment
 
-Attribute name | Type | Description
------------- | ------------ | ------------
-occi.core.source | String | Compute id
-occi.core.target | String | Storage id
+Attribute name | Type | required | Description
+------------ | ------------ | ------------ | ------------
+occi.core.source | String | required | Compute id
+occi.core.target | String | required | Storage id
 
 #### Members: /member
 
