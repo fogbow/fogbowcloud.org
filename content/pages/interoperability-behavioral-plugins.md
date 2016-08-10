@@ -544,32 +544,34 @@ network_class=org.fogbowcloud.manager.core.plugins.network.azure.AzureNetworkPlu
 ```
 
 ## Accounting Plugin
-The Accounting Plugin is responsible for accounting of the instances and storages. 
+The Accounting Plugin is responsible for accounting of the usage of cloud resources such as computing instances and storage. 
 ### Configure
-Configuração comum: 
-```bash
-# Periodo de atualização do accouting em milisegundos
-accounting_update_period=300000
-```
+The **accounting_class** property must be set to a Accouting Plugin implementation, as shown in the examples below.
 
 ##### FCU Accounting Plugin
-The plugin calculate from sum of the use minutes and the power rating determined by benchmarking plugin.
+The FCU Accounting plugin is based on the total usage time (in minutes) and the power rating determined by benchmarking plugin.
 
 ```bash
 # Accounting class
 accounting_class=org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPlugin
-# Path database
-fcu_accounting_datastore_url=jdbc:sqlite:/tmp/computeusage
+# Path to accounting database
+fcu_accounting_datastore_url=jdbc:sqlite:$path_to_compute_accounting_db
 ```
 
 ##### Simple Storage Accounting Plugin
-The plugin calculate from sum of the use minutes and the storage size.
+The Simples Storage Accounting pluging is based on the total usage time (in minutes) and in the amount of allocated storage.
 
 ```bash
 # Accounting class
 storage_accounting_class=org.fogbowcloud.manager.core.plugins.accounting.SimpleStorageAccountingPlugin
-# Path database
-simple_storage_accounting_datastore_url=jdbc:sqlite:/tmp/storageusage
+# Path to storage accounting database
+simple_storage_accounting_datastore_url=jdbc:sqlite:$path_to_storage_accounting_db
+```
+
+Both the above plugins are update according to the **accounting_update_period** below:
+```bash
+# Time between accounting updates (in milliseconds)
+accounting_update_period=300000
 ```
 
 ## Benchmarking Plugin
