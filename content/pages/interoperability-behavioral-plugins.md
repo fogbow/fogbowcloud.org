@@ -575,22 +575,28 @@ accounting_update_period=300000
 ```
 
 ## Benchmarking Plugin
-Benchmarking used to calculate the power rating of the VM. 
+The Benchmarking pluging is used to calculate the power rating of a virtual machine.
+
 ### Configure
+
+Below we show examples for the current supported benchmarking plugins. The values identified with the $ symbol must be replaced according with the specificities of each deploy.
+
 ##### SSH Benchmarking Plugin
-The calculation of instance power rating is done from execution time of the script executed in the instance per SSH.
+
+SSH Benchmarking plugin calculates the power rating based on the time to execute a bechmark code.
 
 ```bash
 # Benchmarking class
 benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.SSHBenchmarkingPlugin
 # Benchmarking script to use with SSH Benchmarking plugin
 ssh_benchmarking_script_url=http://downloads.fogbowcloud.org/benchmark/script_ssh_benchmarking.sh
-# Manager public and private keys
-ssh_private_key=/etc/fogbow-manager/ssh/id_rsa
-ssh_public_key=/etc/fogbow-manager/ssh/id_rsa.pub
+# FM public and private keys
+ssh_private_key=$path_to_private_key
+ssh_public_key=$path_to_public_key
 ```
 ##### Vanilla Benchmarking Plugin
-The calculation of instance power rating is done from capabilities of the instance. This cababilities are VCPU and memorie.
+
+The Vanilla Benchmarking plugin calculates the power rating based on the capabilities of the virtual machine instace such as VCPU and memory.
 
 ```bash
 # Benchmarking class
