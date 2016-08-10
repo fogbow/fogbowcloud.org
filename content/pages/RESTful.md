@@ -44,62 +44,65 @@ Endpoint | Method | Header fields | Description
 
 OCCI Categories for Order
 
-Category name  | Description
------------- | ------------
-fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind" | Compute category
-{flavor}; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin" | Flavor name category
-{image}; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | Image name category
-fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin" | Public key category
+Category name  | Required | Description
+------------ | ------------ | ------------
+fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind" | required | Compute category
+flavor_name; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin" | optional | Flavor name category
+image_name; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | required for compute | Image name category
+fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin" | optional | Public key category
 
 OCCI Attributes for Order
 
-Attribute name | Type | Description
------------- | ------------ | ------------
-org.fogbowcloud.request.instance-count | int | Number of instances to be created
-org.fogbowcloud.request.type | string | Type of the request: one-time or persistent
-org.fogbowcloud.request.extra-user-data | string | Optional user data in cloud-init format
-org.fogbowcloud.request.extra-user-data-content-type | string | Type of the user data as specified in cloud-init documentation
-org.fogbowcloud.order.storage-size | int | Storage size in GB
-occi.network.address | string | Network address in CIDR notation
-occi.network.gateway | string | Network gateway
-occi.network.allocation | string | Accepted values: dynamic or static
-org.fogbowcloud.order.resource-kind | string | Kind of resource to be created: compute, storage or network
-org.fogbowcloud.request.requirements | string | Expression with minimum requirements to create resources
+Attribute name | Type | Required | Description
+------------ | ------------ | ------------ | ------------
+org.fogbowcloud.request.instance-count | int | required | Number of instances to be created
+org.fogbowcloud.request.type | string | optional | Type of the request: one-time or persistent
+org.fogbowcloud.request.extra-user-data | string | optional | <a  href="http://cloudinit.readthedocs.io/en/latest/topics/format.html" target="_blank">User data in cloud-init format</a>. Base64 encoded
+org.fogbowcloud.request.extra-user-data-content-type | string | optional | Type of the user data as specified in cloud-init documentation
+org.fogbowcloud.order.storage-size | int | required for storage | Storage size in GB
+occi.network.address | string | required for network | Network address in CIDR notation
+occi.network.gateway | string | optional | Network gateway
+occi.network.allocation | string | optional | Accepted values: dynamic or static
+org.fogbowcloud.order.resource-kind | string | required | Kind of resource to be created: compute, storage or network
+org.fogbowcloud.request.requirements | string | optional | Expression with minimum requirements to create resources
 
 Examples:
-Compute 
+
+Create order type compute.
 ``` shell
 POST /fogbow_request
-Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"   (Required)
-{flavor}; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin  (Optional)
-{image}; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"   (Optional)
-fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin"   (Optional)
-X-OCCI-Attribute: org.fogbowcloud.request.instance-count    (Optional)
-X-OCCI-Attribute: org.fogbowcloud.request.type    (Optional)
-X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data  (Optional)
-X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data-content-type (Optional)
-X-OCCI-Attribute: org.fogbowcloud.order.resource-kind   (Required)(Types: [compute], storage, network)
-X-OCCI-Attribute: org.fogbowcloud.request.requirements   (Optional)
+Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"   
+fogbow_small; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin 
+fogbow-ubuntu; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"   
+fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin"   
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count=1
+X-OCCI-Attribute: org.fogbowcloud.request.type=one-time
+X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data={base64 encoded script}
+X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data-content-type=text/x-shellscript
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=compute
+X-OCCI-Attribute: org.fogbowcloud.request.requirements="Glue2CloudComputeManagerID==\"manager.one.member.com\"" 
 ```
-Storage
+
+Create order type storage.
 ``` shell
 POST /fogbow_request
-Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"   (Required)
-X-OCCI-Attribute: org.fogbowcloud.request.instance-count    (Optional)
-X-OCCI-Attribute: org.fogbowcloud.request.type    (Optional)
-X-OCCI-Attribute: org.fogbowcloud.order.resource-kind   (Required)(Types: compute, [storage], network)
-X-OCCI-Attribute: org.fogbowcloud.order.storage-size   (Required)
+Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count=1
+X-OCCI-Attribute: org.fogbowcloud.request.type=one-time
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=storage
+X-OCCI-Attribute: org.fogbowcloud.order.storage-size=10
 ```
-Network
+
+Create order type network.
 ``` shell
 POST /fogbow_request
-Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"   (Required)
-X-OCCI-Attribute: org.fogbowcloud.request.instance-count    (Optional)
-X-OCCI-Attribute: org.fogbowcloud.request.type    (Optional)
-X-OCCI-Attribute: org.fogbowcloud.order.resource-kind   (Required)(Types: compute, storage, [network])
-X-OCCI-Attribute: occi.network.address   (Required)
-X-OCCI-Attribute: occi.network.gateway    (Optional)
-X-OCCI-Attribute: occi.network.allocation    (Optional)
+Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count=1
+X-OCCI-Attribute: org.fogbowcloud.request.type=one-time
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=network
+X-OCCI-Attribute: occi.network.address=10.10.10.10/24
+X-OCCI-Attribute: occi.network.gateway=10.10.10.1
+X-OCCI-Attribute: occi.network.allocation=dynamic
 ```
 
 #### Compute: /compute
