@@ -108,7 +108,7 @@ path_vomsdir=$path_voms_dir
 Note: The VOMS plugin uses the <a href="https://github.com/italiangrid/voms-api-java" target=_blank>VOMS API Java</a>. This API only works with JREs provided by Oracle with the <a href="http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters" target=_blank>unlimited strength file installed</a>.
 
 ##### No Cloud Identity Plugin
-Cloud Compute Plugin describe a scenary that does not exist an cloud that is associate to a Fogbow manager.
+The NoCloud Identity plugin is applied when the FM does not have cloud resources associated with it.
 ```bash
 # Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.nocloud.NoCloudIdentityPlugin
