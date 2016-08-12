@@ -5,7 +5,6 @@ section: usage
 index: 3
 
 #Usage
-==========
 
 ##**Login**
 
@@ -160,7 +159,6 @@ or the user has reached his quota limits for this cloud, then Fogbow Manager wil
 
 All values that you chose on creation modal will be displayed here. Which fields are displayed depends on the type of resource ordered. The highlighted area will contain the resource's id, if it was already created. This image shows a order that do not have a resource ID yet. 
 
-======
 
 ##**Instances**
 
