@@ -8,7 +8,7 @@ index: 1
 
 The architecture of a fogbow federation of private clouds is based on two main components: the membership manager, called the <B>Fogbow Rendezvous</B> (FR) and the allocation manager, called the <B>Fogbow Manager</B> (FM). The federation of a private cloud requires the deployment of one instance of the FM component for each private cloud that is to be federated. This component may be configured to interact either with a FR that runs at its local site, or with one that runs at a remote site.
 
-<center>![General architecture]({filename}/images/general.png)</center>
+<center>![General architecture]({filename}/images/fogbow-arch.png)</center>
 
 ## Fogbow Rendezvous
 
