@@ -86,18 +86,18 @@ Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"
 ### Create a new Token
 Create a new user token.
 
-Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:
+Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the **OpenStack** credentials:
 
 * **--create** (required)
 * **--type** (required) : identity plugin type
-* **-DauthUrl** (required): identity plugin endpoint
+* **-DauthUrl** (required): dynamic parameter | Url authentication cloud
 * **-Dpassword=** (optional): dynamic parameter
 * **-Dusername=** (optional): dynamic parameter
 * **-DtenantName=** (optional): dynamic parameter
 
 Example:
 ```bash
-$ fogbow-cli token --create -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl=http://localhost:8182 --type openstack
+$ fogbow-cli token --create -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl=http://{url_cloud}:5000 --type openstack
 
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 ```
