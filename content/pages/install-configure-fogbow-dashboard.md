@@ -36,18 +36,16 @@ chmod 600 openstack_dashboard/local/.secret_key_store
 chmod 600 openstack_dashboard/test/.secret_key_store
 ```
 
-then, edit the ```openstack_dashboard/local/local_settings.py``` file to indicate the HTTP endpoint of the FM associated with the FD (here we consider that the FD and the FM are installed in the same host):
+then, rename the file ```openstack_dashboard/local/local_settings.py.example``` to ```openstack_dashboard/local/local_settings.py.example``` and edit it according to the configuration of your FM.
 
-``` python
-# Fogbow Manager to be used.
-FOGBOW_MANAGER_ENDPOINT = "http://localhost:8182"
-
-FOGBOW_FEDERATION_AUTH_TYPE = 'keystone'
-FOGBOW_FEDERATION_AUTH_ENDPOINT = 'http://localhost:5000' 
+After configuring, run the ```./run_tests.sh``` script to download and install the necessary dependencies.
+```
+bash
+./run_tests.sh
 ```
 
 ##Run
-To start the FD, run the ```run_tests.sh``` script indicating the port that the dashboard will handle requests (```9000```).
+To start the FD, run agains the ```run_tests.sh``` script indicating the port that the dashboard will handle requests (```9000```).
 
 ``` bash
 nohup ./run_tests.sh --runserver localhost:9000 &
