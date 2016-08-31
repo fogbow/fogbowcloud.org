@@ -27,18 +27,11 @@ Then, decompress it:
 unzip master.zip
 ```
 
-Now, install it with Maven:
-
-```
-cd fogbow-dashboard-master
-mvn install
-```
-
 ##Configure
 After the installation, assign the proper permissions to the ```keystore``` files
 
 ```bash
-cd fogbow-dashboard
+cd fogbow-dashboard-master
 chmod 600 openstack_dashboard/local/.secret_key_store
 chmod 600 openstack_dashboard/test/.secret_key_store
 ```
