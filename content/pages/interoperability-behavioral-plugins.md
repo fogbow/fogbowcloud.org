@@ -553,7 +553,7 @@ The FCU Accounting plugin is based on the total usage time (in minutes) and the 
 
 ```bash
 # Accounting class
-accounting_class=org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPlugin
+compute_accounting_class=org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPlugin
 # Path to accounting database
 fcu_accounting_datastore_url=jdbc:sqlite:$path_to_compute_accounting_db
 ```
