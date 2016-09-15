@@ -642,7 +642,7 @@ capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontrolle
 
 Fairness is a measure of the level of reciprocity to the resources a federation memeber provides, either to another federation member or to the federation as a whole (it is given by the amount of resources consumed divided by the amount of resources donated).
 
-Global Fairness Driven Controller plugin uses exclusively the global fairness (fairness towards the whole federation) in order to decide wether to increase or decrease the amount of resources it should donate to the federation, i.e., the virtual quota. Note that in this implementation a federation member keeps only one single quota to the whole federation.
+Global Fairness Driven Controller plugin uses exclusively the global fairness (fairness towards the whole federation) in order to decide whether to increase or decrease the amount of resources it should donate to the federation, i.e., the virtual quota. Note that in this implementation a federation member keeps only one single quota to the whole federation.
 
 The configuration of this plugin includes:
 * the minimum fairness threshold: a non-negative value indicating the minimum level of fairness desired;
