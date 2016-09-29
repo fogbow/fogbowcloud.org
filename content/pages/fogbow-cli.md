@@ -169,7 +169,7 @@ X-OCCI-Attribute: org.fogbowcloud.request.instance-id="9e80c942-9fbd-4c06-b8b7-e
 ```
 
 ### Create order 
-Create instance orders.
+Create orders.
 
 * **--create** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
