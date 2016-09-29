@@ -177,23 +177,34 @@ Create instance orders.
 * **--n** (optional; default: 1): number of orders to be created
 * **--image** (optional; default: fogbow-linux-x86): fogbow image
 * **--flavor** (optional; default: fogbow-small): fogbow flavor
+* **--resource-kind** (required): options(compute, storage, network)
 * **--public-key** (optional; path public key): fogbow public key
 * **--requirements** (optinal): Requirements of the flavor and about location where the instance will be provide
 
-Example:
+Example with compute:
 ```bash
-$ fogbow-cli order --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub --requirements "Glue2RAM >= 1024 && Glue2CloudComputeManagerID==\"manager.one.member.com\""
+$ fogbow-cli order --create --n 2 --resource-king compute --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub --requirements "Glue2RAM >= 1024 && Glue2CloudComputeManagerID==\"manager.one.member.com\""
 
-X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
-X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
+X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257432
+X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c456
 ```
 
-Example using defaults:
+Example with storage:
 ```bash
-$ fogbow-cli order --create --url http://localhost:8182
+$ fogbow-cli order --create --n 2 --resource-king storage --url http://localhost:8182 --size 10 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\""
 
-X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
+X-OCCI-Location: http://localhost:8182/request/54635536d31-0674-4278-ad05-eff5fdd0725767
+X-OCCI-Location: http://localhost:8182/request/87987977806-4909-4a39-8380-13183b1f197ch7
 ```
+
+Example with network:
+```bash
+$ fogbow-cli order --create --n 2 --resource-king network --cidr 10.10.10.0/24 --url http://localhost:8182 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\""
+
+X-OCCI-Location: http://localhost:8182/request/6748mnr31-0674-4278-ad05-eff5fdd07257231
+X-OCCI-Location: http://localhost:8182/request/ghgfdj06-4909-4a39-8380-13183b1f197c231
+```
+
 
 ### Delete a single order
 Delete a single instance order.
