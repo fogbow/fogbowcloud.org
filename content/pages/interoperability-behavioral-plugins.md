@@ -314,6 +314,8 @@ compute_cloudstack_expunge_on_destroy=true
 
 The Fogbow orders accepted by the FM contain, among other attributes, the id of the virtual machine image that will execute the order. These ids are federation-wide values and potencially are not recognized at the underlying local cloud. The Image Storage plugin is responsible to translate the image id described in the order and associate it to a valid local image identifier.
 
+``*Important: `` All images must support [cloud-init](https://cloudinit.readthedocs.io/en/latest/).
+
 ##### VMCatcher Storage Plugin
 
 The VMCatcher plugin allows users to subscribe to an inventory of virtual machines via the HEPIX image catalog. For more information about vmcatcher, access [vmcatcher page on github.](https://github.com/hepix-virtualisation/vmcatcher)
