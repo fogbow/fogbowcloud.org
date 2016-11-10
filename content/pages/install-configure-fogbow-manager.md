@@ -635,6 +635,7 @@ local_identity_url=http://$address/client/api/
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
 
 ## Mapper Plugin / Local credentials to be used when we miss information about a given user
+## (important) The user in the Mapper must have permission to expunge the Virtual Machine.
 mapper_defaults_apiKey=$user_api_key
 mapper_defaults_secretKey=$user_secret_key
 ```
