@@ -20,6 +20,7 @@ $ apt-get install prosody
 For each new **Fogbow Manager** and **Fogbow Rendezvous** installed, it is necessary to add a new component to the `/etc/prosody/prosody.cfg.lua` configuration file. Also, the **Fogbow Manager** and **Fogbow Rendezvous** **xmpp_jid** and 
 **xmpp_password** properties, specified in the [Install and Configure Fogbow Manager](http://www.fogbowcloud.org/install-configure-fogbow-manager#configure) section and in the [Install and Configure Fogbow Rendezvous](http://www.fogbowcloud.org/install-configure-fogbow-rendezvous#configure) section, respectively, should be used as the **component name** and **component_secret**, as shown below.
 
+**Important:** The component name must be pointing, in the DNS, to the public IP in the machine where it is installed the XMPP.
 ```bash
 # Manager component
 Component "my-manager.internal.mydomain"
