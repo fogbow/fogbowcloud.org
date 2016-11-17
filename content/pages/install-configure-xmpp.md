@@ -22,6 +22,9 @@ For each new **Fogbow Manager** and **Fogbow Rendezvous** installed, it is neces
 
 **Important:** The component name must be pointing, in the DNS, to the public IP in the machine where it is installed the XMPP.
 ```bash
+# listen for connections on the all interfaces
+component_interface = "0.0.0.0"
+
 # Manager component
 Component "my-manager.internal.mydomain"
         component_secret = "manager_password"
