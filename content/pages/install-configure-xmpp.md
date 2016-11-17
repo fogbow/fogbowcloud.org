@@ -21,6 +21,10 @@ For each new **Fogbow Manager** and **Fogbow Rendezvous** installed, it is neces
 **xmpp_password** properties, specified in the [Install and Configure Fogbow Manager](http://www.fogbowcloud.org/install-configure-fogbow-manager#configure) section and in the [Install and Configure Fogbow Rendezvous](http://www.fogbowcloud.org/install-configure-fogbow-rendezvous#configure) section, respectively, should be used as the **component name** and **component_secret**, as shown below.
 
 **Important:** The component name must be pointing, in the DNS, to the public IP in the machine where it is installed the XMPP.
+
+**Important:** The port 5269(default server-to-server port) must be accessible by other xmpp server, probably in an other external network.
+
+**Important:** The port 5347(default component-to-component port) must be accessible by other component, probably in the internal network.
 ```bash
 # listen for connections on the all interfaces
 component_interface = "0.0.0.0"
