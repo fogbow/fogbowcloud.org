@@ -589,7 +589,7 @@ storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2
 storage_v2_url=http://$address:$storage_port
 
 ## Local Identity
-local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstackv2.KeystoneIdentityPlugin
 local_identity_url=http://$address:$keystone_port
 
 ## Local Credentials
@@ -601,7 +601,7 @@ mapper_defaults_password=$user_pass
 mapper_defaults_tenantName=$tenant_name
 
 ## Federation Identity
-federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstackv2.KeystoneIdentityPlugin
 federation_identity_url=http://$address:$keystone_port
 ```
 
