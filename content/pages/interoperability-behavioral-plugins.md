@@ -695,7 +695,7 @@ The Mapper plugin determines the policy used to map a federation user into an us
 The mapping is defined based on a *identificator* and on the specific credential of each local identity plugin. It uses the sintax *mapper_ + {identificator} + _ + {credential}* to specify the mapping. Below, we show examples for the current available plugins:
 
 ```bash
-# Openstack credentials: username, password, tenantName
+# Openstack V2 credentials: username, password, tenantName
 # Identificator: defaults
 mapper_defaults_username=$user_name
 mapper_defaults_password=$user_pass
@@ -704,6 +704,12 @@ mapper_defaults_tenantName=$tenant_name
 # mapper_other_username=$other_user_name
 # mapper_other_password=$other_user_pass
 # mapper_other_tenantName=$other_tenant_name
+
+# Openstack V3 credentials: userId, password, projectId
+# Identificator: defaults
+mapper_defaults_userId=$user_id
+mapper_defaults_password=$user_pass
+mapper_defaults_projectId=$project_id
 
 # Opennebula credentials: username, password
 # Identificator: defaults
