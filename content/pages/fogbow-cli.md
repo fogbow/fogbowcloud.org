@@ -75,7 +75,7 @@ Example:
 ```bash
 $ fogbow-cli resource --get --url http://localhost:8182 --auth-token mytoken
 
-Category: fogbow-request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Request new Instances"; location="http://localhost:8182/request"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from"
+Category: order; scheme="http://schemas.fogbowcloud.org/order#"; class="kind"; title="Order new Instances"; location="http://localhost:8182/order"; attributes="org.fogbowcloud.order.instance-count org.fogbowcloud.order.type org.fogbowcloud.order.valid-until org.fogbowcloud.order.valid-from"
 Category: fogbow-large; scheme="http://scmhemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
 Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="Linux-x86 Image"; location="http://localhost:8182/fogbow-linux-x86"
 ...
@@ -121,7 +121,7 @@ Others credentails:
    -Dpassword (Required)
 ```
 
-## Request operations (```request```)
+## Order operations (```order```)
 
 ### Get order 
 Get all instance orders associated to a particular user's token.
@@ -134,8 +134,8 @@ Example:
 ```bash
 $ fogbow-cli order --get --auth-token mytoken --url http://localhost:8182
 
-X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
-X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
+X-OCCI-Location: http://localhost:8182/order/47536d31-0674-4278-ad05-eff5fdd07257
+X-OCCI-Location: http://localhost:8182/order/fd745806-4909-4a39-8380-13183b1f197c
 ```
 
 Get detailed information about a single instance order.
@@ -148,24 +148,24 @@ Example:
 ```bash
 $ fogbow-cli order --get --auth-token mytoken --id orderid --url http://localhost:8182
 
-Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Order new Instances"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/fogbow_request/"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from org.fogbowcloud.request.state org.fogbowcloud.request.instance-id org.fogbowcloud.credentials.publickey.data org.fogbowcloud.request.user-data org.fogbowcloud.request.extra-user-data org.fogbowcloud.request.extra-user-data-content-type org.fogbowcloud.request.requirements org.fogbowcloud.request.batch-id org.fogbowcloud.request.requesting-member org.fogbowcloud.request.providing-member org.fogbowcloud.order.resource-kind org.fogbowcloud.order.storage-size"
-X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.request.state="fulfilled" 
-X-OCCI-Attribute: org.fogbowcloud.request.valid-from="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.request.requirements="Glue2CloudComputeManagerID=="manager.one.member.com"" 
+Category: order; scheme="http://schemas.fogbowcloud.org/order#"; class="kind"; title="Order new Instances"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/order/"; attributes="org.fogbowcloud.order.instance-count org.fogbowcloud.order.type org.fogbowcloud.order.valid-until org.fogbowcloud.order.valid-from org.fogbowcloud.order.state org.fogbowcloud.order.instance-id org.fogbowcloud.credentials.publickey.data org.fogbowcloud.order.user-data org.fogbowcloud.order.extra-user-data org.fogbowcloud.order.extra-user-data-content-type org.fogbowcloud.order.requirements org.fogbowcloud.order.batch-id org.fogbowcloud.order.requesting-member org.fogbowcloud.order.providing-member org.fogbowcloud.order.resource-kind org.fogbowcloud.order.storage-size"
+X-OCCI-Attribute: org.fogbowcloud.order.extra-user-data="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.order.state="fulfilled" 
+X-OCCI-Attribute: org.fogbowcloud.order.valid-from="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.order.requirements="Glue2CloudComputeManagerID=="manager.one.member.com"" 
 X-OCCI-Attribute: occi.core.id="c575e6f2-a590-4595-8894-02a8e63bd214" 
-X-OCCI-Attribute: org.fogbowcloud.request.type="one-time" 
-X-OCCI-Attribute: org.fogbowcloud.request.valid-until="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.request.providing-member="manager.one.member.com" 
+X-OCCI-Attribute: org.fogbowcloud.order.type="one-time" 
+X-OCCI-Attribute: org.fogbowcloud.order.valid-until="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.order.providing-member="manager.one.member.com" 
 X-OCCI-Attribute: org.fogbowcloud.credentials.publickey.data="Not defined" 
 X-OCCI-Attribute: org.fogbowcloud.order.resource-kind="storage" 
-X-OCCI-Attribute: org.fogbowcloud.request.requesting-member="manager.two.member.com" 
-X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data-content-type="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.request.user-data="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.order.requesting-member="manager.two.member.com" 
+X-OCCI-Attribute: org.fogbowcloud.order.extra-user-data-content-type="Not defined" 
+X-OCCI-Attribute: org.fogbowcloud.order.user-data="Not defined" 
 X-OCCI-Attribute: org.fogbowcloud.order.storage-size="80" 
-X-OCCI-Attribute: org.fogbowcloud.request.batch-id="25a0fd51-7b47-452a-9daa-ef40d1277f80" 
-X-OCCI-Attribute: org.fogbowcloud.request.instance-count="1" 
-X-OCCI-Attribute: org.fogbowcloud.request.instance-id="9e80c942-9fbd-4c06-b8b7-ed7573544425@manager.one.member.com"
+X-OCCI-Attribute: org.fogbowcloud.order.batch-id="25a0fd51-7b47-452a-9daa-ef40d1277f80" 
+X-OCCI-Attribute: org.fogbowcloud.order.instance-count="1" 
+X-OCCI-Attribute: org.fogbowcloud.order.instance-id="9e80c942-9fbd-4c06-b8b7-ed7573544425@manager.one.member.com"
 ```
 
 ### Create order 
@@ -183,26 +183,26 @@ Create orders.
 
 Example with compute:
 ```bash
-$ fogbow-cli order --create --n 2 --resource-king compute --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub --requirements "Glue2RAM >= 1024 && Glue2CloudComputeManagerID==\"manager.one.member.com\""
+$ fogbow-cli order --create --n 2 --resource-king compute --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub --requirements "Glue2RAM >= 1024 && Glue2CloudComputeManagerID==\"manager.one.member.com\"" --resource-kind compute
 
-X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257432
-X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c456
+X-OCCI-Location: http://localhost:8182/order/47536d31-0674-4278-ad05-eff5fdd07257432
+X-OCCI-Location: http://localhost:8182/order/fd745806-4909-4a39-8380-13183b1f197c456
 ```
 
 Example with storage:
 ```bash
 $ fogbow-cli order --create --n 2 --resource-king storage --url http://localhost:8182 --size 10 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\""
 
-X-OCCI-Location: http://localhost:8182/request/54635536d31-0674-4278-ad05-eff5fdd0725767
-X-OCCI-Location: http://localhost:8182/request/87987977806-4909-4a39-8380-13183b1f197ch7
+X-OCCI-Location: http://localhost:8182/order/54635536d31-0674-4278-ad05-eff5fdd0725767
+X-OCCI-Location: http://localhost:8182/order/87987977806-4909-4a39-8380-13183b1f197ch7
 ```
 
 Example with network:
 ```bash
 $ fogbow-cli order --create --n 2 --resource-king network --cidr 10.10.10.0/24 --url http://localhost:8182 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\""
 
-X-OCCI-Location: http://localhost:8182/request/6748mnr31-0674-4278-ad05-eff5fdd07257231
-X-OCCI-Location: http://localhost:8182/request/ghgfdj06-4909-4a39-8380-13183b1f197c231
+X-OCCI-Location: http://localhost:8182/order/6748mnr31-0674-4278-ad05-eff5fdd07257231
+X-OCCI-Location: http://localhost:8182/order/ghgfdj06-4909-4a39-8380-13183b1f197c231
 ```
 
 
@@ -256,12 +256,12 @@ Category: flavor.small; scheme="http://schemas.fogbowcloud.org/template/resource
 Category: fogbow-image; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="fogbow-image image"; rel="http://schemas.ogf.org/occi/infrastructure#os_tpl"; location="http://localhost:8182/fogbow-image/"
 X-OCCI-Attribute: occi.compute.state="active"
 X-OCCI-Attribute: occi.compute.hostname="fogbow-instance-230e00cd-4207-4d77-b40c-ba7ca8fa52fd"
-X-OCCI-Attribute: org.fogbowcloud.request.ssh-username="fogbow"
+X-OCCI-Attribute: org.fogbowcloud.order.ssh-username="fogbow"
 X-OCCI-Attribute: occi.compute.memory="2.0"
-X-OCCI-Attribute: org.fogbowcloud.request.local-ip-address="0.0.0.0"
-X-OCCI-Attribute: org.fogbowcloud.request.extra-ports="{"postgres":"0.0.0.0:10029"}"
+X-OCCI-Attribute: org.fogbowcloud.order.local-ip-address="0.0.0.0"
+X-OCCI-Attribute: org.fogbowcloud.order.extra-ports="{"postgres":"0.0.0.0:10029"}"
 X-OCCI-Attribute: occi.compute.cores="1"
-X-OCCI-Attribute: org.fogbowcloud.request.ssh-public-address="0.0.0.0:10028"
+X-OCCI-Attribute: org.fogbowcloud.order.ssh-public-address="0.0.0.0:10028"
 X-OCCI-Attribute: occi.core.id="4090901b-3b82-4424-a93f-5425e59dee71"
 X-OCCI-Attribute: occi.compute.architecture="Not defined"
 X-OCCI-Attribute: occi.compute.speed="Not defined"
