@@ -20,26 +20,34 @@ Make sure to have the identity plugin ports opened in your network firewall conf
 
 You need to configure the Identity Plugin according to the Identity Provider you are using. The following sections go through the configuration for the Identity Plugins that are currently available. The values identified with the $ symbol must be replaced according with the specificities of each deploy.
 
-#####Keystone Identity Plugin
+#####Keystone V2 Identity Plugin
 
 ```bash
 
 # Local Identity plugin class
-local_identity_class=org.fogbowcloud.manager.core.plugins.openstack.KeystoneIdentityPlugin
+local_identity_class=org.fogbowcloud.manager.core.plugins.openstackv2.KeystoneIdentityPlugin
 # Cloud Identity endpoint
 local_identity_url=http://$address:$keystone_port
 
 # Federation Identity plugin class
-federation_identity_class=org.fogbowcloud.manager.core.plugins.openstack.KeystoneIdentityPlugin
+federation_identity_class=org.fogbowcloud.manager.core.plugins.openstackv2.KeystoneIdentityPlugin
 # Federation Identity endpoint
 federation_identity_url=http://$address:$keystone_port
+```
 
-# Proxy account for remote requests @ the local identity provider
-local_proxy_account_user_name=$user_name
-# Password of such account
-local_proxy_account_password=$password
-# Tenant of such account
-local_proxy_account_tenant_name=$tenant_name
+#####Keystone V3 Identity Plugin
+
+```bash
+
+# Local Identity plugin class
+local_identity_class=org.fogbowcloud.manager.core.plugins.openstack.KeystoneV3IdentityPlugin
+# Cloud Identity endpoint
+local_identity_url=http://$address:$keystone_port
+
+# Federation Identity plugin class
+federation_identity_class=org.fogbowcloud.manager.core.plugins.openstack.KeystoneV3IdentityPlugin
+# Federation Identity endpoint
+federation_identity_url=http://$address:$keystone_port
 ```
 
 #####OpenNebula Identity Plugin
