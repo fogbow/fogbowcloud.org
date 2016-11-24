@@ -38,6 +38,41 @@ chmod 600 openstack_dashboard/test/.secret_key_store
 
 then, rename the file ```openstack_dashboard/local/local_settings.py.example``` to ```openstack_dashboard/local/local_settings.py.example``` and edit it according to the configuration of your FM.
 
+```bash
+# Endpoint Manager
+FOGBOW_MANAGER_ENDPOINT = 'http://localhost:8182' # Mandatory
+
+FOGBOW_FEDERATION_AUTH_ENDPOINT = '' # Mandatory
+# types : keystone, opennebula, voms, raw_opennebula, raw_keystone, shibboleth, naf, ldap
+FOGBOW_FEDERATION_AUTH_TYPE = '' # Mandatory
+
+# for naf federation auth
+## dashboard private key path
+# FOGBOW_NAF_DASHBOARD_PRIVATE_KEY_PATH='$path_to/dash_private_key.pem'
+## dashboard private key path
+# FOGBOW_NAF_DASHBOARD_PUBLIC_KEY_PATH='$path_to/dash_public_key.pem'
+## portal public key path
+# FOGBOW_NAF_PORTAL_PUBLIC_KEY_PATH='$path_to/portal_public_key.pem'
+
+# for ldap federation auth
+# PRIVATE_KEY_PATH='$path_to/private_key.pem'
+# PUBLIC_KEY_PATH='$path_to/public_key.pem'
+# FOGBOW_LDAP_BASE='dc=lsd,dc=ufcg,dc=edu,dc=br'
+# FOGBOW_LDAP_ENCRYPT=''
+
+# custom_theme 
+# customization of style
+CUSTOM_THEME = ''
+
+# Communication between F_dashboard and F_manager
+# Default 15 | seconds 
+TIMEOUT_POST=15
+# Default 15 | seconds
+TIMEOUT_DELETE=15
+# Default 60 | seconds
+TIMEOUT_GET=60
+```
+
 After configuring, run the ```./run_tests.sh``` script to download and install the necessary dependencies.
 ```
 bash
