@@ -183,7 +183,7 @@ Create orders.
 
 Example with compute:
 ```bash
-$ fogbow-cli order --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub --requirements "Glue2RAM >= 1024 && Glue2CloudComputeManagerID==\"manager.one.member.com\"" --resource-kind compute
+$ fogbow-cli order --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub --requirements "Glue2RAM >= 1024 && Glue2CloudComputeManagerID==\"manager.one.member.com\"" --resource-kind compute --auth-token mytoken
 
 X-OCCI-Location: http://localhost:8182/order/47536d31-0674-4278-ad05-eff5fdd07257432
 X-OCCI-Location: http://localhost:8182/order/fd745806-4909-4a39-8380-13183b1f197c456
@@ -191,7 +191,7 @@ X-OCCI-Location: http://localhost:8182/order/fd745806-4909-4a39-8380-13183b1f197
 
 Example with storage:
 ```bash
-$ fogbow-cli order --create --n 2 --resource-kind storage --url http://localhost:8182 --size 10 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\""
+$ fogbow-cli order --create --n 2 --resource-kind storage --url http://localhost:8182 --size 10 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\"" --auth-token mytoken
 
 X-OCCI-Location: http://localhost:8182/order/54635536d31-0674-4278-ad05-eff5fdd0725767
 X-OCCI-Location: http://localhost:8182/order/87987977806-4909-4a39-8380-13183b1f197ch7
@@ -199,12 +199,11 @@ X-OCCI-Location: http://localhost:8182/order/87987977806-4909-4a39-8380-13183b1f
 
 Example with network:
 ```bash
-$ fogbow-cli order --create --n 2 --resource-kind network --cidr 10.10.10.0/24 --url http://localhost:8182 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\""
+$ fogbow-cli order --create --n 2 --resource-kind network --cidr 10.10.10.0/24 --url http://localhost:8182 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\"" --auth-token mytoken
 
 X-OCCI-Location: http://localhost:8182/order/6748mnr31-0674-4278-ad05-eff5fdd07257231
 X-OCCI-Location: http://localhost:8182/order/ghgfdj06-4909-4a39-8380-13183b1f197c231
 ```
-
 
 ### Delete a single order
 Delete a single instance order.
