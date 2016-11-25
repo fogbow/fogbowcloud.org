@@ -26,6 +26,14 @@ For each new **Fogbow Manager** and **Fogbow Rendezvous** installed, it is neces
 
 **Important:** The port 5347(default component-to-component port) must be accessible by other component, probably in the internal network.
 ```bash
+# If necessary change the port componente-to-componente
+# default is 5347
+# component_ports={ 8888 }={ port_c2s }
+
+# If necessary change the port server-to-server
+# default is 5269
+# s2s_ports={ port_s2s }
+
 # listen for connections on the all interfaces
 component_interface = "0.0.0.0"
 
