@@ -34,12 +34,12 @@ Get the quota of the federation member.
 
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--quota** (required)
-* **--memberId** (required)
+* **--id** (required)
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 Example:
 ```bash
-$ fogbow-cli member --url http://localhost:8182 --quota --memberId id123 --auth-token mytoken
+$ fogbow-cli member --url http://localhost:8182 --quota --id id123 --auth-token mytoken
 
 cpuQuota=1;cpuInUse=1;cpuInUseByUser=1;memQuota=1;memInUse=1;memInUseByUser=1;instancesQuota=1;instancesInUse=1;instancesInUseByUser=1
 ```
@@ -49,12 +49,12 @@ Get the usage of the federation member
 
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--usage** (required)
-* **--memberId** (required)
+* **--id** (required)
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 Example:
 ```bash
-$ fogbow-cli member --url http://localhost:8182 --usage --memberId id123 --auth-token mytoken
+$ fogbow-cli member --url http://localhost:8182 --usage --id id123 --auth-token mytoken
 
 memberId=federation.member.one.com
 compute usage=10
