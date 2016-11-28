@@ -247,7 +247,7 @@ Get detailed information about a single instance.
 
 Example: 
 ```bash
-$ fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://localhost:10000
+$ fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://localhost:8182
 
 Category: compute; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Compute Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/compute/"; attributes="occi.compute.architecture occi.compute.state{immutable} occi.compute.speed occi.compute.memory occi.compute.cores occi.compute.hostname"; actions="http://schemas.ogf.org/occi/infrastructure/compute/action#start http://schemas.ogf.org/occi/infrastructure/compute/action#stop http://schemas.ogf.org/occi/infrastructure/compute/action#restart http://schemas.ogf.org/occi/infrastructure/compute/action#suspend"
 Category: os_tpl; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="mixin"; location="http://localhost:8182/os_tpl/"
@@ -337,7 +337,7 @@ Get detailed information about a single storage.
 
 Example: 
 ```bash
-$ fogbow-cli storage --get --auth-token mytoken --id storageid --url http://localhost:10000
+$ fogbow-cli storage --get --auth-token mytoken --id storageid --url http://localhost:8182
 
 Category: storage; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Storage Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/storage/"; attributes="occi.storage.state{immutable} occi.storage.size"; actions="http://schemas.ogf.org/occi/infrastructure/storage/action#online http://schemas.ogf.org/occi/infrastructure/storage/action#offline http://schemas.ogf.org/occi/infrastructure/storage/action#backup http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot http://schemas.ogf.org/occi/infrastructure/storage/action#resize"
 X-OCCI-Attribute: occi.storage.size="80"
@@ -414,7 +414,7 @@ Get detailed information about a single network.
 
 Example: 
 ```bash
-$ fogbow-cli network --get --auth-token mytoken --id networkid --url http://localhost:10000
+$ fogbow-cli network --get --auth-token mytoken --id networkid --url http://localhost:8182
 
 Category: Network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Network Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/storage/"; attributes="occi.storage.state{immutable} occi.storage.size"; actions="http://schemas.ogf.org/occi/infrastructure/storage/action#online http://schemas.ogf.org/occi/infrastructure/storage/action#offline http://schemas.ogf.org/occi/infrastructure/storage/action#backup http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot http://schemas.ogf.org/occi/infrastructure/storage/action#resize"
 X-OCCI-Attribute: occi.network.vlan="Not defined"
@@ -479,7 +479,7 @@ Get all attachment associated to a particular user's token.
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 ```bash
-$ fogbow-cli attachment --get --auth-token mytoken --url http://localhost:10000
+$ fogbow-cli attachment --get --auth-token mytoken --url http://localhost:8182
 
 X-OCCI-Location: 687V5356-3432434-324324-3243242f@manager.com
 X-OCCI-Location: 09129582-8907667-123457-0765345c@manager.com
@@ -495,7 +495,7 @@ Get detailed information about a single attachment.
 
 Example: 
 ```bash
-$ fogbow-cli attachment --get --auth-token mytoken --id attachmentid --url http://localhost:10000
+$ fogbow-cli attachment --get --auth-token mytoken --id attachmentid --url http://localhost:8182
 
 occi.core.source=587V5356-3432434-324324-3243242f
 occi.core.target=13029582-8907667-123457-0765345c
