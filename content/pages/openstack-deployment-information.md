@@ -7,7 +7,7 @@ Openstack deployment information
 
 For the infrastructure.conf.
 ------
-{image}
+![alt logo](../images/openstack-accessand-security.png "Openstack Access & Security")
 * No dashboard Openstack * Compute (Right Menu) >> Access & Secure (Right Menu)  >> Compute (Main Content).
 ```
 Example:
@@ -51,16 +51,19 @@ Tenant Name
 mapper_defaults_tenantName=$tenant_name
 ```
 * No dashboard Openstack * Network (Right Menu) >> Networks (Right Menu) >> Choose the network default (Main Content).
+![alt logo](../images/openstack-network-details.png "Openstack Network")
 ```
 Example:
 compute_novav2_network_id=15054e12-0c41-4ed4-b2e1-2902a1ff0022
 ```
 * No dashboard Openstack * Network (Right Menu) >> Networks (Right Menu) >> Choose the network external  (Main Content).
+![alt logo](../images/openstack-network-external-detail.png "Openstack Network External")
 ```
 Example: 
 external_gateway_info=d97a0b8e-574d-482a-8043-0cbf95a29f0a
 ```
 * No dashboard Openstack * Compute (Right Menu) >> Images (Right Menu) >> Choose your image.
+![alt logo](../images/openstack-image-details.png "Openstack Image Details")
 ```
 Example: 
 image_storage_static_fogbow-ubuntu=95187035-52e3-4fe7-b178-1628615375bd
@@ -69,6 +72,7 @@ image_storage_static_fogbow-ubuntu=95187035-52e3-4fe7-b178-1628615375bd
 For the federation.conf.
 ------
 * No dashboard Openstack * Compute (Right Menu) >> Access & Secure (Right Menu)  >> Identity (Main Content).
+![alt logo](../images/openstack-accessand-security.png "Openstack Access & Security")
 ```
 Example:
 federation_identity_url=http://truegrid-cloud:5000
