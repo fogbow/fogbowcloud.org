@@ -1,6 +1,7 @@
 Title: Deployment Test
 url: deployment-test
-save_as: deplyment-test.html
+save_as: deployment-test.html
+index: 0
 
 Deployment Test
 ======
