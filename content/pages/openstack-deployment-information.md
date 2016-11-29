@@ -35,6 +35,8 @@ local_identity_url=http://truegrid-cloud:5000
 If local_identity_class or  federation_identity_class is using KeystoneV3IdentityPlugin.  For more information in the Mapper section: http://www.fogbowcloud.org/interoperability-behavioral-plugins
 ```
 * No dashboard Openstack * Identity (Right Menu) >> Users (Right Menu)  >> Choose the user (Main Content)
+
+![alt logo](../images/openstack-project.png "Openstack Projects")
 ```
 No dashboard Openstack * Identity (Right Menu) >> Users (Right Menu)  >> Choose your user (Main Content)
 mapper_defaults_userId=$user_id
