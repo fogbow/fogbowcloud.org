@@ -2,14 +2,19 @@ Deployment Test
 ======
 
 1. List federation members
+
 ```shell
 ./bin/fogbow-cli member --url http://localhost:8182 --auth-token $token
+
 tu.dresden.manager.naf.lsd.ufcg.edu.br
+lsd.manager.naf.lsd.ufcg.edu.br
+azure.manager.naf.lsd.ufcg.edu.br
 ```
 
 2. See member quota
 ```shell
 ./bin/fogbow-cli member --url http://localhost:8182 --quota --id tu.dresden.manager.naf.lsd.ufcg.edu.br --auth-token $token
+
 X-OCCI-Attribute: cpuQuota=20
 X-OCCI-Attribute: cpuInUse=0
 X-OCCI-Attribute: cpuInUseByUser=0
@@ -24,18 +29,21 @@ X-OCCI-Attribute: instancesInUseByUser=0
 3. Create Compute Order.
 ```shell
 ./bin/fogbow-cli order --create --n 1 --image fogbow-ubuntu --url http://localhost:8182 --public-key /home/ubuntu/fogbow-instalation/keys/chico.pub --requirements "Glue2RAM >= 1024" --resource-kind compute --auth-token $token
+
 X-OCCI-Location: http://10.7.41.12:8182/order/65a746b4-4b84-455a-b36a-bf64f030ab56
 ```
 
 4. List Order.
 ```shell
 ./bin/fogbow-cli order --get --auth-token $token --url http://localhost:8182
+
 X-OCCI-Location: http://10.7.41.12:8182/order/65a746b4-4b84-455a-b36a-bf64f030ab56
 ```
 
 5. Get order’s (65a746b4-4b84-455a-b36a-bf64f030ab56) details and check if it is FULFILLED.
 ```shell
 ./bin/fogbow-cli order --get --auth-token $token --url http://localhost:8182 --id 65a746b4-4b84-455a-b36a-bf64f030ab56
+
 [...]
 X-OCCI-Attribute: org.fogbowcloud.order.state="fulfilled"
 [...]
@@ -43,73 +51,38 @@ X-OCCI-Attribute: org.fogbowcloud.order.instance-id="f32eb79d-5681-488a-a6e3-fd0
 [...]
 ```
 
-
-
-See last instance’s(f32eb79d-5681-488a-a6e3-fd0fe8426b96@tu.dresden.manager.naf.lsd.ufcg.edu.br) details
+6. See last instance’s(f32eb79d-5681-488a-a6e3-fd0fe8426b96@tu.dresden.manager.naf.lsd.ufcg.edu.br) details
+```shell
 ./bin/fogbow-cli instance --get --auth-token $token --url http://localhost:8182 --id f32eb79d-5681-488a-a6e3-fd0fe8426b96@tu.dresden.manager.naf.lsd.ufcg.edu.br
-Category: compute; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Compute Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/compute/"; attributes="occi.compute.architecture occi.compute.state{immutable} occi.compute.speed occi.compute.memory occi.compute.cores occi.compute.hostname"; actions="http://schemas.ogf.org/occi/infrastructure/compute/action#start http://schemas.ogf.org/occi/infrastructure/compute/action#stop http://schemas.ogf.org/occi/infrastructure/compute/action#restart http://schemas.ogf.org/occi/infrastructure/compute/action#suspend"
-Category: os_tpl; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="mixin"; location="http://localhost:8182/os_tpl/"
-Category: m1.small; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin"; title="m1.small"; rel="http://schemas.ogf.org/occi/infrastructure#resource_tpl"; location="http://localhost:8182/m1.small/"
-Category: fogbow-ubuntu; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="fogbow-ubuntu image"; rel="http://schemas.ogf.org/occi/infrastructure#os_tpl"; location="http://localhost:8182/fogbow-ubuntu/"
-Link: </network/15054e12-0c41-4ed4-b2e1-2902a1ff0022>; rel="http://schemas.ogf.org/occi/infrastructure#network"; category="http://schemas.ogf.org/occi/infrastructure#networkinterface"; occi.networkinterface.state="active"; occi.networkinterface.interface="eth0"; occi.networkinterface.mac="fa:16:3e:5c:8f:f9"
-X-OCCI-Attribute: occi.compute.state="active"
-X-OCCI-Attribute: occi.compute.hostname="fogbow-instance-be63c18b-0030-4dbd-ae33-0eb43cd63f95"
-X-OCCI-Attribute: org.fogbowcloud.order.extra-ports="{}"
-X-OCCI-Attribute: occi.compute.memory="2.0"
-X-OCCI-Attribute: org.fogbowcloud.order.local-ip-address="10.7.44.188"
-X-OCCI-Attribute: occi.compute.cores="1"
+
+[...]
 X-OCCI-Attribute: occi.core.id="f32eb79d-5681-488a-a6e3-fd0fe8426b96"
-X-OCCI-Attribute: occi.compute.architecture="Not defined"
 X-OCCI-Attribute: org.fogbowcloud.order.ssh-public-address="141.76.45.4:23451"
-X-OCCI-Attribute: org.fogbowcloud.order.ssh-username="fogbow"
-X-OCCI-Attribute: occi.compute.speed="Not defined"
+[...]
+```
 
-
-
-
-
-
-Try to access by SSH and check it is ok.
+7. Try to access by SSH and check it is ok.
+```shell
 ssh fogbow@141.76.45.4 - p 23451
+```
 
-
-Create Storage
+8. Create Storage
+```shell
 ./bin/fogbow-cli order --create --n 1 --resource-kind storage --url http://localhost:8182 --size 1 --auth-token $token
+
 X-OCCI-Location: http://10.7.41.12:8182/order/837a3124-b871-47c7-8305-613e4d1b100f
+```
 
-
-Get order’s(837a3124-b871-47c7-8305-613e4d1b100f) detail and check if is FULFILLED.
+9. Get order’s(837a3124-b871-47c7-8305-613e4d1b100f) detail and check if is FULFILLED.
+```shell
 ./bin/fogbow-cli order --get --auth-token $token --url http://localhost:8182 --id 837a3124-b871-47c7-8305-613e4d1b100f
-Category: order; scheme="http://schemas.fogbowcloud.org/order#"; class="kind"; title="Order new Instances"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/order/"; attributes="org.fogbowcloud.order.instance-count org.fogbowcloud.order.type org.fogbowcloud.order.valid-until org.fogbowcloud.order.valid-from org.fogbowcloud.order.state org.fogbowcloud.order.instance-id org.fogbowcloud.credentials.publickey.data org.fogbowcloud.order.user-data org.fogbowcloud.order.extra-user-data org.fogbowcloud.order.extra-user-data-content-type org.fogbowcloud.order.requirements org.fogbowcloud.order.batch-id org.fogbowcloud.order.requesting-member org.fogbowcloud.order.providing-member org.fogbowcloud.order.resource-kind org.fogbowcloud.order.storage-size org.fogbowcloud.order.network-id"
-X-OCCI-Attribute: occi.network.label="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.network-id="Network default" 
-X-OCCI-Attribute: org.fogbowcloud.order.requesting-member="tu.dresden.manager.naf.lsd.ufcg.edu.br" 
-X-OCCI-Attribute: org.fogbowcloud.order.state="fulfilled" 
-X-OCCI-Attribute: org.fogbowcloud.order.extra-user-data="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.batch-id="9010e72a-8c4e-43dc-99ad-873f227dfe18" 
-X-OCCI-Attribute: org.fogbowcloud.order.valid-until="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.instance-id="ef01b2b6-ab77-4705-92a2-83642d88e2ef@tu.dresden.manager.naf.lsd.ufcg.edu.br" 
-X-OCCI-Attribute: occi.network.gateway="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.resource-kind="storage" 
-X-OCCI-Attribute: org.fogbowcloud.order.user-data="Not defined" 
-X-OCCI-Attribute: occi.core.title="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.requirements="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.instance-count="1" 
-X-OCCI-Attribute: occi.network.state="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.type="one-time" 
-X-OCCI-Attribute: occi.network.address="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.providing-member="tu.dresden.manager.naf.lsd.ufcg.edu.br" 
-X-OCCI-Attribute: occi.networkinterface.interface="Not defined" 
-X-OCCI-Attribute: occi.networkinterface.mac="Not defined" 
-X-OCCI-Attribute: occi.core.id="Not defined" 
-X-OCCI-Attribute: occi.network.allocation="Not defined" 
-X-OCCI-Attribute: occi.networkinterface.state="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.credentials.publickey.data="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.extra-user-data-content-type="Not defined" 
-X-OCCI-Attribute: occi.network.vlan="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.valid-from="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.storage-size="2"
 
+[...]
+X-OCCI-Attribute: org.fogbowcloud.order.state="fulfilled" 
+[...]
+X-OCCI-Attribute: org.fogbowcloud.order.instance-id="ef01b2b6-ab77-4705-92a2-83642d88e2ef@tu.dresden.manager.naf.lsd.ufcg.edu.br" 
+[...]
+```
 
 Create attachment with compute(f32eb79d-5681-488a-a6e3-fd0fe8426b96@tu.dresden.manager.naf.lsd.ufcg.edu.br) and storage(ef01b2b6-ab77-4705-92a2-83642d88e2ef@tu.dresden.manager.naf.lsd.ufcg.edu.br).
 ./bin/fogbow-cli attachment --create --auth-token $token --url http://localhost:8182 --computeId f32eb79d-5681-488a-a6e3-fd0fe8426b96@tu.dresden.manager.naf.lsd.ufcg.edu.br --storageId ef01b2b6-ab77-4705-92a2-83642d88e2ef@tu.dresden.manager.naf.lsd.ufcg.edu.br
