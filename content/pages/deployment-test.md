@@ -5,7 +5,7 @@ save_as: deplyment-test.html
 Deployment Test
 ======
 
-Using the Fogbow Cli. [How is it installed](/install-configure-fogbow-cli). [How is it used](/fogbow-cli).
+Using the Fogbow Cli  to testing. [How is it installed](/install-configure-fogbow-cli). [How is it used](/fogbow-cli).
 
 #### 1. List federation members.
 
