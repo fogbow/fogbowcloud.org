@@ -1,6 +1,7 @@
 Title: Openstack deployment information
 url: openstack-deployment-information
 save_as: openstack-deployment-information.html
+index: 0
 
 Openstack deployment information
 =====
