@@ -697,10 +697,12 @@ capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontrolle
 ```
 
 ## Mapper Plugin
-The Mapper plugin determines the policy used to map a federation user into an user in the local cloud. 
+The Mapper plugin determines the policy used to map a federation user into an user in the local cloud. The fogbow manager will use this user to create your resources in the cloud.
 
 ### Configure
-The mapping is defined based on a *identificator* and on the specific credential of each local identity plugin. It uses the sintax *mapper_ + {identificator} + _ + {credential}* to specify the mapping. Below, we show examples for the current available plugins:
+The mapping is defined based on an *identificator* and on the specific credential of each local identity plugin. It uses the sintax *mapper_ + {identificator} + _ + {credential}* to specify the mapping. Below, we show examples for the current available plugins:
+
+> Important: This *identificator*, associated with user in the local cloud, should be exclusive for the fogbow. If another use the resource of user in the local cloud, so the fogbow will remove the resource because the Fogbow Manager only recognize the resources created by itself.
 
 ```bash
 # Openstack V2 credentials: username, password, tenantName
@@ -712,6 +714,10 @@ mapper_defaults_tenantName=$tenant_name
 # mapper_other_username=$other_user_name
 # mapper_other_password=$other_user_pass
 # mapper_other_tenantName=$other_tenant_name
+# Identificator: fogbow
+# mapper_fogbow_username=$other_user_name
+# mapper_fogbow_password=$other_user_pass
+# mapper_fogbow_tenantName=$other_tenant_name
 
 # Openstack V3 credentials: userId, password, projectId
 # Identificator: defaults
