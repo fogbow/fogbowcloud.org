@@ -6,7 +6,7 @@ index: 0
 Deployment Test
 ======
 
-Using the Fogbow Cli  to testing. [How is it installed](/install-configure-fogbow-cli). [How is it used](/fogbow-cli).
+Bellow we show how to harness the Fogbow CLI to test a Fogbow deployment.
 
 #### 1. List federation members.
 
