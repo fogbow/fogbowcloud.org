@@ -322,7 +322,7 @@ compute_cloudstack_expunge_on_destroy=true
 
 The Fogbow orders accepted by the FM contain, among other attributes, the id of the virtual machine image that will execute the order. These ids are federation-wide values and potencially are not recognized at the underlying local cloud. The Image Storage plugin is responsible to translate the image id described in the order and associate it to a valid local image identifier.
 
-``*Important: `` All images must support [cloud-init](https://cloudinit.readthedocs.io/en/latest/).
+**Important**: All images must support [cloud-init](https://cloudinit.readthedocs.io/en/latest/).
 
 ##### VMCatcher Storage Plugin
 
@@ -697,12 +697,12 @@ capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontrolle
 ```
 
 ## Mapper Plugin
-The Mapper plugin determines the policy used to map a federation user into an user in the local cloud. The fogbow manager will use this user to create your resources in the cloud.
+The Mapper plugin determines the policy used to map a federation user into an user in the local cloud. The fogbow manager creates resources in the cloud on behalf of this user.use this user to create your resources in the cloud.
 
 ### Configure
 The mapping is defined based on an *identificator* and on the specific credential of each local identity plugin. It uses the sintax *mapper_ + {identificator} + _ + {credential}* to specify the mapping. Below, we show examples for the current available plugins:
 
-> Important: This *identificator*, associated with user in the local cloud, should be exclusive for the fogbow. If another use the resource of user in the local cloud, so the fogbow will remove the resource because the Fogbow Manager only recognize the resources created by itself.
+> Important: The *identificator* associated with the user in the local cloud should be of exclusive use by the Fogbow Manager. The resouces created by other user mays be removed by the Fogbow Manager.
 
 ```bash
 # Openstack V2 credentials: username, password, tenantName
