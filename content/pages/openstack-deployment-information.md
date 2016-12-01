@@ -6,30 +6,31 @@ index: 0
 Openstack deployment information
 =====
 
-For the infrastructure.conf.
+Below we show where to find in the OpenStack dashboard the information to configure the Fogbow Manager (through the **infrastructure.conf** and the **federation.conf** files).
+
+infrastructure.conf properties
 ------
-![alt logo](../images/openstack-accessand-security.png "Openstack Access & Security")
-* No dashboard Openstack * Compute (Right Menu) >> Access & Secure (Right Menu)  >> Compute (Main Content).
+
+The image below (starting from the right menu, then following the links: compute, access & secure and compute) shows the URls of OpenStack APIs. Based on this information, we can configure these properties:
+
 ```
-Example:
+(based on compute field)
 compute_novav2_url=http://truegrid-cloud:8774
-```
-* No dashboard Openstack * Compute (Right Menu) >> Access & Secure (Right Menu)  >> Image (Main Content)
-```
-Example:
+
+(based on image field)
 compute_glancev2_url=http://truegrid-cloud:9292
-```
-* No dashboard Openstack * Compute (Right Menu) >> Access & Secure (Right Menu)  >> Storage (Main Content).
-```
-Example:
+
+(based on storage field)
 storage_v2_url=http://truegrid-cloud:8776
-```
-* No dashboard Openstack * Compute (Right Menu) >> Access & Secure (Right Menu)  >> Network (Main Content).
-```
-Example:
+
+(based on the network field)
 network_openstack_v2_url=http://truegrid-cloud:9696
 ```
+
+![alt logo](../images/openstack-accessand-security.png "Openstack Access & Security")
+
 * No dashboard Openstack * Compute (Right Menu) >> Access & Secure (Right Menu)  >> Identity (Main Content).
+
 ```
 Example:
 local_identity_url=http://truegrid-cloud:5000
