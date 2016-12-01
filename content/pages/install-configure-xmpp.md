@@ -20,21 +20,16 @@ $ apt-get install prosody
 For each new **Fogbow Manager** and **Fogbow Rendezvous** installed, it is necessary to add a new component to the `/etc/prosody/prosody.cfg.lua` configuration file. Also, the **Fogbow Manager** and **Fogbow Rendezvous** **xmpp_jid** and 
 **xmpp_password** properties, specified in the [Install and Configure Fogbow Manager](http://www.fogbowcloud.org/install-configure-fogbow-manager#configure) section and in the [Install and Configure Fogbow Rendezvous](http://www.fogbowcloud.org/install-configure-fogbow-rendezvous#configure) section, respectively, should be used as the **component name** and **component_secret**, as shown below.
 
-**Important:** The component name must be pointing, in the DNS, to the public IP in the machine where it is installed the XMPP.
-
-**Important:** The port 5269(default server-to-server port) must be accessible by other xmpp server, probably in an other external network.
-
-**Important:** The port 5347(default component-to-component port) must be accessible by other component, probably in the internal network.
 ```bash
-# If necessary change the port componente-to-componente
+# If necessary, change the component-to-component port
 # default is 5347
 # component_ports={ 8888 }={ port_c2s }
 
-# If necessary change the port server-to-server
+# If necessary, change the server-to-server port
 # default is 5269
 # s2s_ports={ port_s2s }
 
-# listen for connections on the all interfaces
+# listen for connections on all interfaces
 component_interface = "0.0.0.0"
 
 # Manager component
@@ -45,6 +40,14 @@ Component "my-manager.internal.mydomain"
 Component "my-rendezvous.internal.mydomain"
         component_secret = "rendezvous_password"
 ```
+
+In addition to prosody configuration, it is also necessary to follow below networking constraints:
+
+- In your DNS, associate the name of the xmpp component with the public IP of the machine where the XMPP was installed.
+
+- Allow external access through the 5269 port (default server-to-server port) in your firewall.
+
+- Allow intranet access through the 5347 (default component-to-component port) in your firewall.
 
 ## Run
 Now, run the command below to restart the prosody server.
