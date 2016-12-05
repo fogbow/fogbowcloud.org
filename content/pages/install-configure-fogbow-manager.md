@@ -754,5 +754,5 @@ flavor_fogbow_large={mem=2048, cpu=4}
 To start the FM, run the ```start-manager``` script inside ```bin```.
 
 ```bash
-./bin/start-manager
+bash bin/start-manager
 ```
