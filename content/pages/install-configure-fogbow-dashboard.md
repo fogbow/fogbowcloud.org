@@ -36,7 +36,7 @@ chmod 600 openstack_dashboard/local/.secret_key_store
 chmod 600 openstack_dashboard/test/.secret_key_store
 ```
 
-then, rename the file ```openstack_dashboard/local/local_settings.py.example``` to ```openstack_dashboard/local/local_settings.py.example``` and edit it according to the configuration of your FM.
+then, rename the file ```openstack_dashboard/local/local_settings.py.example``` to ```openstack_dashboard/local/local_settings.py``` and edit it according to the configuration of your FM.
 
 ```bash
 # Endpoint Manager
