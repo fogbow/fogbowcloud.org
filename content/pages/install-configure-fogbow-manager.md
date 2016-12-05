@@ -749,6 +749,27 @@ flavor_fogbow_small={mem=512, cpu=1}
 flavor_fogbow_medium={mem=1024, cpu=2}
 flavor_fogbow_large={mem=2048, cpu=4}
 ```
+## Configure LOG
+
+Rename the file ```log4j.properties.example``` to ```log4j.properties``` and edit it according your necessity.
+
+```bash
+# Root logger option
+log4j.rootLogger=DEBUG, file
+
+# Direct log messages to a log file
+log4j.appender.file=org.apache.log4j.RollingFileAppender
+# log path
+log4j.appender.file.File=/var/log/fogbow-manager/fogbow-manager.log
+log4j.appender.file.MaxFileSize=10MB
+log4j.appender.file.MaxBackupIndex=10
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+
+# Different log levels for restlet and http-client
+log4j.category.org.restlet=INFO
+
+```
 
 ## Run 
 To start the FM, run the ```start-manager``` script inside ```bin```.
