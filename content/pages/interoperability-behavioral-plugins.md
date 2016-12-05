@@ -475,7 +475,7 @@ storage_one_datastore_default_device_prefix=$prefix
 The NoCloud Compute plugin is applied when the FM does not have cloud resources associated with it.
 ```bash
 # Storage Plugin class
-storage_class=orgorg.fogbowcloud.manager.core.plugins.storage.nocloud.NoCloudStoragePlugin
+storage_class=org.fogbowcloud.manager.core.plugins.storage.nocloud.NoCloudStoragePlugin
 ```
 ##### EC2 Storage Plugin
 ```bash
