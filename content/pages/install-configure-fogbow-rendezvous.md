@@ -81,6 +81,28 @@ After adding the FR to your XMPP server, you need to add a new entry in your DNS
 my-rendezvous.internal.mydomain        22      IN      A       IP_of_external.domain
 ```
 
+## Configure LOG
+
+Rename the file ```log4j.properties.example``` to ```log4j.properties``` and edit it according your necessity.
+
+```bash
+# Root logger option
+log4j.rootLogger=DEBUG, file
+
+# Direct log messages to a log file
+log4j.appender.file=org.apache.log4j.RollingFileAppender
+# log path
+log4j.appender.file.File=/var/log/fogbow-rendezvous/fogbow-rendezvous.log
+log4j.appender.file.MaxFileSize=10MB
+log4j.appender.file.MaxBackupIndex=10
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+
+# Different log levels for restlet and http-client
+log4j.category.org.restlet=INFO
+
+```
+
 ## Run
 To start the FR, run the ```start-rendezvous``` script inside ```./bin```.
 ``` shell
