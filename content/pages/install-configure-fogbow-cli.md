@@ -9,6 +9,14 @@ Install and configure the Fogbow CLI
 
 The **Fogbow Manager** (FM) is controlled via a **Command Line Interface** (CLI) that makes easier for the fogbow users to get information about the federation members, to order resources, and to manage the lifecycle of those resources. The Fogbow CLI is distributed in two forms: as source code, or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follows.
 
+## Pre-installation 
+
+```bash
+# If not installed previously
+apt-get install maven
+# If not installed previously
+apt-get install openjdk-7-jdk
+```
 ##Install from source
 
 To get the lastest stable version of the component, download it from our repository:
