@@ -236,16 +236,20 @@ The Allow All pluging simply authorizes any user/token.
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.AllowAllAuthorizationPlugin
 ```
 **VO White List Authorization Plugin:**
+
+Used when Federation Identity plugin is the VomsIdentityPlugin.
 ```bash
 # Federation Authorization plugin class
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.voms.VOWhiteListAuthorizationPlugin
 authorization_vo_whitelist=$memberOfListOne,$memberOfListTwo,$memberOfListThree
 ```
 **Edu Person White List Authorization Plugin:**
+
+Used when Federation Identity plugin is the NAFIdentityPlugin. This plugin allow only the Identity Provider present in the list.
 ```bash
 # Federation Authorization plugin class
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.eduperson.EduPersonWhitelistAuthorizationPlugin
-authorization_vo_whitelist=$memberOfListOne,$memberOfListTwo,$memberOfListThree
+authorization_eduperson_whitelist=$IdpOne,$IdpTwo,$IdpThree
 ```
 + <h3>Member Validator Plugin</h3>
 
