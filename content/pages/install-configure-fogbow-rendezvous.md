@@ -34,7 +34,7 @@ Now, install it with Maven:
 
 ```
 cd fogbow-rendezvous-master
-mvn install
+mvn install -Dmaven.test.skip=true
 ```
 
 ## Install from debian package
