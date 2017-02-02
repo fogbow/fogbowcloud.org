@@ -470,6 +470,26 @@ bd_updater_period=30000
 scheduler_period=30000
 ```
 
+### - Monitoring orders
+The FM periodically executes some background tasks, such as resource monitoring. All the monitoring orders properties are defined in the class ```org.fogbowcloud.manager.core.ConfigurationConstants``` and have default period values specified in the class ```org.fogbowcloud.manager.core.ManagerControllerHelper```. The default values of any of these properties can be overwritten in the configuration file as shown below:
+
+```
+# The frequency (in milliseconds) that FM will be monitoring instances for local orders.
+# Default: 120000 milliseconds   (2 minutes)
+instance_monitoring_period=
+
+# The frequency (in milliseconds) that FM will be monitoring if served orders still exists.
+# Default: 120000 milliseconds   (2 minutes) 
+served_order_monitoring_period=
+
+# In the failed monitoring, there is an amount of attempts before remove instance.
+# This propertie is used in both monitoring orders and use your periods. 
+# For example: 2 minutes (instance_monitoring_period) x 1000 attempts = 2000 minutes to remove an instance with problem.
+# For example: 2 minutes (served_order_monitoring_period) x 1000 attempts = 2000 minutes to remove an instance with problem.
+# Default: 1000 attempts
+maximum_order_attempts=
+```
+
 ### - Fogbow Reverse Tunnel informations
 
 These properties configure the **Fogbow Reverse Tunnel** (FRT) service to provide public IP access to the VMs created by the FM. The example below shows how these properties should be set, considering the example presented in the <a  href="/install-configure-frt" target="_blank">Install and configure Fogbow Reverse Tunnel</a> section of our documentation:
