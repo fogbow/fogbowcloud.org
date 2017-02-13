@@ -121,7 +121,7 @@ Others credentails:
    -Dpassword (Required)
 ```
 
-## Get Token information 
+### Get Token information 
 Get token information like username and user id.
 
 * **--info** (required)
