@@ -251,6 +251,16 @@ Used when Federation Identity plugin is the NAFIdentityPlugin. This plugin allow
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.eduperson.EduPersonWhitelistAuthorizationPlugin
 authorization_eduperson_whitelist=$IdpOne,$IdpTwo,$IdpThree
 ```
+**User White List Authorization Plugin:**
+
+This plugin allow only the users present in the list. In the list, is necessary set the ID of the user. This id can be found by fogbow cli(<a  href="/fogbow-cli" target="_blank">here</a>) and fogbow dashboard(<a  href="/images/fogbow-user-id.png" target="_blank">here</a>).
+```bash
+# Federation Authorization plugin class
+federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.userwhitelist.UserWhiteListAuthorizationPlugin
+# List of users.
+authorization_user_whitelist=$userIdOne,$userIdTwo,$userIdThree
+```
+
 + <h3>Member Validator Plugin</h3>
 
 The Member Validator plugin determines whether the FM can interact (receive or donate resources) to a given federation member.
