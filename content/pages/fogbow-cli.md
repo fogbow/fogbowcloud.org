@@ -121,6 +121,34 @@ Others credentails:
    -Dpassword (Required)
 ```
 
+## Get Token information 
+Get token information like username and user id.
+
+* **--info** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--token** (user's token/Text); (required)
+* **--user** (optional) 
+* **--user-id** (optional)
+
+Example:
+```bash
+$ fogbow-cli token mytoken --info --user
+
+username 
+
+## ----------------------------------##
+
+$ fogbow-cli token mytoken --info --user-id
+
+userId
+
+## ----------------------------------##
+
+$ fogbow-cli token mytoken --info --user-id --user
+
+username,userId
+```
+
 ## Order operations (```order```)
 
 ### Get order 
