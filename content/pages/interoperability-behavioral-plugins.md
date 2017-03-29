@@ -573,7 +573,7 @@ fcu_accounting_datastore_url=jdbc:sqlite:$path_to_compute_accounting_db
 ```
 
 ##### Simple Storage Accounting Plugin
-The Simples Storage Accounting pluging is based on the total usage time (in minutes) and in the amount of allocated storage.
+The Simple Storage Accounting pluging is based on the total usage time (in minutes) and in the amount of allocated storage.
 
 ```bash
 # Accounting class
