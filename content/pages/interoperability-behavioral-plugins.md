@@ -632,7 +632,7 @@ member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobin
 ```
 
 ##### NOF Member Picker Plugin
-The Member Picker plugin uses the accounting plugin to choose the federation member. It chooses the federation member witht the biggest debt with the local member
+The Member Picker plugin uses the accounting plugin to choose the federation member. It chooses the federation member witht the highest debt with the local member
 .
 ```bash
 # Member picker class
