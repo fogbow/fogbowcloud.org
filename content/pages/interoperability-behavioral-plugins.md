@@ -822,7 +822,7 @@ mapper_defaults_tenantName=$default_tenant_name
 
 ## Prioritization Plugin
 
-The Prioritization Plugin is responsible for prioritizing a order over another with lower priority. It only comes into play when the quota for creating new resources is exceeded. In these cases, it must verify if in that given time there is any fulfilled/ongoing order from a member with lower priority than the new requester. If this condition is true, that order must preempted so that the new order can be met.
+The Prioritization Plugin is responsible for prioritizing a order over another with lower priority. It only comes into play when the quota for creating new resources is exceeded. In these cases, it must verify if in that given time there is any fulfilled/ongoing order from a member with lower priority than the new requester. If this condition is true, that order must be preempted so that the new order can be met.
 
 ### Configure
 
