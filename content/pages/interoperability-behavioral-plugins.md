@@ -701,7 +701,7 @@ capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontrolle
 ```
 
 ## Mapper Plugin
-The Mapper plugin determines the policy used to map a federation user into an user in the local cloud. The fogbow manager creates resources in the cloud on behalf of this user.use this user to create your resources in the cloud.
+The Mapper plugin determines the policy used to map a federation user into an user in the local cloud. The fogbow manager creates resources in the cloud on behalf of this user to create resources in the cloud.
 
 ### Configure
 The mapping is defined based on an *identificator* and on the specific credential of each local identity plugin. It uses the sintax *mapper_ + {identificator} + _ + {credential}* to specify the mapping. Below, we show examples for the current available plugins:
