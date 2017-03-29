@@ -641,7 +641,7 @@ member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberP
 
 ## Capacity controller plugin
 
-The Capacity controller plugin is responsible for calculating a virtual resource quota for each federation member. Its main going is to avoid free riding. It is specially important in scenarios of low resource contention, i.e. when there are exceeding resources and thus the prioritization (plugin) by itself wouldn't be enough to avoid free riding. For more details on this plugin refer to http://www.sciencedirect.com/science/article/pii/S0045790616301082.
+The Capacity controller plugin is responsible for calculating a virtual resource quota for each federation member. Its main goal is to avoid free riding. It is specially important in scenarios of low resource contention, i.e. when there are exceeding resources and thus the prioritization (plugin) by itself wouldn't be enough to avoid free riding. For more details on this plugin refer to http://www.sciencedirect.com/science/article/pii/S0045790616301082.
 
 ### Configure
 
