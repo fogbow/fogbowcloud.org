@@ -706,7 +706,7 @@ The Mapper plugin determines the policy used to map a federation user into an us
 ### Configure
 The mapping is defined based on an *identificator* and on the specific credential of each local identity plugin. It uses the sintax *mapper_ + {identificator} + _ + {credential}* to specify the mapping. Below, we show examples for the current available plugins:
 
-> Important: The *identificator* associated with the user in the local cloud should be of exclusive use by the Fogbow Manager. The resouces created by other user mays be removed by the Fogbow Manager.
+> Important: The *identificator* associated with the user in the local cloud should be of exclusive use by the Fogbow Manager. The resouces created by other user may be removed by the Fogbow Manager.
 
 ```bash
 # Openstack V2 credentials: username, password, tenantName
