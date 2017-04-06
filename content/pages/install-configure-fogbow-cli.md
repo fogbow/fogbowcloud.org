@@ -37,10 +37,20 @@ cd fogbow-cli-master
 mvn install -Dmaven.test.skip=true
 ```
 
+### Use it. <a href="/fogbow-cli">For more information</a>
+```
+bash bin/fogbow-cli ...
+```
+
 ## Install from debian package
 
 Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:
 
 ```bash
 dpkg -i fogbow-cli_$version.deb
+```
+
+### Use it. <a href="/fogbow-cli">For more information</a>
+```
+fogbow-cli ...
 ```
