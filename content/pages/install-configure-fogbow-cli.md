@@ -17,9 +17,11 @@ apt-get install maven
 # If not installed previously
 apt-get install openjdk-7-jdk
 ```
-##Install from source
+## Install from source
 
-To get the lastest stable version of the component, download it from our repository:
+First, is necessary to download fogbow manager and install it with maven, <a href="/install-configure-fogbow-manager">for more information</a>.
+
+To get the lastest stable version of the component Fogbow Cli, download it from our repository:
 ```shell
 wget https://github.com/fogbow/fogbow-cli/archive/master.zip
 ``` 
