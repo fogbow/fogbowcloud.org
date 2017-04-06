@@ -47,12 +47,9 @@ dpkg -i fogbow-manager_$version.deb
 
 ## Configure
 
-After the installation, edit three files: ```manager.conf```, ```federation.conf``` and ```infrastructure.conf```. Each file contains proprerties for different aspects of 
-Fogbow Manager, like interoperability, cloud infrastructure, managment processes and others. The ```federation.conf``` will define how this installation of Fogbow Manager
-interacts with other installations, the rules for the barter of resources and how users will authenticate themselves to use it. The ```manager.conf``` contains properties 
-for the FM to control his own execution, like, where to save/load database files, time intervals for monitors execution, configurations about the Fogbow Reverse Tunnel, etc. The ```infrastructure.conf``` has all necessary configurations for FM to work with the cloud infrastructure. At this point there are configurations for Computer Cloud API, Strage Cloud API, Network Cloud API, properties for authentication on the local Cloud, the Image Store functionality and other properties for usage of cloud.
+After the installation, edit three files: ```manager.conf```, ```federation.conf``` and ```infrastructure.conf```. Each file contains properties for different aspects of Fogbow Manager, like interoperability, cloud infrastructure, management processes and others. The ```federation.conf``` will define how this installation of Fogbow Manager interacts with other installations, the rules for the barter of resources and how users will authenticate themselves to use it. The ```manager.conf``` contains properties for the FM to control his own execution, like, where to save/load database files, time intervals for monitors execution, configurations about the Fogbow Reverse Tunnel, etc. The ```infrastructure.conf``` has all necessary configurations for FM to work with the cloud infrastructure. At this point there are configurations for Computer Cloud API, Storage Cloud API, Network Cloud API, properties for authentication on the local Cloud, the Image Store functionality and other properties of the cloud.
 
-Each properties files will be explained in separate sections.
+Each properties file will be explained in separate sections.
 
 ## Federation properties
 
@@ -87,7 +84,7 @@ my-manager.internal.mydomain        22      IN      A       IP_of_external.domai
 
 ### - Federation Indentity
 
-This plugin is responsible for control the users access in Fogbow's Management layer. This plugin identifies if the user is authorized to use the federation. The concept of "Federation Member" may change depending on configuration chosen for this plugin. If each federation location (Fogbow Manager installation) has a local authentication method (not centralized), users of this location can't authenticate directly on remote locations, but can request resources there through your Fogbow structure. In this case, all users of one location are seem as an single Federation Member to other federation members. The location is the "Federation Member". However, if all locations (FM) share a common identifying service, like VOMS server or Shiboleth service, each user is an single member of the federation and can request resources directly in any location (FM) of the Federation. The actual plugins for Federation Member Identity are:
+This plugin is responsible for controlling the users' access in Fogbow's Management layer. This plugin identifies if the user is authorized to use the federation. The concept of "Federation Member" may change depending on configuration chosen for this plugin. If each federation location (Fogbow Manager installation) has a local authentication method (not centralized), users of this location can't authenticate directly on remote locations, but can request resources there through your Fogbow structure. In this case, all users of one site (organization bellonging to the federation) are seen as an single Federation Member to other federation members. The site is the "Federation Member". However, if all sites (FM) share a common identifying service, like VOMS server or Shiboleth service, each user is an single member of the federation and can request resources directly in any location (FM) of the Federation. The current plugins for Federation Member Identity are:
 
 - Local identification
 	- Keystone Identity Plugin
@@ -225,11 +222,11 @@ The Authorization Plugin tells whether a given user (with a proper authenticated
 
 #### Configure
 
-The **federation_authorization_class** property must be set to a Authorization Plugin implementation, as shown in the examples below.
+The **federation_authorization_class** property must be set to an Authorization Plugin implementation, as shown in the examples below.
 
 **Allow All Authorization Plugin:**
 
-The Allow All pluging simply authorizes any user/token.
+The Allow All plugin simply authorizes any user/token.
 
 ```bash
 # Federation Authorization plugin class
@@ -296,8 +293,8 @@ member_authorization_whitelist_receive_from=$memberOfListOne,$memberOfListTwo,$m
 
 ### - Resource Bartering Control
 
-In Fogbow you could configure how the bartering of resource must works. You can choose how members are selected for resolve
-remote requests, configure a Network of Favores (NOF), how to priorize requests and how to account the resourses used for each member.
+In Fogbow you can configure how the bartering of resource works. You can choose how members are selected in order to send
+remote requests, configure a Network of Favores (NoF) to priorize requests, and can also set up how to account the resourses used from/by each member.
 
 + <h3>Member Picker plugin</h3>
 
@@ -314,8 +311,8 @@ The Round Robin Member Picker plugin chooses the federation member by alphabetic
 member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobinMemberPickerPlugin
 ```
 
-**NOF Member Picker Plugin:**
-The Member Picker plugin uses the accounting plugin to choose the federation member. It chooses the federation member witht the biggest debt with the local member
+**NoF Member Picker Plugin:**
+The Member Picker plugin uses the accounting plugin to choose the federation member. It chooses the federation member with the highest debt with the local member
 .
 ```bash
 # Member picker class
@@ -324,7 +321,7 @@ member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberP
 
 + <h3>Capacity Controller Plugin</h3>
 
-The Capacity controller plugin is responsible for calculating a virtual resource quota for each federation member. Its main going is to avoid free riding. It is specially important in scenarios of low resource contention, i.e. when there are exceeding resources and thus the prioritization (plugin) by itself wouldn't be enough to avoid free riding. For more details on this plugin refer to http://www.sciencedirect.com/science/article/pii/S0045790616301082.
+The Capacity controller plugin is responsible for calculating a virtual resource quota for each federation member. Its main goal is to avoid free riding. It is specially important in scenarios of low resource contention, i.e. when there are exceeding resources and thus the prioritization (plugin) by itself wouldn't be enough to avoid free riding. For more details on this plugin refer to http://www.sciencedirect.com/science/article/pii/S0045790616301082.
 
 #### Configure
 
@@ -342,10 +339,10 @@ Fairness is a measure of the level of reciprocity to the resources a federation 
 Global Fairness Driven Controller plugin uses exclusively the global fairness (fairness towards the whole federation) in order to decide whether to increase or decrease the amount of resources it should donate to the federation, i.e., the virtual quota. Note that in this implementation a federation member keeps only one single quota to the whole federation.
 
 The configuration of this plugin includes:
-* the minimum fairness threshold: a non-negative value indicating the minimum level of fairness desired;
-* the maximum fairness threshold: a non-negative value indicating the maximum level of fairness desired (recommended values are *0.75* for the minimum and *0.95* for the maximum, representing that the desired fairness is between 75% and 95%);
-* the delta value: the grain used to increase or decrease the virtual quota (recommended values are *0.01* for long term participation and *0.05* for short term participation);
-* the maximum capacity: the maximum number of processing instances it is willing to donate.
+- the minimum fairness threshold: a non-negative value indicating the minimum level of fairness desired;
+- the maximum fairness threshold: a non-negative value indicating the maximum level of fairness desired (recommended values are *0.75* for the minimum and *0.95* for the maximum, representing that the desired fairness is between 75% and 95%);
+- the delta value: the grain used to increase or decrease the virtual quota (recommended values are *0.01* for long term participation and *0.05* for short term participation);
+- the maximum capacity: the maximum number of processing instances it is willing to donate.
 
 ```bash
 # Capacity Controller class
@@ -356,7 +353,7 @@ controller_maximum_threshold=$max_threshold
 controller_maximum_capacity=$max_capacity
 ```
 
-**Pairwise Fairnesse Driven Controller Plugin:**
+**Pairwise Fairness Driven Controller Plugin:**
 
 Pairwise Fairnesse Driven Controller plugin uses exclusively the pairwise fairness (fairness towards a single member in the federation) in order to decide wether to increase or decrease the virtual quota to the each other member. Note that in this implementation a member keeps multiple quotas, one single quota for each member within the federation. This plugin is configured just like the Global Fairness Driven Controller plugin. 
 
@@ -374,6 +371,10 @@ The Two Fold Capacity Controller plugin reuses the Pairwise and Global approache
 ```bash
 # Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.TwoFoldCapacityController
+controller_delta=$delta
+controller_minimum_threshold=$min_threshold
+controller_maximum_threshold=$max_threshold
+controller_maximum_capacity=$max_capacity
 ```
 **Satisfaction Driven Capacity Controller Plugin:**
 The Satisfaction Driven Capacity Controller plugin imposes no constraint: it provides all its idle resources to the federation. The more it donates, the higher are the credits it will have with other members, and thus the higher will be its satisfaction. 
@@ -384,7 +385,7 @@ capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontrolle
 ```
 + <h3>Prioritization Plugin</h3>
 
-The Prioritization Plugin is responsible for prioritizing a order over another with lower priority. It only comes into play when the quota for creating new resources is exceeded. In these cases, it must verify if in that given time there is any fulfilled/ongoing order from a member with lower priority than the new requester. If this condition is true, that order must preempted so that the new order can be met.
+The Prioritization Plugin is responsible for prioritizing an order over another with lower priority. It only comes into play when the quota for creating new resources is exceeded. In these cases, it must verify if in that given time there is any fulfilled/ongoing order from a member with lower priority than the new requester. If this condition is true, that order must preempted so that the new order can be met.
 
 #### Configure
 
@@ -423,7 +424,7 @@ local_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritiz
 
 + <h3>Accounting Plugin</h3>
 
-The Accounting Plugin is responsible for accounting of the usage of cloud resources such as computing instances and storage. 
+The Accounting Plugin is responsible for accounting the usage of cloud resources such as computing instances and storage. 
 
 #### Configure
 The **accounting_class** property must be set to a Accouting Plugin implementation, as shown in the examples below.
@@ -493,7 +494,7 @@ instance_monitoring_period=
 served_order_monitoring_period=
 
 # In the failed monitoring, there is an amount of attempts before remove instance.
-# This propertie is used in both monitoring orders and use your periods. 
+# This property is used in both monitoring orders and use your periods. 
 # For example: 2 minutes (instance_monitoring_period) x 1000 attempts = 2000 minutes to remove an instance with problem.
 # For example: 2 minutes (served_order_monitoring_period) x 1000 attempts = 2000 minutes to remove an instance with problem.
 # Default: 1000 attempts
@@ -542,7 +543,7 @@ federation_conf_file=federation.conf
 
 ### - Image Storage Plugin
 
-The Fogbow orders accepted by the FM contain, among other attributes, the id of the virtual machine image that will execute the order. These ids are federation-wide values and potencially are not recognized at the underlying local cloud. The Image Storage plugin is responsible to translate the image id described in the order and associate it to a valid local image identifier.
+The Fogbow orders accepted by the FM contain, among other attributes, the id of the virtual machine image that will execute the order. These ids are federation-wide values and potentially are not recognized at the underlying local cloud. The Image Storage plugin is responsible to translate the image id described in the order and associate it to a valid local image identifier.
 
 + <h3>VMCatcher Storage Plugin</h3>
 
