@@ -130,6 +130,28 @@ federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.simpleto
 simple_token_identity_valid_token_id=$token_id
 ```
 
+##### LDAP Identity Plugin
+```bash
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.ldap.LdapIdentityPlugin
+ldap_identity_url=ldap://$address:port
+#Example: dc=org,dc=com
+ldap_base=&ldap_base_information
+#encripty type, if ldap implements one.
+ldap_encrypt_type=&encrypt_type
+
+## Signature informations
+private_key_path=$path to private key .pem file
+public_key_path=$path to public key .pem file
+```
+
+To generate the keys use:
+```bash
+openssl genrsa -out rsa_key.pem 2048
+openssl pkcs8 -topk8 -in rsa_key.pem -out private.key -nocrypt
+openssl rsa -in private.key -outform PEM -pubout -out public.key
+```
+The file rsa_key.pem can then be discarted.
+
 ##### EC2 Identity Plugin
 ```bash
 # Local Identity plugin class
