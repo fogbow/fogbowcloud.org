@@ -84,6 +84,13 @@ Can't create SAML token
 ## Shibboleth
 * **--type shibboleth** (optional): dynamic parameter
 
+Required Parameteres:
 * **-DassertionKey=** (required): dynamic parameter
 * **-DassertionId=** (required): dynamic parameter
+
+## x509
+* **--type x509** (optional): dynamic parameter
+
+Required Parameters:
+* **-Dx509CertificatePath** (required): dynamic parameter
 
