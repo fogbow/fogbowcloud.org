@@ -12,10 +12,34 @@ The fogbow CLI is a command line interface for the fogbow manager. It makes it e
 ##Installation
 Follow these steps, <a  href="/install-configure-fogbow-cli" target="_blank">Instalation and configuration Fogbow cli</a> .
 
+## Token operations (```token```)
+
+### Create a new Token
+Create a new user token.
+
+Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the **OpenStack** credentials:
+
+* **--create** (required)
+* **--type** (required) : identity plugin type
+* **-DauthUrl** (required): dynamic parameter | Url authentication cloud
+* **-Dpassword=** (optional): dynamic parameter
+* **-Dusername=** (optional): dynamic parameter
+* **-DtenantName=** (optional): dynamic parameter
+
+Example:
+```bash
+$ fogbow-cli token --create -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl=http://{url_cloud}:5000 --type openstack
+
+MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
+```
+
+Others credentails can be found on the Supported Authentication Methods document [link]:
+
+
 ## Member operations (```member```)
 
 ### List federation members 
-Get all federation members.
+Get the ids of all federation members.
 
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
@@ -30,7 +54,7 @@ federation.member.three.com
 ```
 
 ### Get quota
-Get the quota of the federation member.
+Get the quota of a federation member.
 
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--quota** (required)
@@ -45,7 +69,7 @@ cpuQuota=1;cpuInUse=1;cpuInUseByUser=1;memQuota=1;memInUse=1;memInUseByUser=1;in
 ```
 
 ### Get usage
-Get the usage of the federation member
+Get the usage of a federation member
 
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--usage** (required)
@@ -79,74 +103,6 @@ Category: order; scheme="http://schemas.fogbowcloud.org/order#"; class="kind"; t
 Category: fogbow-large; scheme="http://scmhemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
 Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="Linux-x86 Image"; location="http://localhost:8182/fogbow-linux-x86"
 ...
-```
-
-## Token operations (```token```)
-
-### Create a new Token
-Create a new user token.
-
-Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the **OpenStack** credentials:
-
-* **--create** (required)
-* **--type** (required) : identity plugin type
-* **-DauthUrl** (required): dynamic parameter | Url authentication cloud
-* **-Dpassword=** (optional): dynamic parameter
-* **-Dusername=** (optional): dynamic parameter
-* **-DtenantName=** (optional): dynamic parameter
-
-Example:
-```bash
-$ fogbow-cli token --create -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl=http://{url_cloud}:5000 --type openstack
-
-MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
-```
-
-Others credentails:
-```bash
-* x509
-   -Dx509CertificatePath (Required)
-* keystone
-   -Dusername (Required)
-   -Dpassword (Required)
-   -DtenantName (Required)
-   -DauthUrl (Required)
-* voms
-   -Dpassword (Required)
-   -DserverName (Required)
-   -DpathUserCred (Optional) - default :$HOME/.globus
-   -DpathUserKey (Optional) - default :$HOME/.globus
-* opennebula
-   -Dusername (Required)
-   -Dpassword (Required)
-```
-
-### Get Token information 
-Get token information like username and user id.
-
-* **--info** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--token** (user's token/Text); (required)
-* **--user** (optional) 
-* **--user-id** (optional)
-
-Example:
-```bash
-$ fogbow-cli token mytoken --info --user
-
-username 
-
-## ----------------------------------##
-
-$ fogbow-cli token mytoken --info --user-id
-
-userId
-
-## ----------------------------------##
-
-$ fogbow-cli token mytoken --info --user-id --user
-
-username,userId
 ```
 
 ## Order operations (```order```)
@@ -558,16 +514,4 @@ Create a new attachment.
 $ fogbow-cli attachment --create --auth-token mytoken --url http://localhost:8182 --computeId instanceid --storageId storageid
 
 X-OCCI-Location: http://locahost:8182/243029582-8907667-123457-0765345C@manager.com
-```
-
-## Accounting operations (```accounting```)
-Get accounting.
-
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-```bash
-$ fogbow-cli accounting --auth-token mytoken --url http://localhost:8182
-
-user; requesting_member; provading_member; 20
 ```
