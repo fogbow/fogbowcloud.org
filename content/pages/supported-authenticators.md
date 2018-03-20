@@ -12,7 +12,7 @@ Here is a list containing all Authentication Methods currently supported by Fogb
 ## Azure
 * **--type azure** (optional): dynamic parameter
 
-Required Parameters:
+Parameters Required for creation:
 * **--create** (required)
 * **--type** (required) : identity plugin type
 * **-Dkeystore_password=** (required): dynamic parameter
@@ -22,7 +22,7 @@ Required Parameters:
 ## CloudStack
 * **--type cloudstack** (optional): dynamic parameter
 
-Required Parameters:
+Parameters Required for creation:
 * **-DapiKey=** (required): dynamic parameter
 * **-DsecretKey=** (required): dynamic parameter
 * **-Dsignature=** (required): dynamic parameter
@@ -30,15 +30,14 @@ Required Parameters:
 ## EC2
 * **--type ec2** (optional): dynamic parameter
 
-Required Parameters:
+Parameters Required for creation:
 * **-DaccessKey=** (required): dynamic parameter
 * **-DsecreKey=** (required): dynamic parameter
 
 ## LDAP
 * **--type ldap** (optional): dynamic parameter
 
-
-Required Parameters:
+Parameters Required for creation:
 * **-Dusername=** (required): dynamic parameter
 * **-Dpassword=** (required): dynamic parameter
 * **-Dbase=** (required): dynamic parameter
@@ -54,7 +53,7 @@ Can't create NAF token
 ## Open Nebula
 * **--type opennebula** (optional): dynamic parameter
 
-Required Parameters:
+Parameters Required for creation:
 * **-Dusername=** (required): dynamic parameter
 * **-Dpassword=** (required): dynamic parameter
 Open Nebula identity_url must be configured on fogbow-manager
@@ -62,7 +61,7 @@ Open Nebula identity_url must be configured on fogbow-manager
 ## Keystone V3
 * **--type keystonev3** (optional): dynamic parameter
 
-Required Parameters:
+Parameters Required for creation:
 * **-DauthUrl=** (required): dynamic parameter
 * **-DprojectId=** (required): dynamic parameter
 * **-Dpassword=** (required): dynamic parameter
@@ -71,7 +70,7 @@ Required Parameters:
 ## Keystone V2
 * **--type keystonev2** (optional): dynamic parameter
 
-Required Parameters:
+Parameters Required for creation:
 * **-DtenantName=** (required): dynamic parameter
 * **-Dusername=** (required): dynamic parameter
 * **-Dpassword=** (required): dynamic parameter
@@ -84,13 +83,13 @@ Can't create SAML token
 ## Shibboleth
 * **--type shibboleth** (optional): dynamic parameter
 
-Required Parameteres:
+Parameters Required for creation:
 * **-DassertionKey=** (required): dynamic parameter
 * **-DassertionId=** (required): dynamic parameter
 
 ## x509
 * **--type x509** (optional): dynamic parameter
 
-Required Parameters:
+Parameters Required for creation:
 * **-Dx509CertificatePath** (required): dynamic parameter
 
