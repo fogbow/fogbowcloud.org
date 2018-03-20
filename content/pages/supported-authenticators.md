@@ -2,7 +2,7 @@ Title: Supported Authenticators
 url: supported-authenticators
 save_as: supported-authenticators.html
 section: usage
-index: 5
+index: 2
 
 Authentication Methods
 ==========
