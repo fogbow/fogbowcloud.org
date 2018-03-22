@@ -42,7 +42,7 @@ Endpoint | Method | Header fields | Description
 /order/\{order_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific order by ID
 /order | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Link** <br> **Category**
 
-OCCI Categories for Order
+#### OCCI Categories for Order
 
 Category name  | Required | Description
 ------------ | ------------ | ------------
@@ -51,13 +51,13 @@ flavor_name; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="
 image_name; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | required for compute | Image name category
 fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin" | optional | Public key category
 
-OCCI Link for Order
+#### OCCI Link for Order
 
 Link name  | Required | Description
 ------------ | ------------ | ------------
 </ network/network_value >; rel="http://schemas.ogf.org/occi/infrastructure#network"; category="http://schemas.ogf.org/occi/infrastructure#network" | optional | Link 
 
-OCCI Attributes for Order
+#### OCCI Attributes for Order
 
 Attribute name | Type | Required | Description
 ------------ | ------------ | ------------ | ------------
@@ -74,7 +74,7 @@ org.fogbowcloud.request.requirements | string | optional | Expression with minim
 org.openstack.credentials.publickey.data | string | optional | Public key data
 org.openstack.credentials.publickey.name | string | optional | Public key name
 
-Examples:
+#### Examples:
 
 Create order type compute.
 ``` shell
@@ -125,7 +125,7 @@ Endpoint | Method | Header fields | Description
 /compute/\{compute_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific compute by ID
 /compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> 
 
-OCCI Categories for Compute
+#### OCCI Categories for Compute
 
 Category name  | required | Description
 ------------ | ------------ | ------------
@@ -133,7 +133,7 @@ compute; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | re
 flavor_name; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin" | required | Flavor name category
 image_name; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | required | Image name category
 
-OCCI Attributes for Compute
+#### OCCI Attributes for Compute
 
 Attribute name | Type | required | Description
 ------------ | ------------ | ------------ | ------------
@@ -152,14 +152,14 @@ Endpoint | Method | Header fields | Description
 /storage | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Categories** | Create a storage
 
 
-OCCI Categories for Storage
+#### OCCI Categories for Storage
 
 Category name  | required | Description
 ------------ | ------------ | ------------
 storage; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | required | Storage category
 
 
-OCCI Attributes for Storage
+#### OCCI Attributes for Storage
 
 Attribute name | Type | required | Description
 ------------ | ------------ | ------------ | ------------
@@ -175,13 +175,13 @@ Endpoint | Method | Header fields | Description
 /network | POST | **X-Auth-Token:** User's authentication token<br> **X-OCCI-Attributes** <br> **Categories** | Create a network
 
 
-OCCI Categories for Network
+#### OCCI Categories for Network
 
 Category name  | required | Description
 ------------ | ------------ | ------------
 network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | required | Storage category
 
-OCCI Attributes for Network
+#### OCCI Attributes for Network
 
 Attribute name | Type | required | Description
 ------------ | ------------ | ------------ | ------------
@@ -197,13 +197,13 @@ Endpoint | Method | Header fields | Description
 /storage/link/\{storagelink_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific attachment by ID
 /storage/link/ | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Categories** | Create a attachment
 
-OCCI Categories for attachmente
+#### OCCI Categories for attachment
 
 Category name  | required | Description
 ------------ | ------------ | ------------
 storagelink; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind" | required | Storage category
 
-OCCI Attributes for attachment
+#### OCCI Attributes for attachment
 
 Attribute name | Type | required | Description
 ------------ | ------------ | ------------ | ------------
@@ -211,6 +211,11 @@ occi.core.source | String | required | Compute id
 occi.core.target | String | required | Storage id
 
 ### Members: /member
+
+<!-- <svg width="34" height="17">
+    <rect x="0" y="0" rx="2" ry="2" width="34" height="16" style="fill:green;opacity:0.5" />
+    <text x="3" y="13" fill="white" font-family="Courier New">GET</text>
+</svg> /member -->
 
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
