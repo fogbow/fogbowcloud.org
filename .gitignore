@@ -40,3 +40,6 @@ nosetests.xml
 .pydevproject
 pelican.pid
 srv.pid
+
+# IDEA
+.idea/

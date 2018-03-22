@@ -9,44 +9,44 @@ Programmatic interface
 
 Fogbow provides a RESTful API that implements OGF's OCCI standard. This API also extends the OCCI standard to incorporate fucntionalities that are only meaningful in the context of a federation of cloud providers.
 
-##### Categories
+#### Categories
 The categories should be passed in the request headers with the key **Category** and the value , as in the example below.
 
 `Category: {category value}`
 
 Each category should be passed in a different header.
 
-##### Links
+#### Links
 The links should be passed in the request headers with the key **Link** and the value , as in the example below.
 
 `Link: {link value}`
 
 Each category should be passed in a different header.
 
-##### OCCI Attributes
+#### OCCI Attributes
 The OCCI attributes should be passed in the request headers with the key **X-OCCI-Attribute** and the attribute name and value as its value, as in the example below.
 
 `X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=value`
 
 Each attribute should be passed in a different header.
 
-### Resources
+## Resources
 
-#### Order: /fogbow_request
+### Order: /order
 
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
-/fogbow_request | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's orders
-/fogbow_request/{order_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an order by its ID
-/fogbow_request | DELETE | **X-Auth-Token:** User's authentication token | Delete all user's orders
-/fogbow_request/{order_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific order by ID
-/fogbow_request | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Link** <br> **Category**
+/order | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's orders
+/order/\{order_id\} | GET | **X-Auth-Token:** User's authentication token | Fetch an order by its ID
+/order | DELETE | **X-Auth-Token:** User's authentication token | Delete all user's orders
+/order/\{order_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific order by ID
+/order | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Link** <br> **Category**
 
 OCCI Categories for Order
 
 Category name  | Required | Description
 ------------ | ------------ | ------------
-fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind" | required | Compute category
+order; scheme="http://schemas.fogbowcloud.org/request#"; class="kind" | required | Compute category
 flavor_name; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin" | optional | Flavor name category
 image_name; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | required for compute | Image name category
 fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin" | optional | Public key category
@@ -78,11 +78,11 @@ Examples:
 
 Create order type compute.
 ``` shell
-POST /fogbow_request
-Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"   
-fogbow_small; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin 
+POST /order
+Category: order; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"   
+fogbow_small; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin"
 fogbow-ubuntu; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"   
-fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin"   
+fogbow_public_key; scheme="http://schemas.fogbowcloud.org/credentials#"; class="mixin"   
 X-OCCI-Attribute: org.fogbowcloud.request.instance-count=1
 X-OCCI-Attribute: org.fogbowcloud.request.type=one-time
 X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data={base64 encoded script}
@@ -96,8 +96,8 @@ X-OCCI-Attribute: org.openstack.credentials.publickey.name=mypublickey
 
 Create order type storage.
 ``` shell
-POST /fogbow_request
-Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"
+POST /order
+Category: order; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"
 X-OCCI-Attribute: org.fogbowcloud.request.instance-count=1
 X-OCCI-Attribute: org.fogbowcloud.request.type=one-time
 X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=storage
@@ -106,8 +106,8 @@ X-OCCI-Attribute: org.fogbowcloud.order.storage-size=10
 
 Create order type network.
 ``` shell
-POST /fogbow_request
-Category: fogbow_request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"
+POST /order
+Category: order; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"
 X-OCCI-Attribute: org.fogbowcloud.request.instance-count=1
 X-OCCI-Attribute: org.fogbowcloud.request.type=one-time
 X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=network
@@ -116,13 +116,13 @@ X-OCCI-Attribute: occi.network.gateway=10.10.10.1
 X-OCCI-Attribute: occi.network.allocation=dynamic
 ```
 
-#### Compute: /compute
+### Compute: /compute
 
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
 /compute | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's computes
-/compute/{compute_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an compute by its ID
-/compute/{compute_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific compute by ID
+/compute/\{compute_id\} | GET | **X-Auth-Token:** User's authentication token | Fetch an compute by its ID
+/compute/\{compute_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific compute by ID
 /compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> 
 
 OCCI Categories for Compute
@@ -142,13 +142,13 @@ org.fogbowcloud.request.extra-user-data-content-type | string | optional | Type 
 org.openstack.credentials.publickey.data | string | optional | Public key data
 org.openstack.credentials.publickey.name | string | optional | Public key name
 
-#### Storage: /storage
+### Storage: /storage
 
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
 /storage | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's storages
-/storage/{storage_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an storage by its ID
-/storage/{storage_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific storage by ID
+/storage/\{storage_id\} | GET | **X-Auth-Token:** User's authentication token | Fetch an storage by its ID
+/storage/\{storage_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific storage by ID
 /storage | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Categories** | Create a storage
 
 
@@ -165,13 +165,13 @@ Attribute name | Type | required | Description
 ------------ | ------------ | ------------ | ------------
 occi.storage.size | int | required | Storage size
 
-#### Network: /network
+### Network: /network
 
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
 /network | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's networks
-/network/{network_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an network by its ID
-/network/{network_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific network by ID
+/network/\{network_id\} | GET | **X-Auth-Token:** User's authentication token | Fetch an network by its ID
+/network/\{network_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific network by ID
 /network | POST | **X-Auth-Token:** User's authentication token<br> **X-OCCI-Attributes** <br> **Categories** | Create a network
 
 
@@ -188,13 +188,13 @@ Attribute name | Type | required | Description
 occi.network.address | String | required | IP address in CIDR notation
 occi.network.gateway | String | optional | IP address of network gateway
 
-#### Attachment: /storage/link
+### Attachment: /storage/link
 
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
 /storage/link | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's attachments
-/storage/link/{storagelink_id} | GET | **X-Auth-Token:** User's authentication token | Fetch an attachment by its ID
-/storage/link/{storagelink_id} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific attachment by ID
+/storage/link/\{storagelink_id\} | GET | **X-Auth-Token:** User's authentication token | Fetch an attachment by its ID
+/storage/link/\{storagelink_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific attachment by ID
 /storage/link/ | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes** <br> **Categories** | Create a attachment
 
 OCCI Categories for attachmente
@@ -210,12 +210,12 @@ Attribute name | Type | required | Description
 occi.core.source | String | required | Compute id
 occi.core.target | String | required | Storage id
 
-#### Members: /member
+### Members: /member
 
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
 /member | GET | **X-Auth-Token:** User's authentication token | Fetch the list of federation members
-/member/{member_id}/quota | GET | **X-Auth-Token:** User's authentication token | Fetch an quota of member by its ID
-/member/{member_id}/usage | GET | **X-Auth-Token:** User's authentication token | Fetch an usage of member by its ID
+/member/\{member_id\}/quota | GET | **X-Auth-Token:** User's authentication token | Fetch an quota of member by it's ID
+/member/\{member_id\}/usage | GET | **X-Auth-Token:** User's authentication token | Fetch an usage of member by it's ID
 /member/accounting/compute | GET | **X-Auth-Token:** User's authentication token | Fetch a accounting of compute
-/member/accounting/compute | GET | **X-Auth-Token:** User's authentication token | Fetch a accounting of storage
+/member/accounting/storage | GET | **X-Auth-Token:** User's authentication token | Fetch a accounting of storage
