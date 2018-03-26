@@ -252,7 +252,7 @@ occi.core.target | String | required | Storage id
 
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
-/member | GET | **X-Auth-Token:** User's authentication token | Fetch the list of federation members
+/member | GET | **X-Auth-Token:** User's authentication token<br>**Content-Type:** 'text/occi' | Fetch the list of federation members
 /member/\{member_id\}/quota | GET | **X-Auth-Token:** User's authentication token | Fetch an quota of member by it's ID
 /member/\{member_id\}/usage | GET | **X-Auth-Token:** User's authentication token | Fetch an usage of member by it's ID
 /member/accounting/compute | GET | **X-Auth-Token:** User's authentication token | Fetch a accounting of compute
