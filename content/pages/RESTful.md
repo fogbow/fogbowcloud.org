@@ -144,7 +144,7 @@ Endpoint | Method | Header fields | Description
 /compute | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's computes
 /compute/\{compute_id\} | GET | **X-Auth-Token:** User's authentication token | Fetch an compute by its ID
 /compute/\{compute_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific compute by ID
-/compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes**: Attributes<br>**Categories**: Categories | Create a compute 
+/compute<br>**(DEPRECATED)** | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes**: Attributes<br>**Categories**: Categories | Create a compute
  | | |
 
 #### OCCI Categories for Compute
