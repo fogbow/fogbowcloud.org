@@ -7,7 +7,7 @@ index: 1
 Programmatic interface
 ==========
 
-Fogbow provides a RESTful API that implements OGF's OCCI standard. This API also extends the OCCI standard to incorporate fucntionalities that are only meaningful in the context of a federation of cloud providers.
+Fogbow provides a RESTful API that implements OGF's OCCI standard. This API also extends the OCCI standard to incorporate functionalities that are only meaningful in the context of a federation of cloud providers.
 
 #### Categories
 The categories should be passed in the request headers with the key **Category** and the value, as in the example below.
