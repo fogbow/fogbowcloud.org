@@ -37,9 +37,9 @@ Each attribute should be passed in a different header.
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
 /order | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's orders
-/order/\{order_id\} | GET | **X-Auth-Token:** User's authentication token | Fetch an order by its ID
+/order/**\{order_id\}** | GET | **X-Auth-Token:** User's authentication token | Fetch an order by its ID
 /order | DELETE | **X-Auth-Token:** User's authentication token | Delete all user's orders
-/order/\{order_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific order by ID
+/order/**\{order_id\}** | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific order by ID
 /order | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes**: Attributes<br>**Link**: Links<br>**Category**: Categories
  | | |
 
@@ -48,8 +48,8 @@ Endpoint | Method | Header fields | Description
 Category name  | Required | Description
 ------------ | ------------ | ------------
 order; scheme="http://schemas.fogbowcloud.org/request#"; class="kind" | required | Compute category
-flavor_name; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin" | optional | Flavor name category
-\{image_name\}; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | required for compute | Image name category
+**\{flavor_name\}**; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin" | optional | Flavor name category
+**\{image_name\}**; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin" | required for compute | Image name category
 fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin" | optional | Public key category
  | | 
 
@@ -57,7 +57,7 @@ fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixi
 
 Link name  | Required | Description
 ------------ | ------------ | ------------
-</ network/network_value >; rel="http://schemas.ogf.org/occi/infrastructure#network"; category="http://schemas.ogf.org/occi/infrastructure#network" | optional | Link 
+</network/**\{network_id\}**\>; rel="http://schemas.ogf.org/occi/infrastructure#network"; category="http://schemas.ogf.org/occi/infrastructure#network" | optional | Link 
  | | 
 
 #### OCCI Attributes for Order
@@ -112,7 +112,7 @@ X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=compute
 X-OCCI-Attribute: org.fogbowcloud.request.requirements="Glue2CloudComputeManagerID==\"manager.one.member.com\"" 
 X-OCCI-Attribute: org.openstack.credentials.publickey.data={public_key}
 X-OCCI-Attribute: org.openstack.credentials.publickey.name=mypublickey
-</ network/network00 >; rel="http://schemas.ogf.org/occi/infrastructure#network"; category="http://schemas.ogf.org/occi/infrastructure#network"
+Link: </network/network00>; rel="http://schemas.ogf.org/occi/infrastructure#network"; category="http://schemas.ogf.org/occi/infrastructure#network"
 ```
 
 Create order type storage.
@@ -144,7 +144,7 @@ Endpoint | Method | Header fields | Description
 /compute | GET | **X-Auth-Token:** User's authentication token | Fetch the list of user's computes
 /compute/\{compute_id\} | GET | **X-Auth-Token:** User's authentication token | Fetch an compute by its ID
 /compute/\{compute_id\} | DELETE | **X-Auth-Token:** User's authentication token | Delete a specific compute by ID
-/compute | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes**: Attributes<br>**Categories**: Categories | Create a compute 
+/compute<br>**(DEPRECATED)** | POST | **X-Auth-Token:** User's authentication token<br>**X-OCCI-Attributes**: Attributes<br>**Categories**: Categories | Create a compute
  | | |
 
 #### OCCI Categories for Compute
@@ -252,7 +252,7 @@ occi.core.target | String | required | Storage id
 
 Endpoint | Method | Header fields | Description
 ------------ | ------------- | ------------ | -------------
-/member | GET | **X-Auth-Token:** User's authentication token | Fetch the list of federation members
+/member | GET | **X-Auth-Token:** User's authentication token<br>**Content-Type:** 'text/occi' | Fetch the list of federation members
 /member/\{member_id\}/quota | GET | **X-Auth-Token:** User's authentication token | Fetch an quota of member by it's ID
 /member/\{member_id\}/usage | GET | **X-Auth-Token:** User's authentication token | Fetch an usage of member by it's ID
 /member/accounting/compute | GET | **X-Auth-Token:** User's authentication token | Fetch a accounting of compute
