@@ -17,20 +17,17 @@ Follow these steps, <a  href="/install-configure-fogbow-cli" target="_blank">Ins
 ### Create a new Token
 Create a new user token.
 
-Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the **OpenStack** credentials:
+Note: to pass the credentials it is necessary the use of dynamic parameters; follow the example with the **OpenStack** credentials:
 
 * **--create** (required)
 * **--type** (required) : identity plugin type
-* **-DauthUrl** (required): dynamic parameter | Url authentication cloud
+* **--conf-path** (optional): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
 * **-Dpassword=** (optional): dynamic parameter
 * **-Dusername=** (optional): dynamic parameter
-* **-DtenantName=** (optional): dynamic parameter
 
 Example:
 ```bash
-$ fogbow-cli token --create -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl=http://{url_cloud}:5000 --type openstack
-
-MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
+token --create --type ldap -Dpassword=mypassword -Dusername=myuser --conf-path=/home/user/conf-path 
 ```
 
 Others credentails can be found on the Supported Authentication Methods document [link]:
@@ -277,241 +274,19 @@ $ fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http:/
 Ok
 ```
 
-### Create instance
-Create a instance.
+### Create compute
+Create a compute.
 
 * **--create** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--flavor** (optional) 
+* **--flavor** (optional)
 * **--image** (required)
 * **--publicKey** (optional)
 * **--userDataFile** (optional)
 
 ```bash
-$ fogbow-cli instance --create --auth-token mytoken --url http://localhost:8182 --flavor m1-small --image fogbow-ubuntu --publicKey /tmp/pkey --userDataFile /tmp/userdatafile
+$ fogbow-cli compute --create --auth-token mytoken --url http://localhost:8182 --flavor m1-small --image fogbow-ubuntu --publicKey /tmp/pkey --userDataFile /tmp/userdatafile
 
 X-OCCI-Location: http://localhost:8182/federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
-```
-
-## Storage operations (```storage```)
-
-### Get all storages
-Get all storages associated to a particular user's token.
-
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-Example:
-```bash
-$ fogbow-cli storage --get --auth-token  mytoken --url http://localhost:8182
-
-X-OCCI-Location: 3I235356-3432434-324324-3243242f@manager.one.com
-X-OCCI-Location: 4B869582-8907667-123457-0765345c@manager.one.com
-```
-
-### Get a single storage
-Get detailed information about a single storage.
-
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): storage id
-
-Example: 
-```bash
-$ fogbow-cli storage --get --auth-token mytoken --id storageid --url http://localhost:8182
-
-Category: storage; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Storage Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/storage/"; attributes="occi.storage.state{immutable} occi.storage.size"; actions="http://schemas.ogf.org/occi/infrastructure/storage/action#online http://schemas.ogf.org/occi/infrastructure/storage/action#offline http://schemas.ogf.org/occi/infrastructure/storage/action#backup http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot http://schemas.ogf.org/occi/infrastructure/storage/action#resize"
-X-OCCI-Attribute: occi.storage.size="80"
-X-OCCI-Attribute: occi.core.id="9e80c942-9fbd-4c06-b8b7-ed7573544425"
-X-OCCI-Attribute: occi.storage.name="null"
-X-OCCI-Attribute: occi.storage.status="in-use"
-```
-
-### Delete all storages
-Delete all storages associated to a particular user's token.
-
-* **--delete**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-```bash
-$ fogbow-cli storage --delete --auth-token mytoken --url http://localhost:8182
-
-Ok
-```
-
-### Delete a single storage
-Delete a single storage.
-
-* **--delete** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): storage id
-
-```bash
-$ fogbow-cli instance --delete --auth-token mytoken --id storageid --url http://localhost:8182
-
-Ok
-```
-
-### Create storage
-Create a storage.
-
-* **--create** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--size** (required; Unit GB) 
-
-```bash
-$ fogbow-cli storage --create --auth-token mytoken --url http://localhost:8182 --size 20
-
-X-OCCI-Location: http://localhost:8182/federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
-```
-
-## Network operations (```network```)
-
-### Get all networks
-Get all networks associated to a particular user's token.
-
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-Example:
-```bash
-$ fogbow-cli network --get --auth-token  mytoken --url http://localhost:8182
-
-X-OCCI-Location: 3I235356-3432434-324324-3243242f@manager.com
-X-OCCI-Location: 4B869582-8907667-123457-0765345c@manager.com
-```
-
-### Get a single network
-Get detailed information about a single network.
-
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): network id
-
-Example: 
-```bash
-$ fogbow-cli network --get --auth-token mytoken --id networkid --url http://localhost:8182
-
-Category: Network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Network Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/storage/"; attributes="occi.storage.state{immutable} occi.storage.size"; actions="http://schemas.ogf.org/occi/infrastructure/storage/action#online http://schemas.ogf.org/occi/infrastructure/storage/action#offline http://schemas.ogf.org/occi/infrastructure/storage/action#backup http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot http://schemas.ogf.org/occi/infrastructure/storage/action#resize"
-X-OCCI-Attribute: occi.network.vlan="Not defined"
-X-OCCI-Attribute: occi.core.id="9e80c942-9fbd-4c06-b8b7-ed7573544425"
-X-OCCI-Attribute: occi.network.label="Not defined"
-X-OCCI-Attribute: occi.network.state="active"
-X-OCCI-Attribute: occi.network.address="0.0.0.0/24"
-X-OCCI-Attribute: occi.network.gateway="0.0.0.0"
-X-OCCI-Attribute: occi.network.allocation="dynamic"
-```
-
-### Delete all networks
-Delete all networks associated to a particular user's token.
-
-* **--delete**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-```bash
-$ fogbow-cli network --delete --auth-token mytoken --url http://localhost:8182
-
-Ok
-```
-
-### Delete a single network
-Delete a single network.
-
-* **--delete** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): network id
-
-```bash
-$ fogbow-cli network --delete --auth-token mytoken --id networkid --url http://localhost:8182
-
-Ok
-```
-
-### Create network
-Create a network.
-
-* **--create** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--cird** (required; format: ##.##.##.##/##) 
-* **--gateway** (optional)
-* **--allocation** (optional ;options: dynamic or static; default: dynamic)
-
-```bash
-$ fogbow-cli network --create --auth-token mytoken --url http://localhost:8182 --cird 10.10.10.0/24 --gateway 10.10.10.10 --allocation dynamic
-
-X-OCCI-Location: http://localhost:8182/federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
-```
-
-## Attachment operations (```attachment```)
-### Get all attachment
-
-Get all attachment associated to a particular user's token.
-
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-```bash
-$ fogbow-cli attachment --get --auth-token mytoken --url http://localhost:8182
-
-X-OCCI-Location: 687V5356-3432434-324324-3243242f@manager.com
-X-OCCI-Location: 09129582-8907667-123457-0765345c@manager.com
-```
-
-### Get a single attachment
-Get detailed information about a single attachment.
-
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): attachment id
-
-Example: 
-```bash
-$ fogbow-cli attachment --get --auth-token mytoken --id attachmentid --url http://localhost:8182
-
-occi.core.source=587V5356-3432434-324324-3243242f
-occi.core.target=13029582-8907667-123457-0765345c
-occi.core.id=E423CS82-8907667-123457-0765345c
-occi.storagelink.provadingMemberId=provading_member
-```
-
-### Delete a single attachment
-Delete a single attachment.
-
-* **--delete** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): attachment id
-
-```bash
-$ fogbow-cli attachment --delete --auth-token mytoken --id attachmentid --url http://localhost:8182
-
-Ok
-```
-
-### Create attachment 
-Create a new attachment.
-
-* **--create** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--computeId** (required)
-* **--storageId** (required)
-
-```bash
-$ fogbow-cli attachment --create --auth-token mytoken --url http://localhost:8182 --computeId instanceid --storageId storageid
-
-X-OCCI-Location: http://locahost:8182/243029582-8907667-123457-0765345C@manager.com
 ```
