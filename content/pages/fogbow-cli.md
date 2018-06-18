@@ -197,7 +197,7 @@ Create a volume.
 
 Example:
 ```bash
-$ fogbow-cli network --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member --volume-size size
+$ fogbow-cli volume --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member --volume-size size
 
 {"id": "volume-id"} 
 ```
@@ -210,7 +210,7 @@ Get all volumes associated to a particular user's token.
 
 Example:
 ```bash
-$ fogbow-cli network --get-all --url manager-url --federation-token-value my-token-value
+$ fogbow-cli volume --get-all --url manager-url --federation-token-value my-token-value
 ```
 
 ### Get a single volume
@@ -235,6 +235,63 @@ Delete a single volume.
 Example:
 ```bash
 $ fogbow-cli volume --delete --id volume-id --url manager-url --federation-token-value my-token-value
+
+Ok
+```
+
+## Attachment operations (```attachment```)
+
+### Create attachment
+Create a attachment.
+
+* **--create** (required)
+* **--url** (required): url of the manager 
+* **--federation-token-value** (required)
+* **--providing-member** (required)
+* **--source** (required)
+* **--target** (required)
+* **--device** (required)
+
+Example:
+```bash
+$ fogbow-cli attachment --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member --source source --target target --device device
+
+{"id": "attachment-id"}
+```
+
+### Get all attachments
+Get all attachments associated to a particular user's token.
+
+* **--federation-token-value** (required)
+* **--url** (required): url of the manager 
+
+Example:
+```bash
+$ fogbow-cli attachment --get-all --url manager-url --federation-token-value my-token-value
+```
+
+### Get a single attachment
+Get detailed information about a single attachment.
+
+* **--federation-token-value** (required)
+* **--url** (required): url of the manager
+* **--id** (required):  attachment id
+
+Example:
+```bash
+$ fogbow-cli attachment --get --id attachment-id --url manager-url --federation-token-value my-token-value
+```
+
+### Delete a single attachment
+Delete a single attachment.
+
+* **--federation-token-value** (required)
+* **--url** (required): url of the manager
+* **--id** (required):  attachment id
+
+Example:
+```bash
+$ fogbow-cli attachment --delete --id attachment-id --url manager-url --federation-token-value my-token-value
 
 Ok
 ```
