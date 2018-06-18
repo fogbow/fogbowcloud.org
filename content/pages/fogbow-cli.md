@@ -183,3 +183,58 @@ $ fogbow-cli network --delete --id instance-id --url manager-url --federation-to
 
 Ok
 ```
+
+## Volume operations (```volume```)
+
+### Create volume
+Create a volume.
+
+* **--create** (required)
+* **--url** (required): url of the manager 
+* **--federation-token-value** (required)
+* **--providing-member** (required)
+* **--volume-size** (required; Unit GB)
+
+Example:
+```bash
+$ fogbow-cli network --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member --volume-size size
+
+{"id": "volume-id"} 
+```
+
+### Get all volumes
+Get all volumes associated to a particular user's token.
+
+* **--federation-token-value** (required)
+* **--url** (required): url of the manager 
+
+Example:
+```bash
+$ fogbow-cli network --get-all --url manager-url --federation-token-value my-token-value
+```
+
+### Get a single volume
+Get detailed information about a single volume.
+
+* **--federation-token-value** (required)
+* **--url** (required): url of the manager
+* **--id** (required):  volume id
+
+Example:
+```bash
+$ fogbow-cli volume --get --id volume-id --url manager-url --federation-token-value my-token-value
+```
+
+### Delete a single volume
+Delete a single volume.
+
+* **--federation-token-value** (required)
+* **--url** (required): url of the manager
+* **--id** (required):  volume id
+
+Example:
+```bash
+$ fogbow-cli volume --delete --id volume-id --url manager-url --federation-token-value my-token-value
+
+Ok
+```
