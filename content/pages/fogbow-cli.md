@@ -32,7 +32,17 @@ token --create --type ldap --conf-path /home/user/conf-folder -Dpassword=mypassw
 
 Others credentails can be found on the Supported Authentication Methods document [link]:
 
+### Check token
+Check if token is valid.
 
+* **--type** (required): identity plugin type
+* **--conf-path** (required): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
+* **--federation-token-value** (required) : user's token
+
+Example:
+```bash
+$ fogbow-cli check-token --conf-path /home/user/conf-folder --type ldap --federation-token-value my-token-value
+```
 
 ## User operations (```user```)
 
