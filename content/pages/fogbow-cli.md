@@ -93,7 +93,7 @@ Example:
 ```bash
 $ fogbow-cli compute --get-all --url manager-url --federation-token-value my-token-value
 
-{"vCPU": 10, "hostName": "hostName", "localIpAddress": "localIpAddress", "state": "READY", "memory": 10, "sshTunnelConnectionData": {"sshUserName": "fogbesdras", "sshPublicAddress": "10.10.0.120", "sshExtraPorts": "80"}, "id": "v2"}, ...]
+[{"vCPU": 10, "hostName": "hostName", "localIpAddress": "localIpAddress", "state": "READY", "memory": 10, "sshTunnelConnectionData": {"sshUserName": "fogbesdras", "sshPublicAddress": "10.10.0.120", "sshExtraPorts": "80"}, "id": "v2"}, ...]
 ```
 
 ### Get a single instance
@@ -120,6 +120,66 @@ Delete a single instance.
 Example:
 ```bash
 $ fogbow-cli compute --delete --id instance-id --url manager-url --federation-token-value my-token-value
+
+Ok
+```
+
+## Network operations (```network```)
+
+### Create network
+Create a network.
+
+* **--create** (required)
+* **--url** (required): url of the manager 
+* **--federation-token-value** (required)
+* **--address** (required; format: ##.##.##.##/##): cird
+* **--gateway** (optional)
+* **--allocation** (optional; options: dynamic or static; default: dynamic)
+
+Example:
+```bash
+$ fogbow-cli network --create  --url manager-url --federation-token-value my-token-value --address cidr --gateway gateway-ip --allocation allocation
+
+{"id": "network-id"} 
+```
+
+### Get all networks
+Get all networks associated to a particular user's token.
+
+* **--federation-token-value** (required)
+* **--url** (required): url of the manager 
+
+Example:
+```bash
+$ fogbow-cli network --get-all --url manager-url --federation-token-value my-token-value
+
+[{"id": "id", "label": "label", "state": "state", "address": "address", "gateway": "gateway", "vLAN": "vLAN", "networkAllocation": {"value": "value"}, "networkInterface": "networkInterface", "MACInterface": "MACInterface", "interfaceState": "interfaceState"}, ...]
+```
+
+### Get a single network
+Get detailed information about a single network.
+
+* **--federation-token-value** (required)
+* **--url** (required): url of the manager
+* **--id** (required):  network id
+
+Example:
+```bash
+$ fogbow-cli network --get --id network-id --url manager-url --federation-token-value my-token-value
+
+{"id": "id", "label": "label", "state": "state", "address": "address", "gateway": "gateway", "vLAN": "vLAN", "networkAllocation": {"value": "value"}, "networkInterface": "networkInterface", "MACInterface": "MACInterface", "interfaceState": "interfaceState"}
+```
+
+### Delete a single network
+Delete a single network.
+
+* **--federation-token-value** (required)
+* **--url** (required): url of the manager
+* **--id** (required):  network id
+
+Example:
+```bash
+$ fogbow-cli network --delete --id instance-id --url manager-url --federation-token-value my-token-value
 
 Ok
 ```
