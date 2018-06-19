@@ -7,10 +7,10 @@ index: 2
 Fogbow CLI
 ==========
 
-The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's REST API. Through the fogbow CLI, users are able to get information about federation members quota; create, retrive and delete compute, network, storage and attachment; retrive images;
+The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's REST API. Through the fogbow CLI, users are able to get information about federation members, quota and images; create, retrive and delete compute, network, storage and attachment.
 
-##Installation
-Follow these steps, <a  href="/install-configure-fogbow-cli" target="_blank">Instalation and configuration Fogbow cli</a> .
+## Installation
+Follow these steps, <a  href="https://github.com/fogbow/fogbowcloud.org/blob/new-cli-documentation/content/pages/install-configure-fogbow-cli.md" target="_blank">Instalation and configuration Fogbow cli</a> .
 
 ## Token operations (```token```)
 
