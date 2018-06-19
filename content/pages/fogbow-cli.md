@@ -14,6 +14,21 @@ Follow these steps, <a  href="https://github.com/fogbow/fogbowcloud.org/blob/new
 
 ## Token operations (```token```)
 
+### Note
+Is necessary create the identity plugin configuration file in your configuration path before execute token operations. This one must be created and related by identity plugin type chosen.
+
+Example with ldap :
+The ldap configuration file name must be "ldap-identity-plugin.conf".
+```bash
+ldap_base = dc=site,dc=manager
+ldap_identity_url = ldap://ldap.site.manager:389
+ldap_encrypt_type = 
+# the same configured in the fogbow manager
+private_key_path = /home/ubuntu/private_key.pem
+# the same configured in the fogbow manager
+public_key_path = /home/ubuntu/public_key.pem
+```
+
 ### Create a new Token
 Create a new federation token.
 
@@ -21,11 +36,9 @@ Note: to pass the credentials it is necessary the use of dynamic parameters; fol
 
 * **--create** (required): operation
 * **--type** (required): identity plugin type
-* **--conf-path** (required): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable). 
+* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable). 
 * **-Dpassword=** (required by ldap): dynamic parameter
 * **-Dusername=** (required by ldap): dynamic parameter
-
-Note: The ldap configuration file name must be "ldap-identity-plugin.conf".
 
 Example:
 ```bash
@@ -38,10 +51,8 @@ $ fogbow-cli token --create --type ldap --conf-path /home/user/conf-folder -Dpas
 Check if token is valid.
 
 * **--type** (required): identity plugin type
-* **--conf-path** (required): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
+* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
 * **--federation-token-value** (required): federation token
-
-Note: The ldap configuration file name must be "ldap-identity-plugin.conf".
 
 Example:
 ```bash
@@ -57,10 +68,8 @@ Get the user id and attributes associated to a particular token.
 
 * **--get-user** (required): operation
 * **--type** (required): identity plugin type
-* **--conf-path** (required): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
+* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
 * **--federation-token-value** (required): federation token
-
-Note: The ldap configuration file name must be "ldap-identity-plugin.conf".
 
 Example:
 ```bash
