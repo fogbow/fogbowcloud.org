@@ -58,7 +58,7 @@ Get the user id and attributes associated to a particular token.
 * **--get-user** (required): operation
 * **--type** (required): identity plugin type
 * **--conf-path** (required): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
-* **--federation-token-value** (required) : federation token
+* **--federation-token-value** (required): federation token
 
 Note: The ldap configuration file name must be "ldap-identity-plugin.conf".
 
@@ -94,7 +94,7 @@ $ fogbow-cli compute --create  --url manager-url --federation-token-value my-tok
 ### Get all computes
 Get all computes associated to a particular federation token.
 
-* **--get-all**(required): operation 
+* **--get-all** (required): operation 
 * **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager 
 
@@ -108,7 +108,7 @@ $ fogbow-cli compute --get-all --url manager-url --federation-token-value my-tok
 ### Get a single compute
 Get detailed information about a single compute.
 
-* **--get**: operation
+* **--get** (required): operation
 * **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
 * **--id** (required): compute id
@@ -126,13 +126,40 @@ Delete a single compute.
 * **--delete**: operation
 * **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
-* **--id** (required):  instance id
+* **--id** (required):  compute id
 
 Example:
 ```bash
 $ fogbow-cli compute --delete --id instance-id --url manager-url --federation-token-value my-token-value
 
 Ok
+```
+
+### Get compute quota
+Get cloud quota information of the federation member
+
+* **--get-quota**: operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--member-id** (required): federation member
+
+```bash
+$ fogbow-cli compute --get-allocation --member-id member --url manager-url --federation-token-value my-token-value
+
+{"totalQuota": {"vCPU": "1", "ram": "2", "instances": "1"}, "usedQuota": {"vCPU": "1", "ram": "2", "instances": "1"}}
+```
+
+### Get compute allocation
+Get user allocation information of the federation member
+* **--get-allocation**: operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--member-id** (required): federation member
+
+```bash
+$ fogbow-cli compute --get-allocation --member-id member --url manager-url --federation-token-value my-token-value
+
+{"vCPU": "1", "ram": "2", "instances": "1"}
 ```
 
 ## Network operations (```network```)
@@ -227,6 +254,8 @@ Get all volumes associated to a particular federation token.
 Example:
 ```bash
 $ fogbow-cli volume --get-all --url manager-url --federation-token-value my-token-value
+
+[{"name": "name_one", "size": "1"}, {"name": "name_two", "size": "1"}]
 ```
 
 ### Get a single volume
@@ -240,6 +269,8 @@ Get detailed information about a single volume.
 Example:
 ```bash
 $ fogbow-cli volume --get --id volume-id --url manager-url --federation-token-value my-token-value
+
+{"name": "name", "size": "1"}
 ```
 
 ### Delete a single volume
@@ -288,7 +319,7 @@ Example:
 ```bash
 $ fogbow-cli attachment --get-all --url manager-url --federation-token-value my-token-value
 
-{}
+[{"serverId": "serverId", "volumeId": "volumeId", "device": "device"}, {"serverId": "serverId", "volumeId": "volumeId", "device": "device"}]
 ```
 
 ### Get a single attachment
@@ -303,14 +334,14 @@ Example:
 ```bash
 $ fogbow-cli attachment --get --id attachment-id --url manager-url --federation-token-value my-token-value
 
-{}
+{"serverId": "serverId", "volumeId": "volumeId", "device": "device"}
 ```
 
 ### Delete a single attachment
 Delete a single attachment.
 
 * **--get** (required): operation
-* **--federation-token-value** (required)
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
 * **--id** (required):  attachment id
 
@@ -319,4 +350,47 @@ Example:
 $ fogbow-cli attachment --delete --id attachment-id --url manager-url --federation-token-value my-token-value
 
 Ok
+```
+
+## Image operations (```image```)
+
+### Get all images
+Get all images associated to a particular member.
+
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--member-id** (required): federation member
+
+```bash
+$ fogbow-cli image --get-all --url manager-url --federation-token-value my-token-value --member-id member
+
+{"000fdc22-e5f5-4c9a-98f8-998dab72f9bf": "ubuntu-16.04-Nov-17", "123f7485-92d5-4533-a329-0dbaca22ae4e": "debian-8-Oct-17", "3211fa8f-aa38-4fa7-8ecb-3b117d98d186": "centos-Sep-17"}
+```
+
+### Get a single image
+Get detailed information about a single image.
+
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--member-id** (required): federation member
+* **--id** (required): image id
+
+```bash
+$ fogbow-cli image --get --url manager-url --federation-token-value my-token-value --member-id member --id image-id
+
+{"id":"id", "name":"name", "size":"size", "minDisk":"2", "minRam": "2", "status":"status"}
+```
+
+## Federation member operations (```member```)
+
+### Get federation members
+* **--get-all** (required): operation
+* **--url** (required): url of the rendezvous
+
+```bash
+$ fogbow-cli member --get-all --url rendezvous-url
+
+["member1", "member2", "member3"]
 ```
