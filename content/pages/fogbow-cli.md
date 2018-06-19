@@ -7,7 +7,7 @@ index: 2
 Fogbow CLI
 ==========
 
-The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members; create, retrive and delete instance, network, storage and attachment; and create orders.
+The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's REST API. Through the fogbow CLI, users are able to get information about federation members quota; create, retrive and delete compute, network, storage and attachment; retrive images;
 
 ##Installation
 Follow these steps, <a  href="/install-configure-fogbow-cli" target="_blank">Instalation and configuration Fogbow cli</a> .
@@ -15,44 +15,52 @@ Follow these steps, <a  href="/install-configure-fogbow-cli" target="_blank">Ins
 ## Token operations (```token```)
 
 ### Create a new Token
-Create a new user token.
+Create a new federation token.
 
-Note: to pass the credentials it is necessary the use of dynamic parameters; follow the example with the **OpenStack** credentials:
+Note: to pass the credentials it is necessary the use of dynamic parameters; follow the example with the **ldap** credentials:
 
-* **--create** (required)
-* **--type** (required) : identity plugin type
-* **--conf-path** (required): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
-* **-Dpassword=** (optional): dynamic parameter
-* **-Dusername=** (optional): dynamic parameter
+* **--create** (required): operation
+* **--type** (required): identity plugin type
+* **--conf-path** (required): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable). 
+* **-Dpassword=** (required by ldap): dynamic parameter
+* **-Dusername=** (required by ldap): dynamic parameter
+
+Note: The ldap configuration file name must be "ldap-identity-plugin.conf".
 
 Example:
 ```bash
-token --create --type ldap --conf-path /home/user/conf-folder -Dpassword=mypassword -Dusername=myuser
+$ fogbow-cli token --create --type ldap --conf-path /home/user/conf-folder -Dpassword=mypassword -Dusername=myuser
+
+342dOiJjadsfsdfuYW1lIjoiRnJhbmNdsfsd35gZGdasdgdfbf2NRMzZlK3hJa0tSb3dZc3dkdmJ2K29SUVVpaWpCZkIwMG5JUlozdEZhQ2RPcXlEa2ZPZGFPWDIwM2lCYUIxZEVEbU43bjY0MXRlSkdIUm94OFdOWWNSbW9UlnlkIU873NJNBSDSJBAÇpHY01oWEpBVkhUbUV0Y01PbUoyV0JSUUorNUpVZWo4VWV0b2pDNGtrc0Nkb3lEU1MyVVJCNW5lVmNZNW9Wd29kOVB1UHZYNnQxRXN0KzU3eHdGdEdaTVlKZjR0eEI5Y2xaaHFzTDg3STJHNDJia3ByLzFGQ1lyM2x2eCt5a0twTEZPRHdoOXVVdUMyeWNtcExYOWIwamxDNnYzZWNEQThML3labndtNThnUU1TNXc1L1czd0VHWURUOGhjYWRnblVySjZSZzM4a0EA==
 ```
 
-Others credentails can be found on the Supported Authentication Methods document [link]:
-
-### Check token
+### Check token (```check-token```)
 Check if token is valid.
 
 * **--type** (required): identity plugin type
 * **--conf-path** (required): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
-* **--federation-token-value** (required) : user's token
+* **--federation-token-value** (required): federation token
+
+Note: The ldap configuration file name must be "ldap-identity-plugin.conf".
 
 Example:
 ```bash
 $ fogbow-cli check-token --conf-path /home/user/conf-folder --type ldap --federation-token-value my-token-value
+
+Token Valid
 ```
 
 ## User operations (```user```)
 
 ### Show user information 
-Get the member id and attributes associated to a particular user's token.
+Get the user id and attributes associated to a particular token.
 
-* **--get-user** (required)
+* **--get-user** (required): operation
 * **--type** (required): identity plugin type
 * **--conf-path** (required): identity plugin configuration file path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
-* **--federation-token-value** (required) : user's token
+* **--federation-token-value** (required) : federation token
+
+Note: The ldap configuration file name must be "ldap-identity-plugin.conf".
 
 Example:
 ```bash
@@ -61,18 +69,18 @@ $ fogbow-cli user --get-user --conf-path /home/user/conf-folder --type ldap --fe
 {"id":"fogbow","attributes":{"user-name":"Fogbow User"}}
 ```
 
-## Compute operations (```instance```)
+## Compute operations (```compute```)
 
 ### Create compute
 Create a compute.
 
-* **--create** (required)
-* **--federation-token-value** (required)
-* **--providing-member** (required)
-* **--public-key** (optional)
-* **--image-id** (required)
-* **--vcpu** (required): number of cores 
+* **--create** (required): operation
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager 
+* **--providing-member** (required): member that will provide the compute
+* **--public-key** (optional): user's public-key
+* **--image-id** (required): image
+* **--vcpu** (required): number of cores 
 * **--memory** (required): in MB's
 * **--disk** (required): in GB's
 
@@ -83,37 +91,40 @@ $ fogbow-cli compute --create  --url manager-url --federation-token-value my-tok
 {"id": "compute-id"}  
 ```
 
-### Get all instances
-Get all instances associated to a particular user's token.
+### Get all computes
+Get all computes associated to a particular federation token.
 
-* **--federation-token-value** (required)
+* **--get-all**(required): operation 
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager 
 
 Example:
 ```bash
 $ fogbow-cli compute --get-all --url manager-url --federation-token-value my-token-value
 
-[{"vCPU": 10, "hostName": "hostName", "localIpAddress": "localIpAddress", "state": "READY", "memory": 10, "sshTunnelConnectionData": {"sshUserName": "fogbesdras", "sshPublicAddress": "10.10.0.120", "sshExtraPorts": "80"}, "id": "v2"}, ...]
+[{"vCPU": 10, "hostName": "hostName", "localIpAddress": "localIpAddress", "state": "READY", "memory": 10, "sshTunnelConnectionData": {"sshUserName": "fogbowuser", "sshPublicAddress": "10.10.0.120", "sshExtraPorts": "80"}, "id": "v2"}, ...]
 ```
 
-### Get a single instance
-Get detailed information about a single instance.
+### Get a single compute
+Get detailed information about a single compute.
 
-* **--federation-token-value** (required)
+* **--get**: operation
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
-* **--id** (required):  instance id
+* **--id** (required): compute id
 
 Example:
 ```bash
-$ fogbow-cli compute --get --id instance-id --url manager-url --federation-token-value my-token-value
+$ fogbow-cli compute --get --id compute-id --url manager-url --federation-token-value my-token-value
 
 {"vCPU": 10, "hostName": "hostName", "localIpAddress": "localIpAddress", "state": "READY", "memory": 10, "sshTunnelConnectionData": {"sshUserName": "fogbesdras", "sshPublicAddress": "10.10.0.120", "sshExtraPorts": "80"}, "id": "v2"}
 ```
 
-### Delete a single instance
-Delete a single instance.
+### Delete a single compute
+Delete a single compute.
 
-* **--federation-token-value** (required)
+* **--delete**: operation
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
 * **--id** (required):  instance id
 
@@ -129,24 +140,26 @@ Ok
 ### Create network
 Create a network.
 
-* **--create** (required)
+* **--create** (required): operation
 * **--url** (required): url of the manager 
-* **--federation-token-value** (required)
+* **--federation-token-value** (required): federation token
+* **--providing-member** (required): member that will provide the
 * **--address** (required; format: ##.##.##.##/##): cird
 * **--gateway** (optional)
 * **--allocation** (optional; options: dynamic or static; default: dynamic)
 
 Example:
 ```bash
-$ fogbow-cli network --create  --url manager-url --federation-token-value my-token-value --address cidr --gateway gateway-ip --allocation allocation
+$ fogbow-cli network --create  --url manager-url --federation-token-value my-token-value --address cidr --gateway gateway-ip --allocation allocation --providing-member providing-member
 
 {"id": "network-id"} 
 ```
 
 ### Get all networks
-Get all networks associated to a particular user's token.
+Get all networks associated to a particular federation token.
 
-* **--federation-token-value** (required)
+* **--get-all**(required): operation 
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager 
 
 Example:
@@ -159,7 +172,8 @@ $ fogbow-cli network --get-all --url manager-url --federation-token-value my-tok
 ### Get a single network
 Get detailed information about a single network.
 
-* **--federation-token-value** (required)
+* **--get**(required): operation 
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
 * **--id** (required):  network id
 
@@ -173,7 +187,8 @@ $ fogbow-cli network --get --id network-id --url manager-url --federation-token-
 ### Delete a single network
 Delete a single network.
 
-* **--federation-token-value** (required)
+* **--delete**(required): operation 
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
 * **--id** (required):  network id
 
@@ -189,10 +204,10 @@ Ok
 ### Create volume
 Create a volume.
 
-* **--create** (required)
+* **--create** (required): operation
 * **--url** (required): url of the manager 
-* **--federation-token-value** (required)
-* **--providing-member** (required)
+* **--federation-token-value** (required): federation token
+* **--providing-member** (required): member that will provide the volume
 * **--volume-size** (required; Unit GB)
 
 Example:
@@ -203,9 +218,10 @@ $ fogbow-cli volume --create  --url manager-url --federation-token-value my-toke
 ```
 
 ### Get all volumes
-Get all volumes associated to a particular user's token.
+Get all volumes associated to a particular federation token.
 
-* **--federation-token-value** (required)
+* **--get-all** (required): operation
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager 
 
 Example:
@@ -216,7 +232,8 @@ $ fogbow-cli volume --get-all --url manager-url --federation-token-value my-toke
 ### Get a single volume
 Get detailed information about a single volume.
 
-* **--federation-token-value** (required)
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
 * **--id** (required):  volume id
 
@@ -228,7 +245,8 @@ $ fogbow-cli volume --get --id volume-id --url manager-url --federation-token-va
 ### Delete a single volume
 Delete a single volume.
 
-* **--federation-token-value** (required)
+* **--delete** (required): operation
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
 * **--id** (required):  volume id
 
@@ -244,13 +262,13 @@ Ok
 ### Create attachment
 Create a attachment.
 
-* **--create** (required)
+* **--create** (required): operation
 * **--url** (required): url of the manager 
-* **--federation-token-value** (required)
-* **--providing-member** (required)
-* **--source** (required)
-* **--target** (required)
-* **--device** (required)
+* **--federation-token-value** (required): federation token
+* **--providing-member** (required): member that will provide the attachment
+* **--source** (required): compute id
+* **--target** (required): volume id
+* **--device** (optional): device's name in the virtual machine. 
 
 Example:
 ```bash
@@ -260,31 +278,38 @@ $ fogbow-cli attachment --create  --url manager-url --federation-token-value my-
 ```
 
 ### Get all attachments
-Get all attachments associated to a particular user's token.
+Get all attachments associated to a particular federation token.
 
-* **--federation-token-value** (required)
+* **--get-all** (required): operation
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager 
 
 Example:
 ```bash
 $ fogbow-cli attachment --get-all --url manager-url --federation-token-value my-token-value
+
+{}
 ```
 
 ### Get a single attachment
 Get detailed information about a single attachment.
 
-* **--federation-token-value** (required)
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
 * **--url** (required): url of the manager
 * **--id** (required):  attachment id
 
 Example:
 ```bash
 $ fogbow-cli attachment --get --id attachment-id --url manager-url --federation-token-value my-token-value
+
+{}
 ```
 
 ### Delete a single attachment
 Delete a single attachment.
 
+* **--get** (required): operation
 * **--federation-token-value** (required)
 * **--url** (required): url of the manager
 * **--id** (required):  attachment id
