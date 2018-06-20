@@ -7,511 +7,398 @@ index: 2
 Fogbow CLI
 ==========
 
-The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members; create, retrive and delete instance, network, storage and attachment; and create orders.
+The Fogbow CLI is a command line interface for the Fogbow manager. It makes it easier for users to create HTTP requests and invoke them through the manager's REST API. All calls to the manager require a federation token. The Fogbow CLI provides a way for users to create such tokens. After creating a valid token, the users are able tovoke Fogbow CLI to get information about which cloud providers are available in the federation, what are their quota in these providers, and which images the providers make available to them; users can also create, retrive information and delete compute, network, and storage resources in any of the cloud providers available; finally, they can also and attach and detach volumes to compute resources.
 
-##Installation
-Follow these steps, <a  href="/install-configure-fogbow-cli" target="_blank">Instalation and configuration Fogbow cli</a> .
+## Installation
+Follow these steps, <a  href="https://github.com/fogbow/fogbowcloud.org/blob/new-cli-documentation/content/pages/install-configure-fogbow-cli.md" target="_blank">to install and configure the Fogbow CLI</a>.
 
-## Token operations (```token```)
+## Federation token operations (```token```)
+
+### Note
+It is necessary to create the identity plugin configuration file in your configuration path before executing token operations. An example for tokens provided by an LDAP service are shown below:
+
+The ldap configuration file name must be named "ldap-identity-plugin.conf".
+```bash
+ldap_base = dc=site,dc=manager
+ldap_identity_url = ldap://ldap.site.manager:389
+ldap_encrypt_type = 
+# the same configured in the fogbow manager
+private_key_path = /home/ubuntu/private_key.pem
+# the same configured in the fogbow manager
+public_key_path = /home/ubuntu/public_key.pem
+```
 
 ### Create a new Token
-Create a new user token.
+Create a new federation token.
 
-Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the **OpenStack** credentials:
+Note: to pass the credentials it is necessary the use of dynamic parameters; follow the example with the **ldap** credentials:
 
-* **--create** (required)
-* **--type** (required) : identity plugin type
-* **-DauthUrl** (required): dynamic parameter | Url authentication cloud
-* **-Dpassword=** (optional): dynamic parameter
-* **-Dusername=** (optional): dynamic parameter
-* **-DtenantName=** (optional): dynamic parameter
-
-Example:
-```bash
-$ fogbow-cli token --create -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl=http://{url_cloud}:5000 --type openstack
-
-MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
-```
-
-Others credentails can be found on the Supported Authentication Methods document [link]:
-
-
-## Member operations (```member```)
-
-### List federation members 
-Get the ids of all federation members.
-
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--create** (required): operation
+* **--type** (required): identity plugin type
+* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as an environment variable). 
+* **-Dpassword=** (required by ldap): dynamic parameter
+* **-Dusername=** (required by ldap): dynamic parameter
 
 Example:
 ```bash
-$ fogbow-cli member --url http://localhost:8182 --auth-file /tmp/token
+$ fogbow-cli token --create --type ldap --conf-path /home/user/conf-folder -Dpassword=mypassword -Dusername=myuser
 
-federation.member.one.com
-federation.member.two.com
-federation.member.three.com
+342dOiJjadsfsdfuYW1lIjoiRnJhbmNdsfsd35gZGdasdgdfbf2NRMzZlK3hJa0tSb3dZc3dkdmJ2K29SUVVpaWpCZkIwMG5JUlozdEZhQ2RPcXlEa2ZPZGFPWDIwM2lCYUIxZEVEbU43bjY0MXRlSkdIUm94OFdOWWNSbW9UlnlkIU873NJNBSDSJBAÇpHY01oWEpBVkhUbUV0Y01PbUoyV0JSUUorNUpVZWo4VWV0b2pDNGtrc0Nkb3lEU1MyVVJCNW5lVmNZNW9Wd29kOVB1UHZYNnQxRXN0KzU3eHdGdEdaTVlKZjR0eEI5Y2xaaHFzTDg3STJHNDJia3ByLzFGQ1lyM2x2eCt5a0twTEZPRHdoOXVVdUMyeWNtcExYOWIwamxDNnYzZWNEQThML3labndtNThnUU1TNXc1L1czd0VHWURUOGhjYWRnblVySjZSZzM4a0EA==
 ```
 
-### Get quota
-Get the quota of a federation member.
+### Check token (```check-token```)
+Check if token is valid.
 
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--quota** (required)
-* **--id** (required)
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--type** (required): identity plugin type
+* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as an environment variable)
+* **--federation-token-value** (required): federation token
 
 Example:
 ```bash
-$ fogbow-cli member --url http://localhost:8182 --quota --id id123 --auth-token mytoken
+$ fogbow-cli check-token --conf-path /home/user/conf-folder --type ldap --federation-token-value my-token-value
 
-cpuQuota=1;cpuInUse=1;cpuInUseByUser=1;memQuota=1;memInUse=1;memInUseByUser=1;instancesQuota=1;instancesInUse=1;instancesInUseByUser=1
+Token Valid
 ```
 
-### Get usage
-Get the usage of a federation member
+## User operations (```user```)
 
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--usage** (required)
-* **--id** (required)
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+### Show user information 
+Get the user id and attributes associated to a particular token.
+
+* **--get-user** (required): operation
+* **--type** (required): identity plugin type
+* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as na environment variable)
+* **--federation-token-value** (required): federation token
 
 Example:
 ```bash
-$ fogbow-cli member --url http://localhost:8182 --usage --id id123 --auth-token mytoken
+$ fogbow-cli user --get-user --conf-path /home/user/conf-folder --type ldap --federation-token-value my-token-value
 
-memberId=federation.member.one.com
-compute usage=10
-storage usage=10
+{"id":"fogbow","attributes":{"user-name":"Fogbow User"}}
 ```
 
-## Resource operations (```resource```)
+## Compute operations (```compute```)
 
-### Get all fogbow resources 
+### Create compute
+Create a compute.
 
-Get all OCCI resources provided by fogbow. 
-
-* **--get** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--create** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager 
+* **--providing-member** (required): member that will provide the compute
+* **--public-key** (optional): user's public-key
+* **--image-id** (required): image
+* **--vcpu** (required): number of cores 
+* **--memory** (required): in MB's
+* **--disk** (required): in GB's
 
 Example:
 ```bash
-$ fogbow-cli resource --get --url http://localhost:8182 --auth-token mytoken
+$ fogbow-cli compute --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member-url --public-key public-key-path --image-id image-id --vcpu vcpu --memory ram --disk disk
 
-Category: order; scheme="http://schemas.fogbowcloud.org/order#"; class="kind"; title="Order new Instances"; location="http://localhost:8182/order"; attributes="org.fogbowcloud.order.instance-count org.fogbowcloud.order.type org.fogbowcloud.order.valid-until org.fogbowcloud.order.valid-from"
-Category: fogbow-large; scheme="http://scmhemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
-Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="Linux-x86 Image"; location="http://localhost:8182/fogbow-linux-x86"
-...
+{"id": "compute-id"}  
 ```
 
-## Order operations (```order```)
+### Get all computes
+Get all computes associated to a particular federation token.
 
-### Get order 
-Get all instance orders associated to a particular user's token.
-
-* **--get** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--get-all** (required): operation 
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager 
 
 Example:
 ```bash
-$ fogbow-cli order --get --auth-token mytoken --url http://localhost:8182
+$ fogbow-cli compute --get-all --url manager-url --federation-token-value my-token-value
 
-X-OCCI-Location: http://localhost:8182/order/47536d31-0674-4278-ad05-eff5fdd07257
-X-OCCI-Location: http://localhost:8182/order/fd745806-4909-4a39-8380-13183b1f197c
+[{"vCPU": 10, "hostName": "hostName", "localIpAddress": "localIpAddress", "state": "READY", "memory": 10, "sshTunnelConnectionData": {"sshUserName": "fogbowuser", "sshPublicAddress": "10.10.0.120", "sshExtraPorts": "80"}, "id": "v2"}, ...]
 ```
 
-Get detailed information about a single instance order.
-* **--get** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): order id
+### Get a single compute
+Get detailed information about a single compute.
+
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--id** (required): compute id
 
 Example:
 ```bash
-$ fogbow-cli order --get --auth-token mytoken --id orderid --url http://localhost:8182
+$ fogbow-cli compute --get --id compute-id --url manager-url --federation-token-value my-token-value
 
-Category: order; scheme="http://schemas.fogbowcloud.org/order#"; class="kind"; title="Order new Instances"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/order/"; attributes="org.fogbowcloud.order.instance-count org.fogbowcloud.order.type org.fogbowcloud.order.valid-until org.fogbowcloud.order.valid-from org.fogbowcloud.order.state org.fogbowcloud.order.instance-id org.fogbowcloud.credentials.publickey.data org.fogbowcloud.order.user-data org.fogbowcloud.order.extra-user-data org.fogbowcloud.order.extra-user-data-content-type org.fogbowcloud.order.requirements org.fogbowcloud.order.batch-id org.fogbowcloud.order.requesting-member org.fogbowcloud.order.providing-member org.fogbowcloud.order.resource-kind org.fogbowcloud.order.storage-size"
-X-OCCI-Attribute: org.fogbowcloud.order.extra-user-data="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.state="fulfilled" 
-X-OCCI-Attribute: org.fogbowcloud.order.valid-from="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.requirements="Glue2CloudComputeManagerID=="manager.one.member.com"" 
-X-OCCI-Attribute: occi.core.id="c575e6f2-a590-4595-8894-02a8e63bd214" 
-X-OCCI-Attribute: org.fogbowcloud.order.type="one-time" 
-X-OCCI-Attribute: org.fogbowcloud.order.valid-until="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.providing-member="manager.one.member.com" 
-X-OCCI-Attribute: org.fogbowcloud.credentials.publickey.data="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.resource-kind="storage" 
-X-OCCI-Attribute: org.fogbowcloud.order.requesting-member="manager.two.member.com" 
-X-OCCI-Attribute: org.fogbowcloud.order.extra-user-data-content-type="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.user-data="Not defined" 
-X-OCCI-Attribute: org.fogbowcloud.order.storage-size="80" 
-X-OCCI-Attribute: org.fogbowcloud.order.batch-id="25a0fd51-7b47-452a-9daa-ef40d1277f80" 
-X-OCCI-Attribute: org.fogbowcloud.order.instance-count="1" 
-X-OCCI-Attribute: org.fogbowcloud.order.instance-id="9e80c942-9fbd-4c06-b8b7-ed7573544425@manager.one.member.com"
+{"vCPU": 10, "hostName": "hostName", "localIpAddress": "localIpAddress", "state": "READY", "memory": 10, "sshTunnelConnectionData": {"sshUserName": "fogbesdras", "sshPublicAddress": "10.10.0.120", "sshExtraPorts": "80"}, "id": "v2"}
 ```
 
-### Create order 
-Create orders.
+### Delete a single compute
+Delete a single compute.
 
-* **--create** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--n** (optional; default: 1): number of orders to be created
-* **--image** (optional; default: fogbow-linux-x86): fogbow image
-* **--flavor** (optional; default: fogbow-small): fogbow flavor
-* **--resource-kind** (required): options(compute, storage, network)
-* **--public-key** (optional; path public key): fogbow public key
-* **--requirements** (optinal): Requirements of the flavor and about location where the instance will be provide
-
-Example with compute:
-```bash
-$ fogbow-cli order --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub --requirements "Glue2RAM >= 1024 && Glue2CloudComputeManagerID==\"manager.one.member.com\"" --resource-kind compute --auth-token mytoken
-
-X-OCCI-Location: http://localhost:8182/order/47536d31-0674-4278-ad05-eff5fdd07257432
-X-OCCI-Location: http://localhost:8182/order/fd745806-4909-4a39-8380-13183b1f197c456
-```
-
-Example with storage:
-```bash
-$ fogbow-cli order --create --n 2 --resource-kind storage --url http://localhost:8182 --size 10 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\"" --auth-token mytoken
-
-X-OCCI-Location: http://localhost:8182/order/54635536d31-0674-4278-ad05-eff5fdd0725767
-X-OCCI-Location: http://localhost:8182/order/87987977806-4909-4a39-8380-13183b1f197ch7
-```
-
-Example with network:
-```bash
-$ fogbow-cli order --create --n 2 --resource-kind network --cidr 10.10.10.0/24 --url http://localhost:8182 --requirements "Glue2CloudComputeManagerID==\"manager.one.member.com\"" --auth-token mytoken
-
-X-OCCI-Location: http://localhost:8182/order/6748mnr31-0674-4278-ad05-eff5fdd07257231
-X-OCCI-Location: http://localhost:8182/order/ghgfdj06-4909-4a39-8380-13183b1f197c231
-```
-
-### Delete a single order
-Delete a single instance order.
-
-* **--delete** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): order id
+* **--delete**: operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--id** (required):  compute id
 
 Example:
 ```bash
-$ fogbow-cli order --delete --auth-token mytoken --id orderid --url http://localhost:8182
+$ fogbow-cli compute --delete --id instance-id --url manager-url --federation-token-value my-token-value
 
 Ok
 ```
 
-## Instance operations (```instance```)
+### Get compute quota
+Get cloud quota information of the federation member
 
-### Get all instances
-Get all instances associated to a particular user's token.
+* **--get-quota**: operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--member-id** (required): federation member
 
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-Example:
 ```bash
-$ fogbow-cli instance --get --auth-token  mytoken --url http://localhost:8182
+$ fogbow-cli compute --get-allocation --member-id member --url manager-url --federation-token-value my-token-value
 
-X-OCCI-Location: 3I235356-3432434-324324-3243242f@manager.one.com
-X-OCCI-Location: 4B869582-8907667-123457-0765345c@manager.one.com
+{"totalQuota": {"vCPU": "1", "ram": "2", "instances": "1"}, "usedQuota": {"vCPU": "1", "ram": "2", "instances": "1"}}
 ```
 
-### Get a single instance
-Get detailed information about a single instance.
-
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): instance id
-
-Example: 
-```bash
-$ fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://localhost:8182
-
-Category: compute; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Compute Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/compute/"; attributes="occi.compute.architecture occi.compute.state{immutable} occi.compute.speed occi.compute.memory occi.compute.cores occi.compute.hostname"; actions="http://schemas.ogf.org/occi/infrastructure/compute/action#start http://schemas.ogf.org/occi/infrastructure/compute/action#stop http://schemas.ogf.org/occi/infrastructure/compute/action#restart http://schemas.ogf.org/occi/infrastructure/compute/action#suspend"
-Category: os_tpl; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="mixin"; location="http://localhost:8182/os_tpl/"
-Category: flavor.small; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin"; title="flavor.small"; rel="http://schemas.ogf.org/occi/infrastructure#resource_tpl"; location="http://localhost:8182/flavor.small/"
-Category: fogbow-image; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="fogbow-image image"; rel="http://schemas.ogf.org/occi/infrastructure#os_tpl"; location="http://localhost:8182/fogbow-image/"
-X-OCCI-Attribute: occi.compute.state="active"
-X-OCCI-Attribute: occi.compute.hostname="fogbow-instance-230e00cd-4207-4d77-b40c-ba7ca8fa52fd"
-X-OCCI-Attribute: org.fogbowcloud.order.ssh-username="fogbow"
-X-OCCI-Attribute: occi.compute.memory="2.0"
-X-OCCI-Attribute: org.fogbowcloud.order.local-ip-address="0.0.0.0"
-X-OCCI-Attribute: org.fogbowcloud.order.extra-ports="{"postgres":"0.0.0.0:10029"}"
-X-OCCI-Attribute: occi.compute.cores="1"
-X-OCCI-Attribute: org.fogbowcloud.order.ssh-public-address="0.0.0.0:10028"
-X-OCCI-Attribute: occi.core.id="4090901b-3b82-4424-a93f-5425e59dee71"
-X-OCCI-Attribute: occi.compute.architecture="Not defined"
-X-OCCI-Attribute: occi.compute.speed="Not defined"
-```
-
-### Delete all instances
-Delete all instances associated to a particular user's token.
-
-* **--delete**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+### Get compute allocation
+Get user allocation information of the federation member
+* **--get-allocation**: operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--member-id** (required): federation member
 
 ```bash
-$ fogbow-cli instance --delete --auth-token mytoken --url http://localhost:8182
+$ fogbow-cli compute --get-allocation --member-id member --url manager-url --federation-token-value my-token-value
 
-Ok
-```
-
-### Delete a single instance
-Delete a single instance.
-
-* **--delete** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): instance id
-
-```bash
-$ fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://localhost:8182
-
-Ok
-```
-
-### Create instance
-Create a instance.
-
-* **--create** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--flavor** (optional) 
-* **--image** (required)
-* **--publicKey** (optional)
-* **--userDataFile** (optional)
-
-```bash
-$ fogbow-cli instance --create --auth-token mytoken --url http://localhost:8182 --flavor m1-small --image fogbow-ubuntu --publicKey /tmp/pkey --userDataFile /tmp/userdatafile
-
-X-OCCI-Location: http://localhost:8182/federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
-```
-
-## Storage operations (```storage```)
-
-### Get all storages
-Get all storages associated to a particular user's token.
-
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-Example:
-```bash
-$ fogbow-cli storage --get --auth-token  mytoken --url http://localhost:8182
-
-X-OCCI-Location: 3I235356-3432434-324324-3243242f@manager.one.com
-X-OCCI-Location: 4B869582-8907667-123457-0765345c@manager.one.com
-```
-
-### Get a single storage
-Get detailed information about a single storage.
-
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): storage id
-
-Example: 
-```bash
-$ fogbow-cli storage --get --auth-token mytoken --id storageid --url http://localhost:8182
-
-Category: storage; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Storage Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/storage/"; attributes="occi.storage.state{immutable} occi.storage.size"; actions="http://schemas.ogf.org/occi/infrastructure/storage/action#online http://schemas.ogf.org/occi/infrastructure/storage/action#offline http://schemas.ogf.org/occi/infrastructure/storage/action#backup http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot http://schemas.ogf.org/occi/infrastructure/storage/action#resize"
-X-OCCI-Attribute: occi.storage.size="80"
-X-OCCI-Attribute: occi.core.id="9e80c942-9fbd-4c06-b8b7-ed7573544425"
-X-OCCI-Attribute: occi.storage.name="null"
-X-OCCI-Attribute: occi.storage.status="in-use"
-```
-
-### Delete all storages
-Delete all storages associated to a particular user's token.
-
-* **--delete**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-```bash
-$ fogbow-cli storage --delete --auth-token mytoken --url http://localhost:8182
-
-Ok
-```
-
-### Delete a single storage
-Delete a single storage.
-
-* **--delete** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): storage id
-
-```bash
-$ fogbow-cli instance --delete --auth-token mytoken --id storageid --url http://localhost:8182
-
-Ok
-```
-
-### Create storage
-Create a storage.
-
-* **--create** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--size** (required; Unit GB) 
-
-```bash
-$ fogbow-cli storage --create --auth-token mytoken --url http://localhost:8182 --size 20
-
-X-OCCI-Location: http://localhost:8182/federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
+{"vCPU": "1", "ram": "2", "instances": "1"}
 ```
 
 ## Network operations (```network```)
 
-### Get all networks
-Get all networks associated to a particular user's token.
+### Create network
+Create a network.
 
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--create** (required): operation
+* **--url** (required): url of the manager 
+* **--federation-token-value** (required): federation token
+* **--providing-member** (required): member that will provide the
+* **--address** (required; format: ##.##.##.##/##): cird
+* **--gateway** (optional)
+* **--allocation** (optional; options: dynamic or static; default: dynamic)
 
 Example:
 ```bash
-$ fogbow-cli network --get --auth-token  mytoken --url http://localhost:8182
+$ fogbow-cli network --create  --url manager-url --federation-token-value my-token-value --address cidr --gateway gateway-ip --allocation allocation --providing-member providing-member
 
-X-OCCI-Location: 3I235356-3432434-324324-3243242f@manager.com
-X-OCCI-Location: 4B869582-8907667-123457-0765345c@manager.com
+{"id": "network-id"} 
+```
+
+### Get all networks
+Get all networks associated to a particular federation token.
+
+* **--get-all**(required): operation 
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager 
+
+Example:
+```bash
+$ fogbow-cli network --get-all --url manager-url --federation-token-value my-token-value
+
+[{"id": "id", "label": "label", "state": "state", "address": "address", "gateway": "gateway", "vLAN": "vLAN", "networkAllocation": {"value": "value"}, "networkInterface": "networkInterface", "MACInterface": "MACInterface", "interfaceState": "interfaceState"}, ...]
 ```
 
 ### Get a single network
 Get detailed information about a single network.
 
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): network id
+* **--get**(required): operation 
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--id** (required):  network id
 
-Example: 
+Example:
 ```bash
-$ fogbow-cli network --get --auth-token mytoken --id networkid --url http://localhost:8182
+$ fogbow-cli network --get --id network-id --url manager-url --federation-token-value my-token-value
 
-Category: Network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"; title="Network Resource"; rel="http://schemas.ogf.org/occi/core#resource"; location="http://localhost:8182/storage/"; attributes="occi.storage.state{immutable} occi.storage.size"; actions="http://schemas.ogf.org/occi/infrastructure/storage/action#online http://schemas.ogf.org/occi/infrastructure/storage/action#offline http://schemas.ogf.org/occi/infrastructure/storage/action#backup http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot http://schemas.ogf.org/occi/infrastructure/storage/action#resize"
-X-OCCI-Attribute: occi.network.vlan="Not defined"
-X-OCCI-Attribute: occi.core.id="9e80c942-9fbd-4c06-b8b7-ed7573544425"
-X-OCCI-Attribute: occi.network.label="Not defined"
-X-OCCI-Attribute: occi.network.state="active"
-X-OCCI-Attribute: occi.network.address="0.0.0.0/24"
-X-OCCI-Attribute: occi.network.gateway="0.0.0.0"
-X-OCCI-Attribute: occi.network.allocation="dynamic"
-```
-
-### Delete all networks
-Delete all networks associated to a particular user's token.
-
-* **--delete**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-
-```bash
-$ fogbow-cli network --delete --auth-token mytoken --url http://localhost:8182
-
-Ok
+{"id": "id", "label": "label", "state": "state", "address": "address", "gateway": "gateway", "vLAN": "vLAN", "networkAllocation": {"value": "value"}, "networkInterface": "networkInterface", "MACInterface": "MACInterface", "interfaceState": "interfaceState"}
 ```
 
 ### Delete a single network
 Delete a single network.
 
-* **--delete** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): network id
+* **--delete**(required): operation 
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--id** (required):  network id
 
+Example:
 ```bash
-$ fogbow-cli network --delete --auth-token mytoken --id networkid --url http://localhost:8182
+$ fogbow-cli network --delete --id instance-id --url manager-url --federation-token-value my-token-value
 
 Ok
 ```
 
-### Create network
-Create a network.
+## Volume operations (```volume```)
 
-* **--create** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--cird** (required; format: ##.##.##.##/##) 
-* **--gateway** (optional)
-* **--allocation** (optional ;options: dynamic or static; default: dynamic)
+### Create volume
+Create a volume.
 
+* **--create** (required): operation
+* **--url** (required): url of the manager 
+* **--federation-token-value** (required): federation token
+* **--providing-member** (required): member that will provide the volume
+* **--volume-size** (required; Unit GB)
+
+Example:
 ```bash
-$ fogbow-cli network --create --auth-token mytoken --url http://localhost:8182 --cird 10.10.10.0/24 --gateway 10.10.10.10 --allocation dynamic
+$ fogbow-cli volume --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member --volume-size size
 
-X-OCCI-Location: http://localhost:8182/federated_instance_230e00cd-4207-4d77-b40c-ba7ca8fa52fd
+{"id": "volume-id"} 
+```
+
+### Get all volumes
+Get all volumes associated to a particular federation token.
+
+* **--get-all** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager 
+
+Example:
+```bash
+$ fogbow-cli volume --get-all --url manager-url --federation-token-value my-token-value
+
+[{"name": "name_one", "size": "1"}, {"name": "name_two", "size": "1"}]
+```
+
+### Get a single volume
+Get detailed information about a single volume.
+
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--id** (required):  volume id
+
+Example:
+```bash
+$ fogbow-cli volume --get --id volume-id --url manager-url --federation-token-value my-token-value
+
+{"name": "name", "size": "1"}
+```
+
+### Delete a single volume
+Delete a single volume.
+
+* **--delete** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--id** (required):  volume id
+
+Example:
+```bash
+$ fogbow-cli volume --delete --id volume-id --url manager-url --federation-token-value my-token-value
+
+Ok
 ```
 
 ## Attachment operations (```attachment```)
-### Get all attachment
 
-Get all attachment associated to a particular user's token.
+### Create attachment
+Create an attachment.
 
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--create** (required): operation
+* **--url** (required): url of the manager 
+* **--federation-token-value** (required): federation token
+* **--providing-member** (required): member that will provide the attachment
+* **--source** (required): compute id
+* **--target** (required): volume id
+* **--device** (optional): device's name in the virtual machine. 
 
+Example:
 ```bash
-$ fogbow-cli attachment --get --auth-token mytoken --url http://localhost:8182
+$ fogbow-cli attachment --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member --source source --target target --device device
 
-X-OCCI-Location: 687V5356-3432434-324324-3243242f@manager.com
-X-OCCI-Location: 09129582-8907667-123457-0765345c@manager.com
+{"id": "attachment-id"}
+```
+
+### Get all attachments
+Get all attachments associated to a particular federation token.
+
+* **--get-all** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager 
+
+Example:
+```bash
+$ fogbow-cli attachment --get-all --url manager-url --federation-token-value my-token-value
+
+[{"serverId": "serverId", "volumeId": "volumeId", "device": "device"}, {"serverId": "serverId", "volumeId": "volumeId", "device": "device"}]
 ```
 
 ### Get a single attachment
 Get detailed information about a single attachment.
 
-* **--get**  (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): attachment id
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--id** (required):  attachment id
 
-Example: 
+Example:
 ```bash
-$ fogbow-cli attachment --get --auth-token mytoken --id attachmentid --url http://localhost:8182
+$ fogbow-cli attachment --get --id attachment-id --url manager-url --federation-token-value my-token-value
 
-occi.core.source=587V5356-3432434-324324-3243242f
-occi.core.target=13029582-8907667-123457-0765345c
-occi.core.id=E423CS82-8907667-123457-0765345c
-occi.storagelink.provadingMemberId=provading_member
+{"serverId": "serverId", "volumeId": "volumeId", "device": "device"}
 ```
 
 ### Delete a single attachment
 Delete a single attachment.
 
-* **--delete** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--id** (required): attachment id
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--id** (required):  attachment id
 
+Example:
 ```bash
-$ fogbow-cli attachment --delete --auth-token mytoken --id attachmentid --url http://localhost:8182
+$ fogbow-cli attachment --delete --id attachment-id --url manager-url --federation-token-value my-token-value
 
 Ok
 ```
 
-### Create attachment 
-Create a new attachment.
+## Image operations (```image```)
 
-* **--create** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
-* **--computeId** (required)
-* **--storageId** (required)
+### Get all images
+Get all images associated to a particular member.
+
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--member-id** (required): federation member
 
 ```bash
-$ fogbow-cli attachment --create --auth-token mytoken --url http://localhost:8182 --computeId instanceid --storageId storageid
+$ fogbow-cli image --get-all --url manager-url --federation-token-value my-token-value --member-id member
 
-X-OCCI-Location: http://locahost:8182/243029582-8907667-123457-0765345C@manager.com
+{"000fdc22-e5f5-4c9a-98f8-998dab72f9bf": "ubuntu-16.04-Nov-17", "123f7485-92d5-4533-a329-0dbaca22ae4e": "debian-8-Oct-17", "3211fa8f-aa38-4fa7-8ecb-3b117d98d186": "centos-Sep-17"}
+```
+
+### Get a single image
+Get detailed information about a single image.
+
+* **--get** (required): operation
+* **--federation-token-value** (required): federation token
+* **--url** (required): url of the manager
+* **--member-id** (required): federation member
+* **--id** (required): image id
+
+```bash
+$ fogbow-cli image --get --url manager-url --federation-token-value my-token-value --member-id member --id image-id
+
+{"id":"id", "name":"name", "size":"size", "minDisk":"2", "minRam": "2", "status":"status"}
+```
+
+## Federation member operations (```member```)
+
+### Get federation members
+* **--get-all** (required): operation
+* **--url** (required): url of the rendezvous
+
+```bash
+$ fogbow-cli member --get-all --url rendezvous-url
+
+["member1", "member2", "member3"]
 ```

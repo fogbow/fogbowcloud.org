@@ -7,7 +7,7 @@ index: 5
 Install and configure the Fogbow CLI
 ==========
 
-The **Fogbow Manager** (FM) is controlled via a **Command Line Interface** (CLI) that makes easier for the fogbow users to get information about the federation members, to order resources, and to manage the lifecycle of those resources. The Fogbow CLI is distributed in two forms: as source code, or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follows.
+The **Fogbow Manager** (FM) is controlled via a **Command Line Interface** (CLI) that makes easier for the fogbow users to get information about the federation members, images, quota, resources(compute, volume, network), and to manage the lifecycle of those resources. 
 
 ## Pre-installation 
 
@@ -15,42 +15,30 @@ The **Fogbow Manager** (FM) is controlled via a **Command Line Interface** (CLI)
 # If not installed previously
 apt-get install maven
 # If not installed previously
-apt-get install openjdk-7-jdk
+apt-get install openjdk-8-jdk
+# If not installed previously
+apt-get install git
 ```
-## Install from source
 
-First, is necessary to download fogbow manager and install it with maven, <a href="/install-configure-fogbow-manager">for more information</a>.
+## Install from git
 
-To get the lastest stable version of the component Fogbow Cli, download it from our repository:
+First, is necessary to download fogbow manager and install it with maven.
 ```shell
-wget https://github.com/fogbow/fogbow-cli/archive/master.zip
+git clone https://github.com/fogbow/fogbow-manager-core.git
+cd fogbow-manager-core
+mvn install -Dmaven.test.skip=true
 ``` 
 
-Then, decompress it:
+Now, to download the fogbow-cli and install it.
 ```shell
-unzip master.zip
-```
-
-Now, install it with Maven:
-```
-cd fogbow-cli-master
+cd.. 
+git clone https://github.com/fogbow/fogbow-client-core.git
+cd fogbow-client-core
 mvn install -Dmaven.test.skip=true
 ```
 
-### Use it. <a href="/fogbow-cli">For more information</a>
+### Use it. <a href="https://github.com/fogbow/fogbowcloud.org/blob/new-cli-documentation/content/pages/fogbow-cli.md">For more information</a>
 ```
+cd fogbow-client-core
 bash bin/fogbow-cli ...
-```
-
-## Install from debian package
-
-Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:
-
-```bash
-dpkg -i fogbow-cli_$version.deb
-```
-
-### Use it. <a href="/fogbow-cli">For more information</a>
-```
-fogbow-cli ...
 ```
