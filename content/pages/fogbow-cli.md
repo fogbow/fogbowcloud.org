@@ -7,18 +7,17 @@ index: 2
 Fogbow CLI
 ==========
 
-The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's REST API. Through the fogbow CLI, users are able to get information about federation members, quota and images; create, retrive and delete compute, network, storage and attachment.
+The Fogbow CLI is a command line interface for the Fogbow manager. It makes it easier for users to create HTTP requests and invoke them through the manager's REST API. All calls to the manager require a federation token. The Fogbow CLI provides a way for users to create such tokens. After creating a valid token, the users are able tovoke Fogbow CLI to get information about which cloud providers are available in the federation, what are their quota in these providers, and which images the providers make available to them; users can also create, retrive information and delete compute, network, and storage resources in any of the cloud providers available; finally, they can also and attach and detach volumes to compute resources.
 
 ## Installation
-Follow these steps, <a  href="https://github.com/fogbow/fogbowcloud.org/blob/new-cli-documentation/content/pages/install-configure-fogbow-cli.md" target="_blank">Instalation and configuration Fogbow cli</a> .
+Follow these steps, <a  href="https://github.com/fogbow/fogbowcloud.org/blob/new-cli-documentation/content/pages/install-configure-fogbow-cli.md" target="_blank">to install and configure the Fogbow CLI</a>.
 
-## Token operations (```token```)
+## Federation token operations (```token```)
 
 ### Note
-Is necessary create the identity plugin configuration file in your configuration path before execute token operations. This one must be created and related by identity plugin type chosen.
+It is necessary to create the identity plugin configuration file in your configuration path before executing token operations. An example for tokens provided by an LDAP service are shown below:
 
-Example with ldap :
-The ldap configuration file name must be "ldap-identity-plugin.conf".
+The ldap configuration file name must be named "ldap-identity-plugin.conf".
 ```bash
 ldap_base = dc=site,dc=manager
 ldap_identity_url = ldap://ldap.site.manager:389
@@ -36,7 +35,7 @@ Note: to pass the credentials it is necessary the use of dynamic parameters; fol
 
 * **--create** (required): operation
 * **--type** (required): identity plugin type
-* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable). 
+* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as an environment variable). 
 * **-Dpassword=** (required by ldap): dynamic parameter
 * **-Dusername=** (required by ldap): dynamic parameter
 
@@ -51,7 +50,7 @@ $ fogbow-cli token --create --type ldap --conf-path /home/user/conf-folder -Dpas
 Check if token is valid.
 
 * **--type** (required): identity plugin type
-* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
+* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as an environment variable)
 * **--federation-token-value** (required): federation token
 
 Example:
@@ -68,7 +67,7 @@ Get the user id and attributes associated to a particular token.
 
 * **--get-user** (required): operation
 * **--type** (required): identity plugin type
-* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as a environment variable)
+* **--conf-path** (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as na environment variable)
 * **--federation-token-value** (required): federation token
 
 Example:
@@ -300,7 +299,7 @@ Ok
 ## Attachment operations (```attachment```)
 
 ### Create attachment
-Create a attachment.
+Create an attachment.
 
 * **--create** (required): operation
 * **--url** (required): url of the manager 
