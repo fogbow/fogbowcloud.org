@@ -6,7 +6,7 @@ index: 7
 
 Install fogbow infrastructure
 ==========
-This tutorial provides a easy way to deploy all fogbow infrastructure.
+This tutorial provides a easy way to deploy the entire fogbow infrastructure.
 
 ## Pre-installation
 
@@ -27,3 +27,17 @@ O **dmz-host** deve ficar na DMZ (Demilitarized Zone) com as seguintes portas li
 ### DNS configuration
 
 É necessário configurar o DNS para que a partir do **XMPP ID** a.k.a **member-site-id** seja possível se comunicar com o **dmz-host** via troca de mensagens XMPP. Ou seja, é necessário associar o **XMPP ID** ao IP público do **dmz-host**.
+
+### Cloud configuration
+
+É necessário criar um usuário para que seja possível o fogbow middleware criar e administrar recursos na cloud.
+
+### Fogbow configuration
+
+#### Setup
+
+Download the fogbow-playbook project:
+
+```bash
+git clone https://github.com/fogbow/fogbow-playbook.git
+```
