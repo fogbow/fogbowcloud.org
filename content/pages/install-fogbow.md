@@ -54,24 +54,14 @@ cd fogbow-playbook/conf-files
 
 After it is necessary to edit 11 small configuration files. Please, note that is only **necessary** to edit the configuration constants that the line above contains the token **"*# Required*".**
 
-#### behavior.conf
+#### Fogbow behavior configuration
 
-```text
-# Not Required
-federation_identity_plugin_class=org.fogbowcloud.manager.core.plugins.behavior.federationidentity.DefaultFederationIdentityPlugin
-
-# Not Required
-authorization_plugin_class=org.fogbowcloud.manager.core.plugins.behavior.authorization.DefaultAuthorizationPlugin
-
-# Not Required
-local_user_credentials_mapper_plugin_class=org.fogbowcloud.manager.core.plugins.behavior.mapper.DefaultLocalUserCredentialsMapper
-```
-The ***federation_identity_plugin_class*** configuration constant is the path to class that implements the fogbow federation identity behavior.
-
-The ***authorization_plugin_class*** configuration constant is the path to class that implements the fogbow authorization behavior.
-
-The ***local_user_credentials_mapper_plugin_class*** configuration constant is the path to class that implements the fogbow local user credentials mapper behavior.
+File: [behavior.conf](conf-files/behavior.conf)
 
 To know more about the ***behavior.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
-#### cloud.conf
+#### Fogbow cloud configuration
+
+File: [cloud.conf](conf-files/cloud.conf)
+
+To know more about the ***cloud.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
