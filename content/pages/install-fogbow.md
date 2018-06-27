@@ -20,7 +20,7 @@ Antes de realizar a instalação é necessário fazer algumas configurações a 
 
 O **dmz-host** deve ficar na DMZ (Demilitarized Zone) com as seguintes portas liberadas:
 
-1. XMPP server to server communication port (**Default**: 5327);
+1. XMPP server to server communication port (**Default**: *5327*);
 2. Reverse tunnel ssh ports range;
 3. Reverse tunnel external services ports range.
 
