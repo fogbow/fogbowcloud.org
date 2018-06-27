@@ -54,14 +54,14 @@ cd fogbow-playbook/conf-files
 
 After it is necessary to edit 11 small configuration files. Please, note that is only **necessary** to edit the configuration constants that the line above contains the token **"*# Required*".**
 
-#### Fogbow behavior configuration
+#### Behavior configuration
 
-File: [behavior.conf](conf-files/behavior.conf)
+File: [behavior.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior.conf)
 
 To know more about the ***behavior.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
-#### Fogbow cloud configuration
+#### Cloud configuration
 
-File: [cloud.conf](conf-files/cloud.conf)
+File: [cloud.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/cloud.conf)
 
 To know more about the ***cloud.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
