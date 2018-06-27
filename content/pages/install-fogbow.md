@@ -36,8 +36,10 @@ O **dmz-host** deve ficar na DMZ (Demilitarized Zone) com as seguintes portas li
 
 #### Setup
 
-Download the fogbow-playbook project:
+1. Download the fogbow-playbook project:
 
 ```bash
 git clone https://github.com/fogbow/fogbow-playbook.git
 ```
+
+2. Install [ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
