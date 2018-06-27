@@ -56,3 +56,14 @@ After it is necessary to edit 11 small configuration files. Please, note that is
 
 #### behavior.conf
 
+```text
+# Not Required
+federation_identity_plugin_class=org.fogbowcloud.manager.core.plugins.behavior.federationidentity.DefaultFederationIdentityPlugin
+
+# Not Required
+authorization_plugin_class=org.fogbowcloud.manager.core.plugins.behavior.authorization.DefaultAuthorizationPlugin
+
+# Not Required
+local_user_credentials_mapper_plugin_class=org.fogbowcloud.manager.core.plugins.behavior.mapper.DefaultLocalUserCredentialsMapper
+```
+The ***federation_identity_plugin_class*** configuration constant is the path to the class that implements the fogbow federation identity behavior.
