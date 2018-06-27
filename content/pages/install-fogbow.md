@@ -54,6 +54,16 @@ cd fogbow-playbook/conf-files
 
 After it is necessary to edit 11 small configuration files. Please, note that is only **necessary** to edit the configuration constants that the line above contains the token **"*# Required*".**
 
+#### Hosts configuration
+
+File: [hosts.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/hosts.conf)
+
+The ***dmz_host_private_ip*** configuration constant is the **dmz-host** private network address.
+
+The ***dmz_host_public_ip*** configuration constant is the **dmz-host** public network address.
+
+The ***internal_host_private_ip*** configuration constant is the **internal-host** private network address.
+
 #### Behavior configuration
 
 File: [behavior.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior.conf)
