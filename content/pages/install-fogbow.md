@@ -4,11 +4,11 @@ save_as: install-fogbow-infra.html
 section: install
 index: 7
 
-Install Fogbow Infrastructure
+Install fogbow infrastructure
 ==========
 This tutorial provides a easy way to deploy all fogbow infrastructure.
 
-## Pre-Installation
+## Pre-installation
 
 Antes de realizar a instalação é necessário fazer algumas configurações a nível administrativo.
 
