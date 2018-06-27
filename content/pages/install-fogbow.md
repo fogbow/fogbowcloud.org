@@ -52,9 +52,7 @@ Go to the directory *conf-files* inside *fogbow-playbook* directory.
 cd fogbow-playbook/conf-files
 ```
 
-After it, initially, is necessary to edit 11 small configuration files.
-
-Please, note that is only **necessary** to edit the configuration constants that has in the above line the token **"*# Required*".**
+After it is necessary to edit 11 small configuration files. Please, note that is only **necessary** to edit the configuration constants that the line above contains the token **"*# Required*".**
 
 #### behavior.conf
 
