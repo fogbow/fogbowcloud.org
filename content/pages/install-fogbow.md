@@ -32,14 +32,29 @@ O **dmz-host** deve ficar na DMZ (Demilitarized Zone) com as seguintes portas li
 
 É necessário criar um usuário para que seja possível o fogbow middleware criar e administrar recursos na cloud.
 
-### Fogbow configuration
+## Installation
 
-#### Setup
+### Environment setup
 
-1. Download the fogbow-playbook project:
+1. Download the *fogbow-playbook* project:
 
 ```bash
 git clone https://github.com/fogbow/fogbow-playbook.git
 ```
 
 2. Install [ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+
+### Fogbow configuration
+
+Go to the directory *conf-files* inside *fogbow-playbook* directory.
+
+```bash
+cd fogbow-playbook/conf-files
+```
+
+After it, initially, is necessary to edit 11 small configuration files.
+
+Please, note that is only **necessary** to edit the configuration constants that has in the above line the token **"*# Required*".**
+
+#### behavior.conf
+
