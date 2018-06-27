@@ -67,3 +67,7 @@ authorization_plugin_class=org.fogbowcloud.manager.core.plugins.behavior.authori
 local_user_credentials_mapper_plugin_class=org.fogbowcloud.manager.core.plugins.behavior.mapper.DefaultLocalUserCredentialsMapper
 ```
 The ***federation_identity_plugin_class*** configuration constant is the path to the class that implements the fogbow federation identity behavior.
+
+The ***authorization_plugin_class*** configuration constant is the path to the class that implements the fogbow authorization behavior.
+
+The ***local_user_credentials_mapper_plugin_class*** configuration constant is the path to the class that implements the fogbow local user credentials mapper behavior.
