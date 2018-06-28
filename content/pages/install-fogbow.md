@@ -76,7 +76,7 @@ File: [cloud.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-fi
 
 To know more about the ***cloud.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
-#### Fogbow manager configuration
+#### Manager configuration
 
 File: [manager.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/manager.conf)
 
@@ -99,3 +99,13 @@ File: [membership.conf](https://github.com/fogbow/fogbow-playbook/blob/master/co
 The ***server_port*** configuration constant is the port that the Membership component will server requests in the **internal-host**, note that the Membership service ***server_port*** should be different of the Manager ***server_port***.
 
 To know more about the ***membership.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+
+#### Reverse-tunnel configuration
+
+File: [reverse-tunnel.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/reverse-tunnel.conf)
+
+The ***host_key_path*** configuration constant is not required, however if it is not configured the *fogbow-playbook* will use the ***manager_ssh_private_key_file_path***.
+
+For the configuration constants ***reverse_tunnel_port*** and ***reverse_tunnel_http_port*** do not choose the 80 port because this port is used to server the Dashboard front-end in the **dmz-host**.
+
+To know more about the ***reverse-tunnel.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
