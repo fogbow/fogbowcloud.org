@@ -126,13 +126,13 @@ The ***server_port*** configuration constant is the port that the Fogbow Manager
 
 The ***manager_ssh_public_key_file_path*** and ***manager_ssh_private_key_file_path*** configuration constants are not required, however if they are not configured the *fogbow-playbook* will generate the keys automatically placing them at the *fogbow-playbook* directory.
 
-To know more about the ***manager.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+To know more about the ***manager.conf*** constants please see [configure manager](install-configure-fogbow-manager.md#configure).
 
 #### Intercomponent configuration
 
 File: [intercomponent.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/intercomponent.conf)
 
-To know more about the ***intercomponent.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+To know more about the ***intercomponent.conf*** constants please see [configure xmpp server](install-configure-xmpp.md#configure).
 
 #### Membership configuration
 
