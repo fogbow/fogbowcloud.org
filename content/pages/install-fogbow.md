@@ -76,13 +76,13 @@ After the **behavior.conf** edition is necessary to edit the federation identity
 
 See the federation identity configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/federation-identity). Please, configure the federation identity used in the **behavior.conf**.
 
-##### LDAP
+- **LDAP**
 
 File: [ldap-identity-plugin.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior-plugins/federation-identity/ldap-identity-plugin.conf)
 
 To know more about the ***ldap-identity-plugin.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
-##### Default
+- **Default**
 
 Configuration is not necessary.
 
@@ -90,7 +90,7 @@ Configuration is not necessary.
 
 See the authorization configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/authorization). Please, configure the authorization used in the **behavior.conf**.
 
-##### Default
+- **Default**
 
 Configuration is not necessary.
 
@@ -98,7 +98,7 @@ Configuration is not necessary.
 
 See the local user credentials mapper configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/local-user-credentials-mapper). Please, configure the local user credentials mapper used in the **behavior.conf**.
 
-##### Default
+- **Default**
 
 File: [default_mapper.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior-plugins/local-user-credentials-mapper/default_mapper.conf)
 
@@ -112,7 +112,7 @@ To know more about the ***cloud.conf*** constants please see [please-give-me-an-
 
 After the **cloud.conf** edition is necessary to edit the cloud type configuration file that was configured in the **cloud.conf**, see the cloud types configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/cloud-plugins).
 
-##### OpenStack
+- **OpenStack**
 
 File: [openstack.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/cloud-plugins/openstack.conf)
 
