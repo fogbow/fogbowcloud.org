@@ -150,7 +150,7 @@ The ***host_key_path*** configuration constant is not required, however if it is
 
 For the configuration constants ***reverse_tunnel_port*** and ***reverse_tunnel_http_port*** do not choose the 80 port because this port is used to server the Dashboard front-end in the **dmz-host**.
 
-To know more about the ***reverse-tunnel.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+To know more about the ***reverse-tunnel.conf*** constants please see [configure reverse tunnel](install-configure-reverse-tunnel.md#configure).
 
 ### Run
 
