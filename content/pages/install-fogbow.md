@@ -80,7 +80,7 @@ See the federation identity configuration files list [here](https://github.com/f
 
 File: [ldap-identity-plugin.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior-plugins/federation-identity/ldap-identity-plugin.conf)
 
-To know more about the ***ldap-identity-plugin.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+To know more about the ***ldap-identity-plugin.conf*** constants please see [configure federation identity](install-configure-fogbow-manager.md#--federation-indentity).
 
 - **Default**
 
@@ -108,7 +108,7 @@ To know more about the ***default_mapper.conf*** constants please see [please-gi
 
 File: [cloud.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/cloud.conf)
 
-To know more about the ***cloud.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+To know more about the ***cloud.conf*** constants please see [configure cloud plugins](install-configure-fogbow-manager.md#--cloud-specific-plugins).
 
 After the **cloud.conf** edition is necessary to edit the cloud type configuration file that was configured in the **cloud.conf**, see the cloud types configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/cloud-plugins).
 
@@ -116,7 +116,7 @@ After the **cloud.conf** edition is necessary to edit the cloud type configurati
 
 File: [openstack.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/cloud-plugins/openstack.conf)
 
-To know more about the ***openstack.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+To know more about the ***openstack.conf*** constants please see [configure openstack plugin](install-configure-fogbow-manager.md#--cloud-specific-plugins).
 
 #### Manager configuration
 
