@@ -104,7 +104,7 @@ File: [default_mapper.conf](https://github.com/fogbow/fogbow-playbook/blob/maste
 
 To know more about the ***default_mapper.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
-#### Cloud configuration configuration
+#### Cloud configuration
 
 File: [cloud.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/cloud.conf)
 
