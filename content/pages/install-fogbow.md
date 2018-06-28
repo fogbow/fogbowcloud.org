@@ -72,16 +72,6 @@ To know more about the ***behavior.conf*** constants please see [please-give-me-
 
 After the **behavior.conf** edition is necessary to edit the federation identity, authorization and local user credentials mapper configuration files that were configured in the **behavior.conf**.
 
-#### Local user credentials mapper 
-
-See the local user credentials mapper configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/local-user-credentials-mapper). Please, configure the local user credentials mapper used in the **behavior.conf**.
-
-##### Default
-
-File: [default_mapper.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior-plugins/local-user-credentials-mapper/default_mapper.conf)
-
-To know more about the ***default_mapper.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
-
 #### Federation identity 
 
 See the federation identity configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/federation-identity). Please, configure the federation identity used in the **behavior.conf**.
@@ -95,6 +85,24 @@ To know more about the ***ldap-identity-plugin.conf*** constants please see [ple
 ##### Default
 
 Configuration is not necessary.
+
+#### Authorization 
+
+See the authorization configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/authorization). Please, configure the authorization used in the **behavior.conf**.
+
+##### Default
+
+Configuration is not necessary.
+
+#### Local user credentials mapper 
+
+See the local user credentials mapper configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/local-user-credentials-mapper). Please, configure the local user credentials mapper used in the **behavior.conf**.
+
+##### Default
+
+File: [default_mapper.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior-plugins/local-user-credentials-mapper/default_mapper.conf)
+
+To know more about the ***default_mapper.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
 #### Cloud configuration
 
