@@ -140,7 +140,7 @@ File: [membership.conf](https://github.com/fogbow/fogbow-playbook/blob/master/co
 
 The ***server_port*** configuration constant is the port that the Membership component will server requests in the **internal-host**, note that the Membership service ***server_port*** should be different of the Manager ***server_port***.
 
-To know more about the ***membership.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+To know more about the ***membership.conf*** constants please see [configure membership](install-configure-fogbow-rendezvous.md#configure).
 
 #### Reverse tunnel configuration
 
