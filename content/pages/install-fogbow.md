@@ -75,3 +75,13 @@ To know more about the ***behavior.conf*** constants please see [please-give-me-
 File: [cloud.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/cloud.conf)
 
 To know more about the ***cloud.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+
+#### Fogbow manager configuration
+
+File: [manager.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/manager.conf)
+
+The ***server_port*** configuration constant is the port that the Fogbow Manager component will server requests in the **internal-host**.
+
+The ***manager_ssh_public_key_file_path*** and ***manager_ssh_private_key_file_path*** configuration constants are not required, however if they are not configured the *fogbow-playbook* will generate the keys automatically placing them at the *fogbow-playbook* directory.
+
+To know more about the ***manager.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
