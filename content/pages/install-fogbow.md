@@ -86,7 +86,7 @@ To know more about the ***ldap-identity-plugin.conf*** constants please see [ple
 
 Configuration is not necessary.
 
-#### Authorization 
+#### Authorization configuration
 
 See the authorization configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/authorization). Please, configure the authorization used in the **behavior.conf**.
 
