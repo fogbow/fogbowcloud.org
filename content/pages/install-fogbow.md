@@ -4,33 +4,33 @@ save_as: install-fogbow-infra.html
 section: install
 index: 7
 
-Install fogbow infrastructure
+Install a Fogbow infrastructure
 ==========
-This tutorial provides a easy way to deploy the entire fogbow infrastructure.
+This tutorial provides an easy way to deploy the entire fogbow infrastructure.
 
 ## Pre-installation
 
-Before performing the installation is necessary to make some administrative settings.
+Before performing the installation it is necessary to make some administrative settings.
 
 ### Hosts
 
-Is necessary to have two hosts **dmz-host** and **internal-host**, at least the **dmz-host** must have a public IP address.
+It is necessary to have two hosts **dmz-host** and **internal-host**, at least the **dmz-host** must have a public IP address.
 
 ### Firewall configuration
 
-O **dmz-host** deve ficar na DMZ (Demilitarized Zone) com as seguintes portas liberadas:
+The **dmz-host** should be at the DMZ (Demilitarized Zone) with the following ports open:
 
 1. XMPP server to server communication port (**Default**: *5327*);
-2. Reverse tunnel ssh ports range;
-3. Reverse tunnel external services ports range.
+2. Reverse tunnel ssh port range;
+3. Reverse tunnel service port range.
 
 ### DNS configuration
 
-É necessário configurar o DNS para que a partir do **XMPP ID** a.k.a **member-site-id** seja possível se comunicar com o **dmz-host** via troca de mensagens XMPP. Ou seja, é necessário associar o **XMPP ID** ao IP público do **dmz-host**.
+It is necessary to configure the DNS to enable the **dmz-host** to receive XMPP messages. This DNS entry is the **XMPP ID** a.k.a **member-site-id** of the Fogbow installation. This configuration associates the public IP of the **dmz-host** to its **XMPP ID**.
 
 ### Cloud configuration
 
-É necessário criar um usuário para que seja possível o fogbow middleware criar e administrar recursos na cloud.
+Fogbow uses a Mapper plugin to map federation users to users that are known in the local cloud. The simplest way to do that is to create a single user in the local cloud that is used to map any federation user that submits requests. The credentials used by this user to get access to resources in the local cloud are used to configure the Mapper plugin (details will be presented later).
 
 ## Installation
 
@@ -52,7 +52,7 @@ Go to the directory *conf-files* inside *fogbow-playbook* directory.
 cd fogbow-playbook/conf-files
 ```
 
-After it is necessary to edit 11 configuration files. Please, note that is only **necessary** to edit the configuration constants that the line above contains the token **"*# Required*".**
+Then, edit the configuration files present in this directory. Please, note that it is only **necessary** to edit the configuration constants that have an annotation **"*# Required*".** in the line above them.
 
 #### Hosts configuration
 
