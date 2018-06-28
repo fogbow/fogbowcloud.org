@@ -42,7 +42,7 @@ O **dmz-host** deve ficar na DMZ (Demilitarized Zone) com as seguintes portas li
 git clone https://github.com/fogbow/fogbow-playbook.git
 ```
 
-2. Install [ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+2. Install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
 
 ### Fogbow configuration
 
@@ -88,13 +88,13 @@ To know more about the ***manager.conf*** constants please see [please-give-me-a
 
 #### Intercomponent configuration
 
-File: [intercomponent.conf](conf-files/intercomponent.conf)
+File: [intercomponent.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/intercomponent.conf)
 
 To know more about the ***intercomponent.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
 #### Membership configuration
 
-File: [membership.conf](conf-files/membership.conf)
+File: [membership.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/membership.conf)
 
 The ***server_port*** configuration constant is the port that the Membership component will server requests in the **internal-host**, note that the Membership service ***server_port*** should be different of the Manager ***server_port***.
 
