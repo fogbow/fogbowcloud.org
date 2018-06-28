@@ -76,6 +76,8 @@ File: [cloud.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-fi
 
 To know more about the ***cloud.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
+After the **cloud.conf** edition is necessary to edit the cloud type configuration file that was configured in the **cloud.conf**, see the cloud types configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/cloud-plugins).
+
 #### Manager configuration
 
 File: [manager.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/manager.conf)
