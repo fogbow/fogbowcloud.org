@@ -14,7 +14,7 @@ Before performing the installation is necessary to make some administrative sett
 
 ### Hosts
 
-É necessário possuir dois hosts o **dmz-host** e **internal-host**. Pelo menos o **dmz-host** precisa ter um IP público associado.
+Is necessary to have two hosts **dmz-host** and **internal-host**, at least the **dmz-host** must have a public IP address.
 
 ### Firewall configuration
 
@@ -142,7 +142,7 @@ The ***server_port*** configuration constant is the port that the Membership com
 
 To know more about the ***membership.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
-#### Reverse-tunnel configuration
+#### Reverse tunnel configuration
 
 File: [reverse-tunnel.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/reverse-tunnel.conf)
 
