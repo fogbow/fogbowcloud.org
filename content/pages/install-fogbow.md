@@ -52,7 +52,7 @@ Go to the directory *conf-files* inside *fogbow-playbook* directory.
 cd fogbow-playbook/conf-files
 ```
 
-After it is necessary to edit 11 small configuration files. Please, note that is only **necessary** to edit the configuration constants that the line above contains the token **"*# Required*".**
+After it is necessary to edit 11 configuration files. Please, note that is only **necessary** to edit the configuration constants that the line above contains the token **"*# Required*".**
 
 #### Hosts configuration
 
@@ -69,6 +69,28 @@ The ***internal_host_private_ip*** configuration constant is the **internal-host
 File: [behavior.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior.conf)
 
 To know more about the ***behavior.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+
+After the **behavior.conf** edition is necessary to edit the federation identity, authorization and local user credentials mapper configuration files that were configured in the **behavior.conf**.
+
+#### Local user credentials mapper 
+
+See the local user credentials mapper configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/local-user-credentials-mapper).
+
+##### Default
+
+File: [default_mapper.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior-plugins/local-user-credentials-mapper/default_mapper.conf)
+
+To know more about the ***default_mapper.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+
+#### Federation identity 
+
+See the federation identity configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/federation-identity).
+
+##### LDAP
+
+File: [ldap-identity-plugin.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior-plugins/federation-identity/ldap-identity-plugin.conf)
+
+To know more about the ***ldap-identity-plugin.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
 
 #### Cloud configuration
 
