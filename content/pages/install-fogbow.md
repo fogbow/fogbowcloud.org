@@ -10,7 +10,7 @@ This tutorial provides a easy way to deploy the entire fogbow infrastructure.
 
 ## Pre-installation
 
-Antes de realizar a instalação é necessário fazer algumas configurações a nível administrativo.
+Before performing the installation is necessary to make some administrative settings.
 
 ### Hosts
 
