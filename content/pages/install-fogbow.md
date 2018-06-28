@@ -74,7 +74,7 @@ After the **behavior.conf** edition is necessary to edit the federation identity
 
 #### Local user credentials mapper 
 
-See the local user credentials mapper configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/local-user-credentials-mapper).
+See the local user credentials mapper configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/local-user-credentials-mapper). Please, configure the local user credentials mapper used in the **behavior.conf**.
 
 ##### Default
 
@@ -84,13 +84,17 @@ To know more about the ***default_mapper.conf*** constants please see [please-gi
 
 #### Federation identity 
 
-See the federation identity configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/federation-identity).
+See the federation identity configuration files list [here](https://github.com/fogbow/fogbow-playbook/tree/master/conf-files/behavior-plugins/federation-identity). Please, configure the federation identity used in the **behavior.conf**.
 
 ##### LDAP
 
 File: [ldap-identity-plugin.conf](https://github.com/fogbow/fogbow-playbook/blob/master/conf-files/behavior-plugins/federation-identity/ldap-identity-plugin.conf)
 
 To know more about the ***ldap-identity-plugin.conf*** constants please see [please-give-me-an-explanation-link](http://www.fogbowcloud.org).
+
+##### Default
+
+Configuration is not necessary.
 
 #### Cloud configuration
 
