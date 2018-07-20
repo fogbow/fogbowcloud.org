@@ -1,15 +1,17 @@
-Title: Install and configure XMPP
+Title: Install and configure the MS
 url: install-configure-xmpp
 save_as: install-configure-xmpp.html
 section: install
 index: 1
 
-Install and configure XMPP
+Install and configure the Messaging Service (MS)
 ==========
-The Extensible Messaging and Presence Protocol (<a href="https://en.wikipedia.org/wiki/XMPP" target="_blank">XMPP</a>) is a protocol for message-oriented communication based on XML (Extensible Markup Language). In Fogbow we have two XMPP server components: the **Fogbow Manager** and the **Fogbow Rendezvous**. An XMPP server component is a software module capable of communicating with an XMPP server using the appropriate protocol.
+The MS implements the Extensible Messaging and Presence Protocol (<a href="https://en.wikipedia.org/wiki/XMPP" target="_blank">XMPP</a>) protocol. This is a protocol for message-oriented communication based on XML (Extensible Markup Language). In Fogbow, all federated services are implemented as XMPP client components, capable of communicating with an XMPP server using the appropriate protocol.
 
 ## Install
-Fogbow XMPP components are not tied to any particular server implementation. For the sake of simplicity, this document covers the installation and use of the <a href="http://prosody.im/" target="_blank">prosody</a> XMPP server which has been used in Fogbow federations operated by the Fogbow team. To install it, in a debian-based distribution, run the following commands:
+
+XMPP client components are not tied to any particular server implementation. For the sake of simplicity, this document covers the installation and use of the <a href="http://prosody.im/" target="_blank">prosody</a> XMPP server, which has been used in Fogbow federations operated by the Fogbow team. To install it, in a debian-based distribution, run the following commands:
+
 ``` shell
 $ apt-get update
 $ apt-get install prosody

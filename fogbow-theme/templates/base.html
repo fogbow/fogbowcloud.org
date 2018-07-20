@@ -48,6 +48,9 @@
           <li {% for page in pages if page.section == 'usage' and page.save_as == output_file %}class="active"{% endfor %}>
             <a href="{{ SITEURL }}/stories.html">Success stories</a>
           </li>
+          <li {% for page in pages if page.section == 'research' and page.save_as == output_file %}class="active"{% endfor %}>
+          <a href="{{ SITEURL }}/research.html">Research</a>
+          </li>
           <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
           <li><a href="{{ SITEURL }}/contact.html">Contact us</a></li>
         </ul>
@@ -90,7 +93,7 @@
 
       <div class="col-lg-8">
         <p>
-          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+          Fogbow has been partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a>, <a href="http://www.rnp.br/" target="_blank">RNP/Brazil</a>, <a href="http://www.finep.br/" target="_blank">FINEP/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
         </p>
       </div>
 

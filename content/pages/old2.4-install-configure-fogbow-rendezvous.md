@@ -83,7 +83,7 @@ iamalive_max_message_lost=3
 white_list_class=org.fogbowcloud.rendezvous.core.plugins.whitelist.AcceptAnyWhiteListPlugin
 ``` 
 
-Remember that the ```xmpp_jid``` and ```xmpp_password``` must match the values assigned when installing the XMPP server (refer to the [Install and configure XMPP](install-configure-xmpp.md) section of our documentation).
+Remember that the ```xmpp_jid``` and ```xmpp_password``` must match the values assigned when installing the XMPP server (refer to the [Install and configure XMPP](old2.1-install-configure-xmpp.md) section of our documentation).
 
 After adding the FR to your XMPP server, you need to add a new entry in your DNS to resolve the FR name to the XMPP server IP address, as shown in the example below.
 ``` shell
