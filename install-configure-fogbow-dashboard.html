@@ -1,0 +1,219 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li >
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/the-big-picture.html">Install it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="the-big-picture">The Big Picture</a>
+            </li>
+            <li >
+            	<a href="install-configure-xmpp">Install and configure XMPP</a>
+            </li>
+            <li >
+            	<a href="install-configure-reverse-tunnel">Install and configure Fogbow Reverse Tunnel</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-manager">Install and configure Fogbow Manager</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-rendezvous">Install and configure Fogbow Rendezvous</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-cli">Install and configure Fogbow CLI</a>
+            </li>
+            <li class="active">
+            	<a href="install-configure-fogbow-dashboard">Install and configure Fogbow Dashboard</a>
+            </li>
+            <li >
+            	<a href="interoperability-behavioral-plugins">Interoperability and behavioral plugins</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Install and configure the Fogbow Dashboard</h1>
+<p>The <strong>Fogbow Dashboard</strong> (FD) is a web interface to the <strong>Fogbow Manager</strong> (FM). It provides an easy way to issue all the operations that can be performed through the <a href="http://www.fogbowcloud.org/fogbow-cli">Fogbow CLI</a>.</p>
+<h2>Installation</h2>
+<p>Before installing the FD, you need to install its depencies. In a debian-based distribution, this can be done as follows:</p>
+<div class="highlight"><pre><span></span>sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev libxml2-dev libxslt1-dev
+</pre></div>
+
+
+<p>To install the FD, download its lastest stable version from our repository:</p>
+<div class="highlight"><pre><span></span>wget https://github.com/fogbow/fogbow-dashboard/archive/master.zip
+</pre></div>
+
+
+<p>Then, decompress it:</p>
+<div class="highlight"><pre><span></span>unzip master.zip
+</pre></div>
+
+
+<h2>Configure</h2>
+<p>After the installation, assign the proper permissions to the <code>keystore</code> files</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> fogbow-dashboard-master
+chmod <span class="m">600</span> openstack_dashboard/local/.secret_key_store
+chmod <span class="m">600</span> openstack_dashboard/test/.secret_key_store
+</pre></div>
+
+
+<p>then, rename the file <code>openstack_dashboard/local/local_settings.py.example</code> to <code>openstack_dashboard/local/local_settings.py</code> and edit it according to the configuration of your FM.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Endpoint Manager</span>
+<span class="nv">FOGBOW_MANAGER_ENDPOINT</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:8182&#39;</span> <span class="c1"># Mandatory</span>
+
+<span class="nv">FOGBOW_FEDERATION_AUTH_ENDPOINT</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1"># Mandatory</span>
+<span class="c1"># types : keystone, opennebula, voms, raw_opennebula, raw_keystone, shibboleth, naf, ldap</span>
+<span class="nv">FOGBOW_FEDERATION_AUTH_TYPE</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1"># Mandatory</span>
+
+<span class="c1"># for naf federation auth</span>
+<span class="c1">## dashboard private key path</span>
+<span class="c1"># FOGBOW_NAF_DASHBOARD_PRIVATE_KEY_PATH=&#39;$path_to/dash_private_key.pem&#39;</span>
+<span class="c1">## dashboard private key path</span>
+<span class="c1"># FOGBOW_NAF_DASHBOARD_PUBLIC_KEY_PATH=&#39;$path_to/dash_public_key.pem&#39;</span>
+<span class="c1">## portal public key path</span>
+<span class="c1"># FOGBOW_NAF_PORTAL_PUBLIC_KEY_PATH=&#39;$path_to/portal_public_key.pem&#39;</span>
+
+<span class="c1"># for ldap federation auth</span>
+<span class="c1"># PRIVATE_KEY_PATH=&#39;$path_to/private_key.pem&#39;</span>
+<span class="c1"># PUBLIC_KEY_PATH=&#39;$path_to/public_key.pem&#39;</span>
+<span class="c1"># FOGBOW_LDAP_BASE=&#39;dc=lsd,dc=ufcg,dc=edu,dc=br&#39;</span>
+<span class="c1"># FOGBOW_LDAP_ENCRYPT=&#39;&#39;</span>
+
+<span class="c1"># custom_theme </span>
+<span class="c1"># customization of style</span>
+<span class="nv">CUSTOM_THEME</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="c1"># Communication between F_dashboard and F_manager</span>
+<span class="c1"># Default 15 | seconds </span>
+<span class="nv">TIMEOUT_POST</span><span class="o">=</span><span class="m">15</span>
+<span class="c1"># Default 15 | seconds</span>
+<span class="nv">TIMEOUT_DELETE</span><span class="o">=</span><span class="m">15</span>
+<span class="c1"># Default 60 | seconds</span>
+<span class="nv">TIMEOUT_GET</span><span class="o">=</span><span class="m">60</span>
+</pre></div>
+
+
+<p>After configuring, run the <code>./run_tests.sh</code> script to download and install the necessary dependencies.</p>
+<div class="highlight"><pre><span></span>bash
+./run_tests.sh
+</pre></div>
+
+
+<h2>Run</h2>
+<p>To start the FD, run agains the <code>run_tests.sh</code> script indicating the port that the dashboard will handle requests (<code>9000</code>).</p>
+<div class="highlight"><pre><span></span>nohup ./run_tests.sh --runserver localhost:9000 <span class="p">&amp;</span>
+</pre></div>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

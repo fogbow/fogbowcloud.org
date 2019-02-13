@@ -1,0 +1,247 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li >
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/the-big-picture.html">Install it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="the-big-picture">The Big Picture</a>
+            </li>
+            <li >
+            	<a href="install-configure-xmpp">Install and configure XMPP</a>
+            </li>
+            <li >
+            	<a href="install-configure-reverse-tunnel">Install and configure Fogbow Reverse Tunnel</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-manager">Install and configure Fogbow Manager</a>
+            </li>
+            <li class="active">
+            	<a href="install-configure-fogbow-rendezvous">Install and configure Fogbow Rendezvous</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-cli">Install and configure Fogbow CLI</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-dashboard">Install and configure Fogbow Dashboard</a>
+            </li>
+            <li >
+            	<a href="interoperability-behavioral-plugins">Interoperability and behavioral plugins</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Install and configure the Fogbow Rendezvous</h1>
+<p>The <strong>Fogbow Rendevouz</strong> (FR) is distributed in two forms: as source code, or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follows.</p>
+<h2>Pre-installation</h2>
+<div class="highlight"><pre><span></span><span class="c1"># If not installed previously</span>
+apt-get install maven
+<span class="c1"># If not installed previously</span>
+apt-get install openjdk-7-jdk
+</pre></div>
+
+
+<h2>Install from source</h2>
+<p>To get the lastest stable version of the component, download it from our repository:</p>
+<div class="highlight"><pre><span></span>wget https://github.com/fogbow/fogbow-rendezvous/archive/master.zip
+</pre></div>
+
+
+<p>Then, decompress it:</p>
+<div class="highlight"><pre><span></span>unzip master.zip
+</pre></div>
+
+
+<p>Now, install it with Maven:</p>
+<div class="highlight"><pre><span></span>cd fogbow-rendezvous-master
+mvn install -Dmaven.test.skip=true
+</pre></div>
+
+
+<h2>Install from debian package</h2>
+<p>Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:</p>
+<div class="highlight"><pre><span></span>dpkg -i fogbow-rendezvous_<span class="nv">$version</span>.deb
+</pre></div>
+
+
+<h2>Configure</h2>
+<p>After the installation, move the file <code>rendezvous.conf.example</code> to <code>rendezvous.conf</code> and edit its contents as appropriate:</p>
+<div class="highlight"><pre><span></span><span class="c1"># XMPP address of your Rendezvous Component</span>
+<span class="nv">xmpp_jid</span><span class="o">=</span>my-rendezvous.internal.mydomain
+
+<span class="c1"># XMPP component password</span>
+<span class="nv">xmpp_password</span><span class="o">=</span>rendezvous_password
+
+<span class="c1"># Address of the host running the XMPP server.</span>
+<span class="nv">xmpp_host</span><span class="o">=</span>IP_of_external.domain
+
+<span class="c1"># XMPP server port (to listen for components communication)</span>
+<span class="nv">xmpp_port</span><span class="o">=</span><span class="m">5347</span>
+
+<span class="c1"># The neighbors property indicates other existent rendezvous</span>
+<span class="c1"># which this component can exchange information about Fogbow Managers liveness.</span>
+<span class="nv">neighbors</span><span class="o">=</span>neighbor1@domain1.com,neighbor2@domain2.com
+
+<span class="c1"># The properties below are used to limit, in size, the rendezvous&#39; responses.</span>
+<span class="c1"># Maximum number of managers that should be returned in a whoIsAlive response.</span>
+<span class="nv">max_whoisalive_manager_count</span><span class="o">=</span><span class="m">100</span>
+<span class="c1"># Maximum number of managers that should be returned in a whoIsAliveSyncresponse.</span>
+<span class="nv">max_whoisalivesync_manager_count</span><span class="o">=</span><span class="m">100</span>
+<span class="c1"># Maximum number of neighbors that should be returned in a whoIsAliveSyncresponse.</span>
+<span class="nv">max_whoisalivesync_neighbor_count</span><span class="o">=</span><span class="m">100</span>
+
+<span class="c1"># The properties below control &quot;iamalive&quot; mechanism</span>
+<span class="c1"># The period in milliseconds between successive &quot;iamalive&quot; messages.</span>
+<span class="nv">iamalive_period</span><span class="o">=</span><span class="m">30000</span>
+<span class="c1"># How many &quot;iamalive&quot; messages should be lost before the Fogbow Rendezvous suspects</span>
+<span class="c1"># the Fogbow Manager is not available.</span>
+<span class="nv">iamalive_max_message_lost</span><span class="o">=</span><span class="m">3</span>
+
+<span class="c1"># The property below indicates the WhiteList pluging used by the rendevouz.</span>
+<span class="nv">white_list_class</span><span class="o">=</span>org.fogbowcloud.rendezvous.core.plugins.whitelist.AcceptAnyWhiteListPlugin
+</pre></div>
+
+
+<p>Remember that the <code>xmpp_jid</code> and <code>xmpp_password</code> must match the values assigned when installing the XMPP server (refer to the <a href="install-configure-xmpp.md">Install and configure XMPP</a> section of our documentation).</p>
+<p>After adding the FR to your XMPP server, you need to add a new entry in your DNS to resolve the FR name to the XMPP server IP address, as shown in the example below.</p>
+<div class="highlight"><pre><span></span>my-rendezvous.internal.mydomain        <span class="m">22</span>      IN      A       IP_of_external.domain
+</pre></div>
+
+
+<h2>Configure LOG</h2>
+<p>Rename the file <code>log4j.properties.example</code> to <code>log4j.properties</code> and edit it according your necessity.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Root logger option</span>
+log4j.rootLogger<span class="o">=</span>DEBUG, file
+
+<span class="c1"># Direct log messages to a log file</span>
+log4j.appender.file<span class="o">=</span>org.apache.log4j.RollingFileAppender
+<span class="c1"># log path</span>
+log4j.appender.file.File<span class="o">=</span>/var/log/fogbow-rendezvous/fogbow-rendezvous.log
+log4j.appender.file.MaxFileSize<span class="o">=</span>10MB
+log4j.appender.file.MaxBackupIndex<span class="o">=</span><span class="m">10</span>
+log4j.appender.file.layout<span class="o">=</span>org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern<span class="o">=</span>%d<span class="o">{</span>yyyy-MM-dd HH:mm:ss<span class="o">}</span> %-5p %c<span class="o">{</span><span class="m">1</span><span class="o">}</span>:%L - %m%n
+
+<span class="c1"># Different log levels for restlet and http-client</span>
+log4j.category.org.restlet<span class="o">=</span>INFO
+</pre></div>
+
+
+<h2>Run</h2>
+<p>To start the FR, run the <code>start-rendezvous</code> script inside <code>./bin</code>.</p>
+<div class="highlight"><pre><span></span>./bin/start-rendezvous
+</pre></div>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

@@ -1,0 +1,153 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/the-big-picture.html">Install it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="rational">Rational</a>
+            </li>
+            <li >
+            	<a href="architecture">Federation</a>
+            </li>
+            <li class="active">
+            	<a href="opportunism">Opportunism</a>
+            </li>
+            <li >
+            	<a href="green">Greenness</a>
+            </li>
+            <li >
+            	<a href="barter">Barter of wares</a>
+            </li>
+            <li >
+            	<a href="research">Research</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Opportunism</h1>
+<p>Opportunism is a feature that allows shared resources to be used as processing nodes of a private infrastructure-as-a-service cloud. Each shared resource can be configured to define when it is deemed usable by the cloud, <I>e.g.</I> when it is idle, or when the utilization is below some threshold. When the resources are in a state that allows them to be used by the cloud, then they show up to the cloud orchestrator and can be used to have VM instances allocated to them, otherwise they are removed from the cloud, in which case, any VM instance that is still running in the resource is either suspended or simply terminated.</p>
+<p>A <B>Fogbow Manager</B> can be used to federate an opportunistic cloud with other private clouds that also use shared resources in an opportunistic way, or that use dedicated resources in the conventional way.</p>
+<h2>Implementation</h2>
+<p>In the current implementation it is possible to create opportunistic private clouds managed by either the <B>OpenStack</B>) or the <B>CloudStack</B> orchestrators, although extending the software to support other orchestrators is trivial. The opportunistic cloud uses desktops in a LAN as computing nodes. We provide support for desktops running both Linux and Windows.</p>
+<h3>Monitoring</h3>
+<p>The monitoring is implemented using PowerNap, a configurable deamon that executes some actions when the system is idle. The idleness is determined by monitors that can be configured to watch CPU load, processes, mouse/keyboard, etc. For instance, one can configure PowerNap in such a way that resources are deemed usable by the cloud when there is no mouse/keyboard activity for a configurable period of time.</p>
+<p>PowerNap allows the customization of an action script that determines the action to be executed when the system is deemed idle. However, it does not have a way to define the action executed when the system is back in activity. Also, PowerNap only triggers the recovery action when running in powersave mode (ACTION_METHOD=0). Thus, we have modified PowerNap to allow the definition of a customized recovery action script. A new property named RECOVER_ACTION was added to the configuration file through which the user can set the path to the action script, and the module powernap.py was modified to load the value of this property. We have also modified the PowerNap daemon to use the recovery action in the best effort mode (ACTION_METHOD=4), that allows for customized actions.</p>
+<p>PowerNap has some monitors to check if the host is idle, but the monitor that checks for input devices (mouse and keyboard) just watches USB devices, so a new monitor named PS2Monitor was added to also check PS2 devices.</p>
+<p>With those changes, PowerNap is able to be used in the fogbow opportunistic component that allows shared resources to be used in a private cloud.</p>
+<h3>Action</h3>
+<p>The action part is implemented by two scripts (start-node and stop-node), one to start the compute service of the underlying cloud and another to stop it. We have scripts implementd for CloudStack and OpenStack. Typically, the start-node action script just enables network and compute services, while the stop-node action script looks for active VMs, stops them and disables the network and compute services.</p>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

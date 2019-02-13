@@ -1,0 +1,200 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li >
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/the-big-picture.html">Install it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="deployment-test">Deployment Test</a>
+            </li>
+            <li class="active">
+            	<a href="openstack-deployment-information">Openstack deployment information</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Openstack deployment information</h1>
+<p>Below we show where to find in the OpenStack dashboard the information to configure the Fogbow Manager (through the <strong>infrastructure.conf</strong> and the <strong>federation.conf</strong> files).</p>
+<h2>infrastructure.conf properties</h2>
+<p>The image below (starting from the right menu, then following the links: compute, access &amp; secure and compute) shows the URls of OpenStack APIs. Based on this information, we can configure these properties:</p>
+<div class="highlight"><pre><span></span>(based on the compute field)
+compute_novav2_url=http://truegrid-cloud:8774
+
+(based on the image field)
+compute_glancev2_url=http://truegrid-cloud:9292
+
+(based on the storage field)
+storage_v2_url=http://truegrid-cloud:8776
+
+(based on the network field)
+network_openstack_v2_url=http://truegrid-cloud:9696
+
+(based on the identify field)
+# when the local_identity_class or the federation_identity_class is using KeystoneV3IdentityPlugin.
+local_identity_url=http://truegrid-cloud:5000
+</pre></div>
+
+
+<p><img alt="alt logo" src="../images/openstack-accessand-security.png" title="Openstack Access &amp; Security"></p>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+
+<ul>
+<li>No dashboard Openstack * Identity (Right Menu) &gt;&gt; Users (Right Menu)  &gt;&gt; Choose the user (Main Content)</li>
+</ul>
+<p><img alt="alt logo" src="../images/openstack-project.png" title="Openstack Projects"></p>
+<div class="highlight"><pre><span></span><span class="n">No</span> <span class="n">dashboard</span> <span class="n">Openstack</span> * <span class="n">Identity</span> (<span class="n">Right</span> <span class="n">Menu</span>) &gt;&gt; <span class="n">Users</span> (<span class="n">Right</span> <span class="n">Menu</span>)  &gt;&gt; <span class="n">Choose</span> <span class="n">your</span> <span class="n">user</span> (<span class="n">Main</span> <span class="n">Content</span>)
+<span class="n">mapper_defaults_userId</span>=<span class="nv">$user_id</span>
+<span class="n">User</span> <span class="n">password</span>
+<span class="n">mapper_defaults_password</span>=<span class="nv">$user_pass</span>
+<span class="n">No</span> <span class="n">dashboard</span> <span class="n">Openstack</span> * <span class="n">Identity</span> (<span class="n">Right</span> <span class="n">Menu</span>) &gt;&gt; <span class="n">Projects</span> (<span class="n">Right</span> <span class="n">Menu</span>)  &gt;&gt; <span class="n">Choose</span> <span class="n">your</span> <span class="n">project</span> (<span class="n">Main</span> <span class="n">Content</span>)
+<span class="n">mapper_defaults_projectId</span>=<span class="nv">$project_id</span>
+
+<span class="n">If</span> <span class="n">local_identity_class</span> <span class="o">or</span>  <span class="n">federation_identity_class</span> <span class="k">is</span> <span class="n">using</span> <span class="n">KeystoneIdentityPlugin</span>. <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">in</span> <span class="n">the</span> <span class="n">Mapper</span> <span class="n">section:</span> <span class="n">http:</span>//<span class="n">www</span>.<span class="n">fogbowcloud</span>.<span class="n">org</span><span class="o">/</span><span class="n">interoperability-behavioral-plugins</span>
+<span class="n">Username</span>
+<span class="n">mapper_defaults_username</span>=<span class="nv">$username</span>
+<span class="n">User</span> <span class="n">password</span>
+<span class="n">mapper_defaults_password</span>=<span class="nv">$user_pass</span>
+<span class="n">Tenant</span> <span class="n">Name</span>
+<span class="n">mapper_defaults_tenantName</span>=<span class="nv">$tenant_name</span>
+</pre></div>
+
+
+<p>From the networking section of the OpenStack dashboard (starting from the right menu, then following the links: network, networks), as shown in the images below, it is possible to configure the following properties:</p>
+<div class="highlight"><pre><span></span><span class="n">Example</span><span class="o">:</span>
+<span class="n">compute_novav2_network_id</span><span class="o">=</span><span class="mi">15054</span><span class="n">e12</span><span class="o">-</span><span class="mi">0</span><span class="n">c41</span><span class="o">-</span><span class="mi">4</span><span class="n">ed4</span><span class="o">-</span><span class="n">b2e1</span><span class="o">-</span><span class="mi">2902</span><span class="n">a1ff0022</span>
+<span class="n">external_gateway_info</span><span class="o">=</span><span class="n">d97a0b8e</span><span class="o">-</span><span class="mi">574</span><span class="n">d</span><span class="o">-</span><span class="mi">482</span><span class="n">a</span><span class="o">-</span><span class="mi">8043</span><span class="o">-</span><span class="mi">0</span><span class="n">cbf95a29f0a</span>
+</pre></div>
+
+
+<p><img alt="alt logo" src="../images/openstack-network-details.png" title="Openstack Network"></p>
+<p><img alt="alt logo" src="../images/openstack-network-external-detail.png" title="Openstack Network External"></p>
+<p>From the images section of the OpenStack dashboard (starting from the right menu, then following the links: compute, images), as shown in the images below, it is possible to configure the id of an image to be used by virtual machines created by the fogbow, as indicated by the following property:</p>
+<div class="highlight"><pre><span></span>image_storage_static_fogbow-ubuntu=95187035-52e3-4fe7-b178-1628615375bd
+</pre></div>
+
+
+<p><img alt="alt logo" src="../images/openstack-image-details.png" title="Openstack Image Details"></p>
+<h2>For the federation.conf.</h2>
+<ul>
+<li>No dashboard Openstack * Compute (Right Menu) &gt;&gt; Access &amp; Secure (Right Menu)  &gt;&gt; Identity (Main Content).</li>
+</ul>
+<p><img alt="alt logo" src="../images/openstack-accessand-security.png" title="Openstack Access &amp; Security"></p>
+<div class="highlight"><pre><span></span><span class="n">Example</span><span class="o">:</span>
+<span class="n">federation_identity_url</span><span class="o">=</span><span class="n">http</span><span class="o">://</span><span class="n">truegrid</span><span class="o">-</span><span class="n">cloud</span><span class="o">:</span><span class="mi">5000</span>
+</pre></div>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

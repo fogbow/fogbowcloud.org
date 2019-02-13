@@ -1,0 +1,887 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li >
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/the-big-picture.html">Install it</a>
+          </li>
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="use-intro">Interfaces</a>
+            </li>
+            <li class="active">
+            	<a href="fogbow-api">RESTful API</a>
+            </li>
+            <li >
+            	<a href="fogbow-cli">Fogbow CLI</a>
+            </li>
+            <li >
+            	<a href="supported-authenticators">Supported Authenticators</a>
+            </li>
+            <li >
+            	<a href="fogbow-dashboard">Fogbow Dashboard</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Programmatic interface</h1>
+<p>Fogbow provides a RESTful API that implements OGF's OCCI standard. This API also extends the OCCI standard to incorporate functionalities that are only meaningful in the context of a federation of cloud providers.</p>
+<h4>Categories</h4>
+<p>The categories should be passed in the request headers with the key <strong>Category</strong> and the value, as in the example below.</p>
+<p><code>Category: {category value}</code></p>
+<p>Each category should be passed in a different header.</p>
+<h4>Links</h4>
+<p>The links should be passed in the request headers with the key <strong>Link</strong> and the value, as in the example below.</p>
+<p><code>Link: {link value}</code></p>
+<p>Each link should be passed in a different header.</p>
+<h4>OCCI Attributes</h4>
+<p>The OCCI attributes should be passed in the request headers with the key <strong>X-OCCI-Attribute</strong> and the attribute name and value as its value, as in the example below.</p>
+<p><code>X-OCCI-Attribute: org.fogbowcloud.order.resource-kind=value</code></p>
+<p>Each attribute should be passed in a different header.</p>
+<h2>Resources</h2>
+<h3>Order: /order</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Header fields</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/order</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch the list of user's orders</td>
+</tr>
+<tr>
+<td>/order/<strong>{order_id}</strong></td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch an order by its ID</td>
+</tr>
+<tr>
+<td>/order</td>
+<td>DELETE</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Delete all user's orders</td>
+</tr>
+<tr>
+<td>/order/<strong>{order_id}</strong></td>
+<td>DELETE</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Delete a specific order by ID</td>
+</tr>
+<tr>
+<td>/order</td>
+<td>POST</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token<br><strong>X-OCCI-Attributes</strong>: Attributes<br><strong>Link</strong>: Links<br><strong>Category</strong>: Categories</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Categories for Order</h4>
+<table>
+<thead>
+<tr>
+<th>Category name</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"</td>
+<td>required</td>
+<td>Compute category</td>
+</tr>
+<tr>
+<td><strong>{flavor_name}</strong>; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin"</td>
+<td>optional</td>
+<td>Flavor name category</td>
+</tr>
+<tr>
+<td><strong>{image_name}</strong>; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"</td>
+<td>required for compute</td>
+<td>Image name category</td>
+</tr>
+<tr>
+<td>fogbow_public_key; scheme="http://schemas.fogbowcloud/credentials#"; class="mixin"</td>
+<td>optional</td>
+<td>Public key category</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Link for Order</h4>
+<table>
+<thead>
+<tr>
+<th>Link name</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;/network/<strong>{network_id}</strong>>; rel="http://schemas.ogf.org/occi/infrastructure#network"; category="http://schemas.ogf.org/occi/infrastructure#network"</td>
+<td>optional</td>
+<td>Link</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Attributes for Order</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.fogbowcloud.request.instance-count</td>
+<td>int</td>
+<td>required</td>
+<td>Number of instances to be created</td>
+</tr>
+<tr>
+<td>org.fogbowcloud.request.type</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of the request: one-time or persistent</td>
+</tr>
+<tr>
+<td>org.fogbowcloud.request.extra-user-data</td>
+<td>string</td>
+<td>optional</td>
+<td><a  href="http://cloudinit.readthedocs.io/en/latest/topics/format.html" target="_blank">User data in cloud-init format</a>. Base64 encoded</td>
+</tr>
+<tr>
+<td>org.fogbowcloud.request.extra-user-data-content-type</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of the user data as specified in cloud-init documentation</td>
+</tr>
+<tr>
+<td>org.fogbowcloud.order.storage-size</td>
+<td>int</td>
+<td>required for storage</td>
+<td>Storage size in GB</td>
+</tr>
+<tr>
+<td>occi.network.address</td>
+<td>string</td>
+<td>required for network</td>
+<td>Network address in CIDR notation</td>
+</tr>
+<tr>
+<td>occi.network.gateway</td>
+<td>string</td>
+<td>optional</td>
+<td>Network gateway</td>
+</tr>
+<tr>
+<td>occi.network.allocation</td>
+<td>string</td>
+<td>optional</td>
+<td>Accepted values: dynamic or static</td>
+</tr>
+<tr>
+<td>org.fogbowcloud.order.resource-kind</td>
+<td>string</td>
+<td>required</td>
+<td>Kind of resource to be created: compute, storage or network</td>
+</tr>
+<tr>
+<td>org.fogbowcloud.request.requirements</td>
+<td>string</td>
+<td>optional</td>
+<td>Expression with minimum requirements to create resources<br>(See below)</td>
+</tr>
+<tr>
+<td>org.openstack.credentials.publickey.data</td>
+<td>string</td>
+<td>optional</td>
+<td>Public key data</td>
+</tr>
+<tr>
+<td>org.openstack.credentials.publickey.name</td>
+<td>string</td>
+<td>optional</td>
+<td>Public key name</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Requirements</h4>
+<p>Requirements is an expression containing information used on the creation of an instance.
+The requirements are separated by <code>&amp;&amp;</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Used in order of type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Glue2CloudComputeManagerID</td>
+<td><strong>compute</strong><br><strong>storage</strong><br><strong>network</strong></td>
+<td>Sets on which manager the order is to be used</td>
+</tr>
+<tr>
+<td>Glue2vCPU</td>
+<td><strong>compute</strong></td>
+<td>Sets the number of vCPUs</td>
+</tr>
+<tr>
+<td>Glue2RAM</td>
+<td><strong>compute</strong></td>
+<td>Sets the amount of vRAM</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example</p>
+<div class="highlight"><pre><span></span>&quot;Glue2CloudComputeManagerID==&quot;manager-id&quot; &amp;&amp; Glue2vCPU &gt;= 1 &amp;&amp; Glue2RAM &gt;= 1024&quot;
+</pre></div>
+
+
+<p><br></p>
+<h4>Examples:</h4>
+<p>Create order type compute.</p>
+<div class="highlight"><pre><span></span>POST /order
+Category: order<span class="p">;</span> <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/request#&quot;</span><span class="p">;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>   
+Category: fogbow_small<span class="p">;</span> <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/template/resource#&quot;</span><span class="p">;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;mixin&quot;</span>
+Category: fogbow-ubuntu<span class="p">;</span> <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/template/os#&quot;</span><span class="p">;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;mixin&quot;</span>   
+Category: fogbow_public_key<span class="p">;</span> <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/credentials#&quot;</span><span class="p">;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;mixin&quot;</span>   
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count<span class="o">=</span><span class="m">1</span>
+X-OCCI-Attribute: org.fogbowcloud.request.type<span class="o">=</span>one-time
+X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data<span class="o">={</span>base64 encoded script<span class="o">}</span>
+X-OCCI-Attribute: org.fogbowcloud.request.extra-user-data-content-type<span class="o">=</span>text/x-shellscript
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind<span class="o">=</span>compute
+X-OCCI-Attribute: org.fogbowcloud.request.requirements<span class="o">=</span><span class="s2">&quot;Glue2CloudComputeManagerID==\&quot;manager.one.member.com\&quot;&quot;</span> 
+X-OCCI-Attribute: org.openstack.credentials.publickey.data<span class="o">={</span>public_key<span class="o">}</span>
+X-OCCI-Attribute: org.openstack.credentials.publickey.name<span class="o">=</span>mypublickey
+Link: &lt;/network/network00&gt;<span class="p">;</span> <span class="nv">rel</span><span class="o">=</span><span class="s2">&quot;http://schemas.ogf.org/occi/infrastructure#network&quot;</span><span class="p">;</span> <span class="nv">category</span><span class="o">=</span><span class="s2">&quot;http://schemas.ogf.org/occi/infrastructure#network&quot;</span>
+</pre></div>
+
+
+<p>Create order type storage.</p>
+<div class="highlight"><pre><span></span>POST /order
+Category: order<span class="p">;</span> <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/request#&quot;</span><span class="p">;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count<span class="o">=</span><span class="m">1</span>
+X-OCCI-Attribute: org.fogbowcloud.request.type<span class="o">=</span>one-time
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind<span class="o">=</span>storage
+X-OCCI-Attribute: org.fogbowcloud.order.storage-size<span class="o">=</span><span class="m">10</span>
+</pre></div>
+
+
+<p>Create order type network.</p>
+<div class="highlight"><pre><span></span>POST /order
+Category: order<span class="p">;</span> <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/request#&quot;</span><span class="p">;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>
+X-OCCI-Attribute: org.fogbowcloud.request.instance-count<span class="o">=</span><span class="m">1</span>
+X-OCCI-Attribute: org.fogbowcloud.request.type<span class="o">=</span>one-time
+X-OCCI-Attribute: org.fogbowcloud.order.resource-kind<span class="o">=</span>network
+X-OCCI-Attribute: occi.network.address<span class="o">=</span><span class="m">10</span>.10.10.10/24
+X-OCCI-Attribute: occi.network.gateway<span class="o">=</span><span class="m">10</span>.10.10.1
+X-OCCI-Attribute: occi.network.allocation<span class="o">=</span>dynamic
+</pre></div>
+
+
+<h3>Compute: /compute</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Header fields</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/compute</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch the list of user's computes</td>
+</tr>
+<tr>
+<td>/compute/{compute_id}</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch an compute by its ID</td>
+</tr>
+<tr>
+<td>/compute/{compute_id}</td>
+<td>DELETE</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Delete a specific compute by ID</td>
+</tr>
+<tr>
+<td>/compute<br><strong>(DEPRECATED)</strong></td>
+<td>POST</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token<br><strong>X-OCCI-Attributes</strong>: Attributes<br><strong>Categories</strong>: Categories</td>
+<td>Create a compute</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Categories for Compute</h4>
+<table>
+<thead>
+<tr>
+<th>Category name</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compute; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"</td>
+<td>required</td>
+<td>Compute category</td>
+</tr>
+<tr>
+<td>flavor_name; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin"</td>
+<td>required</td>
+<td>Flavor name category</td>
+</tr>
+<tr>
+<td>image_name; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"</td>
+<td>required</td>
+<td>Image name category</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Attributes for Compute</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute name</th>
+<th>Type</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.fogbowcloud.request.extra-user-data</td>
+<td>string</td>
+<td>optional</td>
+<td><a  href="http://cloudinit.readthedocs.io/en/latest/topics/format.html" target="_blank">User data in cloud-init format</a>. Base64 encoded</td>
+</tr>
+<tr>
+<td>org.fogbowcloud.request.extra-user-data-content-type</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of the user data as specified in cloud-init documentation</td>
+</tr>
+<tr>
+<td>org.openstack.credentials.publickey.data</td>
+<td>string</td>
+<td>optional</td>
+<td>Public key data</td>
+</tr>
+<tr>
+<td>org.openstack.credentials.publickey.name</td>
+<td>string</td>
+<td>optional</td>
+<td>Public key name</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Storage: /storage</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Header fields</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/storage</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch the list of user's storages</td>
+</tr>
+<tr>
+<td>/storage/{storage_id}</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch an storage by its ID</td>
+</tr>
+<tr>
+<td>/storage/{storage_id}</td>
+<td>DELETE</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Delete a specific storage by ID</td>
+</tr>
+<tr>
+<td>/storage</td>
+<td>POST</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token<br><strong>X-OCCI-Attributes</strong>: Attributes<br><strong>Categories</strong>: Categories</td>
+<td>Create a storage</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Categories for Storage</h4>
+<table>
+<thead>
+<tr>
+<th>Category name</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"</td>
+<td>required</td>
+<td>Storage category</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Attributes for Storage</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute name</th>
+<th>Type</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>occi.storage.size</td>
+<td>int</td>
+<td>required</td>
+<td>Storage size</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Network: /network</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Header fields</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/network</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch the list of user's networks</td>
+</tr>
+<tr>
+<td>/network/{network_id}</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch an network by its ID</td>
+</tr>
+<tr>
+<td>/network/{network_id}</td>
+<td>DELETE</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Delete a specific network by ID</td>
+</tr>
+<tr>
+<td>/network</td>
+<td>POST</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token<br><strong>X-OCCI-Attributes</strong>: Attributes<br><strong>Categories</strong>: Categories</td>
+<td>Create a network</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Categories for Network</h4>
+<table>
+<thead>
+<tr>
+<th>Category name</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>network; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"</td>
+<td>required</td>
+<td>Storage category</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Attributes for Network</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute name</th>
+<th>Type</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>occi.network.address</td>
+<td>String</td>
+<td>required</td>
+<td>IP address in CIDR notation</td>
+</tr>
+<tr>
+<td>occi.network.gateway</td>
+<td>String</td>
+<td>optional</td>
+<td>IP address of network gateway</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Attachment: /storage/link</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Header fields</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/storage/link</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch the list of user's attachments</td>
+</tr>
+<tr>
+<td>/storage/link/{storagelink_id}</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch an attachment by its ID</td>
+</tr>
+<tr>
+<td>/storage/link/{storagelink_id}</td>
+<td>DELETE</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Delete a specific attachment by ID</td>
+</tr>
+<tr>
+<td>/storage/link/</td>
+<td>POST</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token<br><strong>X-OCCI-Attributes</strong>: Attributes<br><strong>Categories</strong>: Categories</td>
+<td>Create a attachment</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Categories for attachment</h4>
+<table>
+<thead>
+<tr>
+<th>Category name</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storagelink; scheme="http://schemas.ogf.org/occi/infrastructure#"; class="kind"</td>
+<td>required</td>
+<td>Storage category</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>OCCI Attributes for attachment</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute name</th>
+<th>Type</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>occi.core.source</td>
+<td>String</td>
+<td>required</td>
+<td>Compute id</td>
+</tr>
+<tr>
+<td>occi.core.target</td>
+<td>String</td>
+<td>required</td>
+<td>Storage id</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Members: /member</h3>
+<!-- <svg width="34" height="17">
+    <rect x="0" y="0" rx="2" ry="2" width="34" height="16" style="fill:green;opacity:0.5" />
+    <text x="3" y="13" fill="white" font-family="Courier New">GET</text>
+</svg> /member -->
+
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Header fields</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/member</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token<br><strong>Content-Type:</strong> 'text/occi'</td>
+<td>Fetch the list of federation members</td>
+</tr>
+<tr>
+<td>/member/{member_id}/quota</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch an quota of member by it's ID</td>
+</tr>
+<tr>
+<td>/member/{member_id}/usage</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch an usage of member by it's ID</td>
+</tr>
+<tr>
+<td>/member/accounting/compute</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch a accounting of compute</td>
+</tr>
+<tr>
+<td>/member/accounting/storage</td>
+<td>GET</td>
+<td><strong>X-Auth-Token:</strong> User's authentication token</td>
+<td>Fetch a accounting of storage</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

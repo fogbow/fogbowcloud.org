@@ -1,0 +1,222 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li >
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/the-big-picture.html">Install it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="the-big-picture">The Big Picture</a>
+            </li>
+            <li >
+            	<a href="install-configure-xmpp">Install and configure XMPP</a>
+            </li>
+            <li class="active">
+            	<a href="install-configure-reverse-tunnel">Install and configure Fogbow Reverse Tunnel</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-manager">Install and configure Fogbow Manager</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-rendezvous">Install and configure Fogbow Rendezvous</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-cli">Install and configure Fogbow CLI</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-dashboard">Install and configure Fogbow Dashboard</a>
+            </li>
+            <li >
+            	<a href="interoperability-behavioral-plugins">Interoperability and behavioral plugins</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Install and configure the Fogbow Reverse Tunnel</h1>
+<p>The reverse tunneling service provides public IP access to virtual machines created in the private cloud, when the local cloud offers only private IPs to these virtual machines. The Fogbow Reverse Tunnel is distributed in two forms: as source code, or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follows.</p>
+<h2>Pre-installation</h2>
+<div class="highlight"><pre><span></span><span class="c1"># If not installed previously</span>
+apt-get install maven
+<span class="c1"># If not installed previously</span>
+apt-get install openjdk-7-jdk
+</pre></div>
+
+
+<h2>Install from source</h2>
+<p>To get the lastest stable version of the component, download it from our repository:</p>
+<div class="highlight"><pre><span></span>wget https://github.com/fogbow/fogbow-reverse-tunnel/archive/master.zip
+</pre></div>
+
+
+<p>Then, decompress it:</p>
+<div class="highlight"><pre><span></span>unzip master.zip
+</pre></div>
+
+
+<p>Now, install it with Maven:</p>
+<div class="highlight"><pre><span></span>cd fogbow-reverse-tunnel-master
+mvn install -Dmaven.test.skip=true
+</pre></div>
+
+
+<h2>Install from debian package</h2>
+<p>Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:</p>
+<div class="highlight"><pre><span></span>dpkg -i fogbow-reverse-tunnel_<span class="nv">$version</span>.deb
+</pre></div>
+
+
+<h2>Configure</h2>
+<p>After the installation, rename the file <code>reverse-tunnel.conf.example</code> to <code>reverse-tunnel.conf</code> and, if necessary, edit its contents. Below we list the default values:</p>
+<div class="highlight"><pre><span></span><span class="nv">http_port</span><span class="o">=</span><span class="m">2223</span>
+<span class="nv">tunnel_port_range</span><span class="o">=</span><span class="m">2224</span>:4224
+<span class="nv">ports_per_ssh_server</span><span class="o">=</span><span class="m">5</span>
+<span class="nv">external_port_range</span><span class="o">=</span><span class="m">20000</span>:30000
+<span class="nv">host_key_path</span><span class="o">=</span>hostkey.ser
+<span class="nv">idle_token_timeout</span><span class="o">=</span><span class="m">86400</span>
+<span class="nv">check_ssh_servers_interval</span><span class="o">=</span><span class="m">120</span>
+</pre></div>
+
+
+<p>The <code>http_port</code> property defines the port used to run the HTTP service of the Reverse Tunnel. This service handles requests to create and get tunneled ports. This port must be accessible by the Fogbow Manager and by the virtual machines, created by the Fogbow Manager.</p>
+<p>The reverse tunnel service employs multiple tunnel servers to balance the service load. This service allocates one port to each of these servers. The <code>tunnel_port_range</code> property defines the range of servers' ports. This range of ports must be accessible by the Fogbow Manager and by the virtual machines, created by the Fogbow Manager.</p>
+<p>The <code>ports_per_ssh_server</code> property defines the number of ssh ports to be allocated in each server.</p>
+<p>The <code>external_port_range</code> property defines the range of public tunneled ports. The ports within this range must be accessible from external networks.</p>
+<p>The <code>host_key_path</code> property defines the path to ssh key to be generated by the SSH Server. Setting the key path is important to have the SSH Server using the same key after restarting. The host key is used to make sure that the server is always the same when establishing new connections.</p>
+<p>The <code>idle_token_timeout</code> property defines the expiration time of a tunnel port token. A token is associated with tunneled port each tunneled. The token expires if it is not used for the past <code>idle_token_timeout</code> seconds. After expiration, the port is reclaimed and can be used by another request.</p>
+<p>The <code>check_ssh_servers_interval</code> property defines the period interval in seconds to verify token expirations.</p>
+<h2>Configure LOG</h2>
+<p>Rename the file <code>log4j.properties.example</code> to <code>log4j.properties</code> and edit it according your necessity.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Root logger option</span>
+log4j.rootLogger<span class="o">=</span>DEBUG, file
+
+<span class="c1"># Direct log messages to a log file</span>
+log4j.appender.file<span class="o">=</span>org.apache.log4j.RollingFileAppender
+<span class="c1"># log path</span>
+log4j.appender.file.File<span class="o">=</span>/var/log/fogbow-reverse-tunnel/fogbow-reverse-tunnel.log
+log4j.appender.file.MaxFileSize<span class="o">=</span>10MB
+log4j.appender.file.MaxBackupIndex<span class="o">=</span><span class="m">10</span>
+log4j.appender.file.layout<span class="o">=</span>org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern<span class="o">=</span>%d<span class="o">{</span>yyyy-MM-dd HH:mm:ss<span class="o">}</span> %-5p %c<span class="o">{</span><span class="m">1</span><span class="o">}</span>:%L - %m%n
+
+<span class="c1"># Different log levels for restlet and http-client</span>
+log4j.category.org.restlet<span class="o">=</span>INFO
+</pre></div>
+
+
+<h2>Run</h2>
+<p>To start the reverse tunnel server, run the <code>start-tunnel-server</code> script inside the root directory of the project.</p>
+<div class="highlight"><pre><span></span>bash start-tunnel-server
+</pre></div>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

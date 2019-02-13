@@ -1,0 +1,318 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li >
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/the-big-picture.html">Install it</a>
+          </li>
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="use-intro">Interfaces</a>
+            </li>
+            <li >
+            	<a href="fogbow-api">RESTful API</a>
+            </li>
+            <li >
+            	<a href="fogbow-cli">Fogbow CLI</a>
+            </li>
+            <li >
+            	<a href="supported-authenticators">Supported Authenticators</a>
+            </li>
+            <li class="active">
+            	<a href="fogbow-dashboard">Fogbow Dashboard</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Usage</h1>
+<h2><strong>Login</strong></h2>
+<p>Depending on selected type of authentication, the Login Page will have diferent fields to be informed. below you can see some of these types:</p>
+<p><img alt="alt logo" src="../images/dashboard/keystoneLoginPage.png" title="Keystone Login">
+<img alt="alt logo" src="../images/dashboard/vomsLoginPage.png" title="Voms Login"></p>
+<p>Inform your credentials acording to the authentication type and click on "Sign in" button. If your credential are valid, you will be redirected to the initial page of Fogbow Dashboard.</p>
+<p>The first page shows a list of <strong>Federation's Members</strong> and some informations, like Shared CPU Quota, vCPU in use, total of used memory for each member, and other ones. The "Timestamp" column (highlighted 2) holds the time when these informations had been updated. If you want to get actual values, you should use the "Refresh" button (highlighted 1) at upper left side.</p>
+<p><img alt="alt logo" src="../images/dashboard/membersInitialPage.png" title="Initial page"></p>
+<p>On the upper right side there are some helpfull information/functions:</p>
+<p>3 - <strong>Logged in as</strong> - Shows the name of the active user in this session.</p>
+<p>4 - <strong>Setting</strong> - Allows you to change the language of the Dashboard.</p>
+<p>5 - <strong>Help</strong> - Shows the Fogbow Cloud Documentation section.</p>
+<p>6 - <strong>Sign out</strong> - Ends actual session.</p>
+<h2><strong>Order</strong></h2>
+<p>To request any type of resource (compute, storage or network) you need to create an order on Dashboard. To do this, select <strong>"Orders"</strong> on left side menu. It will open the page that you can see on the image below.</p>
+<p><img alt="alt logo" src="../images/dashboard/ordersPage.png" title="Orders page"></p>
+<p>Before demonstrate how to create new orders, we will explain some informations and functionalities of this page:</p>
+<p>1 - <strong>Select all Orders</strong>: Select all visible orders on page;</p>
+<p>2 - <strong>Select individual Order</strong>: Select the specific Order of this line;</p>
+<p>3 - <strong>Order ID</strong>: This is a link to open the order details page (see <a href="#order-details-page">link Order Details Page</a>);</p>
+<p>4 - <strong>Order state</strong>: Indicates actual state of the order. Can have the following values: OPEN, PENDING, FULFILLED, SPAWNING, CLOSED and DELETED;</p>
+<p>5 - <strong>Resource Kind</strong>: Indicates the resource's type, that can be: compute, storage and network;</p>
+<p>6 - <strong>Instance ID (link)</strong>: This is a link to open the instance details page (see <a href="#instances">link Instances</a>);</p>
+<p>7 - <strong>Terminate Order button</strong>: Terminate the order of this line.</p>
+<p>8 - <strong>Filter</strong>: Filter by all columns. If any column contains the value informed on this field, the line will be displayed.</p>
+<p>9 - <strong>Create Order button</strong>: Opens a modal to create a new order;</p>
+<p>10 - <strong>Terminate Orders button</strong>: Terminates selected orders. Available when one or more orders are selected. Otherwise, is disabled;</p>
+<h3><strong>Creating a new Order</strong></h3>
+<p>To create a new order, click on <strong>Create Order</strong> button (5). A modal will be open.</p>
+<p>By default, compute is select as resource type, as you can see on field 2.</p>
+<p><img alt="alt logo" src="../images/dashboard/createComputeModal.png" title="Create new Order"></p>
+<p>For compute resource you can choose: </p>
+<p>1 - <strong>Number of Orders</strong> (Required) - Number of compute resources to create;</p>
+<p>3 - <strong>Minimal number of vCPUs</strong> - Minimal number of CPU Cores that you want for your VM(s).
+If you place value 2, for example, the Fogbow manager will try to create VM(s) with 2 or more cores;</p>
+<p>4 - <strong>Minimal amount of RAM in MB</strong> - Minimal amount of RAM memory for VMs. As well as minimal vCPU attribute, 
+Fogbow Manager will try to create VM(s) with this amount of RAM memory or more; </p>
+<p>5 - <strong>Members</strong> - This combo box contains all members of the Federation. By default, is selected "Try first local, then any". 
+It means that the Fogbow Manager will first try to create the resource(s) on local cloud. If this cloud doesn't have available resources
+or the user has reached his quota limits for this cloud, then Fogbow Manager will request this resource(s) on another members;</p>
+<p>6 - <strong>Advanced requirements</strong> - You can specify the vCPU size, amount of RAM memory and the Location in Glue2 format. The advantage of
+this is that you can define more powerful requirements for your request. For example, you can ask VM with at least 2 cores but
+no more than 4. Logical operators such AND, OR, EQUAL, NOT EQUAL, LESS THAN, GREATER THAN are accepted;</p>
+<p>Here are some examples of Glue2 requests: </p>
+<div class="highlight"><pre><span></span>- Glue2vCPU &amp;gt; 1 &amp;amp;&amp;amp; Glue2vCPU &amp;lt; 5 &amp;amp;&amp;amp; Glue2RAM == 2048  -&amp;gt; Only VMs with 2 to 4 cores and exactly 2 MB of RAM.
+- Glue2RAM &amp;gt;= 2048  -&amp;gt; Any number of cores and at least 2 MB of RAM.
+- Glue2RAM &amp;gt;= 2048 &amp;amp;&amp;amp; Glue2CloudComputeManagerID==&quot;cloud.host.org&quot; -&amp;gt; Any number of cores, at least 2 MB of RAM and only on &quot;cloud.host.org&quot; location.
+</pre></div>
+
+
+<p>7 - <strong>Image</strong> - OS Image to be deployed on VM. You can chose a existing image on cloud service or pass a image from http repository, for example http://my.repository.org/my-image.qcow2, that will be uplodate to the cloud host.</p>
+<p>8 - <strong>Network Id</strong> - You can select a specific network in which the VM will be attached. This field shows only networks created by this user and with the same location selected on field 5. If no location was chose (5), then the new VM will be created on network location. VMs must have the same location of the network.</p>
+<p>9 - <strong>Type</strong> (Required) - There are two options for this field: </p>
+<div class="highlight"><pre><span></span>* one-time: The resource will be created one time only. If further, for any reason, it fails, a new resource won&#39;t be requested and the order will be closed.
+* persistent: The resource will be created many times as need. If further, for any reason, it fails, it will be replaced by a new one.
+</pre></div>
+
+
+<p>10 - <strong>Extra user data file type</strong> - If you want to deploy a new instance with personal user data, like bash scripts to do initial configurations for example, you need to inform here the file type. Accepted values are: text/x-shellscript, text/x-include-once-url, text/x-include-url, text/cloud-config-archive, text/upstart-job, text/cloud-config and text/cloud-boothook.</p>
+<p>11 - <strong>Extra user data file</strong> - Here you should choose the user data file to upload. Must be the same type that was chose on item 10.</p>
+<p>12 - <strong>Public key</strong> - To SSH connections with the VM you need to inform your public key here.</p>
+<p>If you want to create a Storage Resource, you must select <strong>"storage"</strong> at field 2. The options for Storage are:</p>
+<p><img alt="alt logo" src="../images/dashboard/createStorageModal.png" title="Create new Storage"></p>
+<p>1 - <strong>Number of Orders</strong> (Required) - Number of storage resources to create;</p>
+<p>3 - <strong>Volume Size (in GB)</strong> - Size of the storage in GigaBytes;</p>
+<p>4 - <strong>Members</strong> - This combo box contains all members of the Federation. By default, is selected "Try first local, then any". 
+It means that the Fogbow Manager will first try to create the resource(s) on local cloud. If this cloud doesn't have available resources
+or the user has reached his quota limits for this cloud, then Fogbow Manager will request this resource(s) on another members;</p>
+<p>5 - <strong>Advanced requirements</strong> - You can the Location in Glue2 format. Logical operators such EQUAL or NOT EQUAL are accepted;</p>
+<div class="highlight"><pre><span></span>- Glue2CloudComputeManagerID==&quot;cloud.host.org&quot; -&amp;gt; Storage will be created only on &quot;cloud.host.org&quot; location.
+- Glue2CloudComputeManagerID!=&quot;cloud.host.org&quot; -&amp;gt; Storage will be created in any place except on &quot;cloud.host.org&quot; location.
+</pre></div>
+
+
+<p>6 - <strong>Type</strong> (Required) - There are two options for this field: </p>
+<div class="highlight"><pre><span></span>* one-time: The resource will be created one time only. If further, for any reason, it fails, a new resource won&#39;t be requested and the order will be closed.
+* persistent: The resource will be created many times as need. If further, for any reason, it fails, it will be replaced by a new one.
+</pre></div>
+
+
+<p>If you want to create a Network Resource, you must select <strong>"network"</strong> at field 2. The options for Network are:</p>
+<p><img alt="alt logo" src="../images/dashboard/createNetworkModal.png" title="Create new Network"></p>
+<p>1 - <strong>Number of Orders</strong> (Required) - Number of network resources to create;</p>
+<p>3 - <strong>CDIR</strong> (Required) - Here you should inform the network mask in CIDR format. Example: 10.20.0.0/24.</p>
+<p>4 - <strong>Gateway</strong> (Required) - Here you should inform the network gateway. It must be a valid address for the network mask given by you on field 3. Example: 10.20.0.1.</p>
+<p>5 - <strong>Allocation</strong> - Determines whether VMs can be dynamically allocated (after network have been created) or not. Possible values are "Dynamic" or "Static".</p>
+<p>6 - <strong>Members</strong> - This combo box contains all members of the Federation. By default, is selected "Try first local, then any". 
+It means that the Fogbow Manager will first try to create the resource(s) on local cloud. If this cloud doesn't have available resources
+or the user has reached his quota limits for this cloud, then Fogbow Manager will request this resource(s) on another members;</p>
+<p>7 - <strong>Advanced requirements</strong> - You can the Location in Glue2 format. Logical operators such EQUAL or NOT EQUAL are accepted.</p>
+<div class="highlight"><pre><span></span>- Glue2CloudComputeManagerID==&quot;cloud.host.org&quot; -&amp;gt; Network will be created only on &quot;cloud.host.org&quot; location.
+- Glue2CloudComputeManagerID!=&quot;cloud.host.org&quot; -&amp;gt; Network will be created in any place except on &quot;cloud.host.org&quot; location.
+</pre></div>
+
+
+<p>8 - <strong>Type</strong> (Required) - There are two options for this field: </p>
+<div class="highlight"><pre><span></span>* one-time: The resource will be created one time only. If further, for any reason, it fails, a new resource won&#39;t be requested and the order will be closed.
+* persistent: The resource will be created many times as need. If further, for any reason, it fails, it will be replaced by a new one.
+</pre></div>
+
+
+<h3><strong>Order Details Page</strong></h3>
+<p><img alt="alt logo" src="../images/dashboard/orderDetailsPage.png" title="Order Details"></p>
+<p>All values that you chose on creation modal will be displayed here. Which fields are displayed depends on the type of resource ordered. The highlighted area will contain the resource's id, if it was already created. This image shows a order that do not have a resource ID yet. </p>
+<h2><strong>Instances</strong></h2>
+<p>At this section you can see all instances related to your user and take some actions on these ones.</p>
+<p><img alt="alt logo" src="../images/dashboard/instancesPage.png" title="Intances Initial Page"></p>
+<p>1 - <strong>Select All</strong> - Select all visible instances on page;</p>
+<p>2 - <strong>Select specific instance</strong> - Select the specific instance on this line;</p>
+<p>3 - <strong>Instance ID (Link)</strong> - This is a link to open instance details page (see image below);</p>
+<p>4 - <strong>Terminate Intance</strong> - This button terminate the related instance;</p>
+<p>5 - <strong>Terminate instances</strong> - This button terminates selected instances. Available when one or more orders are selected. Otherwise, is disabled;</p>
+<p>6 - <strong>Filter</strong> - Filter by instance ID.</p>
+<p>If you click on field 3, the instance details page will be open. This page shows the following informations:</p>
+<p><img alt="alt logo" src="../images/dashboard/instanceDatailsPage.png" title="Intance Details"></p>
+<p>At beginning, the instance is in <strong>inactive</strong> state. Further, if everything go right, it will be in <strong>active</strong> state. It means that the instance is doing initial configurations for the cloud and soon will be prepared for SSH connections. You can see these SSH informations on field 1, <strong>Public ssh address</strong>. In case you have passed user data to create extra ports, these ports will be displayed on field 2, <strong>Extra ports</strong>.</p>
+<h2><strong>Volumes</strong></h2>
+<p>At this section you can see all volumes related to your user and take some actions on these ones.</p>
+<p><img alt="alt logo" src="../images/dashboard/volumesPage.png" title="Volumes Initial Page"></p>
+<p>1 - <strong>Select All</strong> - Select all visible storage on page;</p>
+<p>2 - <strong>Select specific volume</strong> - Select the specific storage on this line;</p>
+<p>3 - <strong>Volume ID (Link)</strong> - This is a link to open storage details page (see image below);</p>
+<p>4 - <strong>Terminate volume</strong> - This button terminate the related volume;</p>
+<p>5 - <strong>Terminate volumes</strong> - This button terminates selected volumes. Available when one or more orders are selected. Otherwise, is disabled;</p>
+<p>6 - <strong>Filter</strong> - Filter by volume ID.</p>
+<p>If you click on field 3, the volume details page will be open. This page shows the following informations:</p>
+<p><img alt="alt logo" src="../images/dashboard/volumeDetailsPage.png" title="Volume Details"></p>
+<h2><strong>Networks</strong></h2>
+<p>At this section you can see all network related to your user and take some actions on these ones.</p>
+<p><img alt="alt logo" src="../images/dashboard/networksPage.png" title="Networks Initial Page"></p>
+<p>1 - <strong>Select All</strong> - Select all visible network on page;</p>
+<p>2 - <strong>Select specific network</strong> - Select the specific network on this line;</p>
+<p>3 - <strong>Volume ID (Link)</strong> - This is a link to open network details page (see image below);</p>
+<p>4 - <strong>Terminate network</strong> - This button terminate the related network;</p>
+<p>5 - <strong>Terminate networks</strong> - This button terminates selected networks. Available when one or more orders are selected. Otherwise, is disabled;</p>
+<p>6 - <strong>Filter</strong> - Filter by network ID.</p>
+<p>If you click on field 3, the network details page will be open. This page shows the following informations:</p>
+<p><img alt="alt logo" src="../images/dashboard/networkDetailsPage.png" title="Network Details"></p>
+<h2><strong>Attachments</strong></h2>
+<p>At this section you can see all attachments related to your user, take some actions on these and creat new ones. Attachments are links between <strong>Instances</strong> and <strong>Storages</strong>. Only through an attachment an Instance can directly access a storage to perform reading and writing actions. </p>
+<p><img alt="alt logo" src="../images/dashboard/attachmentsPage.png" title="Attachments Initial Page"></p>
+<p>1 - <strong>Select All</strong> - Select all visible attachment on page;</p>
+<p>2 - <strong>Select specific attachment</strong> - Select the specific attachment on this line;</p>
+<p>3 - <strong>Attachment ID (Link)</strong> - This is a link to open attachment details page (see image below);</p>
+<p><img alt="alt logo" src="../images/dashboard/attachmentDetailsPage.png" title="Attachment Details"></p>
+<p>4 - <strong>Terminate attachment</strong> - This button terminate the related attachment;</p>
+<p>5 - <strong>Terminate attachments</strong> - This button terminates selected attachment. Available when one or more orders are selected. Otherwise, is disabled;</p>
+<p>Obs. When you delete an attachment, only the link between the instance and storage will be deleted. These two resource will remain on cloud.</p>
+<p>6 - <strong>Create attachment</strong> - </p>
+<p>7 - <strong>Filter</strong> - Filter by attachment ID.</p>
+<p>To create a new attachment between an instance and a storage, click on button "<strong>Create attachment</strong>" (6). 
+A modal page will be open, like the image below:</p>
+<p><img alt="alt logo" src="../images/dashboard/createAttachmentModal.png" title="Create Attachment"></p>
+<p>The instance (field 1) and storage (field 2) must be at the same location, therefore, when you select a value for one field, the other will be filtered by the location of the chosen value. After choose the desired resources, click on "<strong>Create attachment</strong>" button (3).</p>
+<h2><strong>Usage</strong></h2>
+<p>At Usage page you can monitor the amount of <strong>Compute</strong> and <strong>Storage</strong> that each member are using. The highlighted 2 shows when these informations were updated. If you want to get more recent data, click on "<strong>Refresh</strong>" button.</p>
+<p><img alt="alt logo" src="../images/dashboard/usagePage.png" title="Usage Page"></p>
+<h2><strong>Overview</strong></h2>
+<p>The Overview page shows, as graphics, all orders of this Fogabow Manager, separeted by states.</p>
+<ul>
+<li>
+<p>Fulfilled - Orders whose resources were created and delivered;</p>
+</li>
+<li>
+<p>Spawning - Orders that are looking for a remote member who can handle this requisition;</p>
+</li>
+<li>
+<p>Open - Orders that have not been handled yet;</p>
+</li>
+<li>
+<p>Pending - Orders that are been handled by remote member but are not ready yet;</p>
+</li>
+<li>
+<p>Closed - Orders whose resources failed or were deleted;</p>
+</li>
+<li>
+<p>Deleted - Orders that are been deleted from the Fogbow Manager.</p>
+</li>
+</ul>
+<p><img alt="alt logo" src="../images/dashboard/overviewPage.png" title="Create Attachment"></p>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

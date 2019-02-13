@@ -1,0 +1,155 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/the-big-picture.html">Install it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="rational">Rational</a>
+            </li>
+            <li class="active">
+            	<a href="architecture">Federation</a>
+            </li>
+            <li >
+            	<a href="opportunism">Opportunism</a>
+            </li>
+            <li >
+            	<a href="green">Greenness</a>
+            </li>
+            <li >
+            	<a href="barter">Barter of wares</a>
+            </li>
+            <li >
+            	<a href="research">Research</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>General architecture</h1>
+<p>The architecture of a fogbow federation of private clouds is based on two main components: the membership manager, called the <B>Fogbow Rendezvous</B> (FR) and the allocation manager, called the <B>Fogbow Manager</B> (FM). The federation of a private cloud requires the deployment of one instance of the FM component for each private cloud that is to be federated. This component may be configured to interact either with a FR that runs at its local site, or with one that runs at a remote site.</p>
+<p><center><img alt="General architecture" src="http://www.fogbowcloud.org/images/fogbow-arch.png"></center></p>
+<h2>Fogbow Rendezvous</h2>
+<p>The FR is in charge of finding out which members of the federation are currently active. It implements a gossip-style synchronization protocol to discover the addresses of the FM known by other FRs. FRs exchange periodic information among themselves in order to keep their membership information updated. From time to time, the FM running at a given site interacts with its associated FR in order to notify its availability and to retrieve the list of other currently active FMs.</p>
+<h2>Fogbow Manager</h2>
+<p>The distributed and complex nature of a federation of private clouds, and the number of cloud management middleware available in the market makes interoperability a big challenge. Also, the more autonomous the members of the federation are, the larger the federation can be, since less restrictions are imposed on members for joining it. The architecture of the FM broadens the range of compatible IaaS technologies supported by concealing communication with the various services provided by the private underlying cloud into implementations of well-defined interoperability plugins. In fact, the plugin concept plays a major role in the architecture and design of the FM, allowing for the easy extensibility of the federation middleware implementation. Not only the communication with the underlying private cloud is defined by plugins, but also key parts of the business logic in the FM, such as authentication, authorization, request prioritization, selection of remote members for request outsourcing, and so on. These behavioural plugins ultimately define the functioning of the FM at each member of the federation. When configuring the FM, the system administrator informs what are the required plugins needed to interact with a particular private cloud deployment.</p>
+<p><center><img alt="Architecture of the Fogbow Manager" src="http://www.fogbowcloud.org/images/FM.png"></center></p>
+<p>The functionalities of the FM are exposed to its clients via a RESTful API that implements the <a href=http://occi-wg.org/ target="_blank">OCCI</a> standard, and some extensions to this standard that allow the management of asynchronous requests for VMs, as well as the querying of the federation members.</p>
+<h2>Dealing with firewalls and NATs</h2>
+<p>Despite the fact that members of the federation will be trading resources potentially over the Internet, local security policies must be observed. That means that the deployment of the federation components needs to be as little intrusive as possible with regard to user authentication, firewall rules, NAT isolation, demand for public IP addresses, and so on. In particular, a typical deployment of a private cloud should not expose the endpoints for its services – Compute, Storage, Network, Identity etc. Thus, the FM provides a new layer of abstraction that forwards income remote requests for Virtual Machines (VM) instances to the underlying cloud management middleware, keeping these endpoints behind the firewall. In addition to that, FMs must communicate with each other regardless of public IPs or ports exposed through the firewall. In order to address both of these issues, the FM and the FR are implemented as <a href=http://xmpp.org/ target="_blank">XMPP</a> components that communicate among each other using XMPP servers to route their messages. These servers usually expose port 5269 at the DMZ so that they can reach (and be reached by) any other XMPP server. XMPP components such as the FM and the FR are assigned logical, DNS-resolvable addresses, and message packets exchanged among them are multiplexed through the server-to-server port exposed by their respective XMPP servers.</p>
+<p><center><img alt="Communication protocol" src="http://www.fogbowcloud.org/images/communication.png"></center></p>
+<p>Another issue that arises from the fact that federation members could be isolated by NATs and firewalls is the lack of connectivity to VM instances from the outside world. Fogbow addresses this issue with a third service, named the <B>Fogbow Reverse Tunnel</B> (FRT). The FRT is responsible for tunnelling service ports from the domain’s intranet to its DMZ. The deployment of this service is mandatory, unless the underlying cloud is able to provide public IP addresses to all VM instances it creates. The FRT can also be used by the VM instances to create other tunnels on demand. For example, a VM instance that needs to provide a service through a web-based interface will have to create a tunnel for the HTTP protocol, so that the users of this service are able to access it from the Internet.</p>
+<p><center><img alt="Dealing with remote connections" src="http://www.fogbowcloud.org/images/FRT.png"></center></p>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

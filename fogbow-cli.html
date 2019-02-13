@@ -1,0 +1,521 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li >
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/the-big-picture.html">Install it</a>
+          </li>
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li class="active">
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="use-intro">Interfaces</a>
+            </li>
+            <li >
+            	<a href="fogbow-api">RESTful API</a>
+            </li>
+            <li class="active">
+            	<a href="fogbow-cli">Fogbow CLI</a>
+            </li>
+            <li >
+            	<a href="supported-authenticators">Supported Authenticators</a>
+            </li>
+            <li >
+            	<a href="fogbow-dashboard">Fogbow Dashboard</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Fogbow CLI</h1>
+<p>The Fogbow CLI is a command line interface for the Fogbow manager. It makes it easier for users to create HTTP requests and invoke them through the manager's REST API. All calls to the manager require a federation token. The Fogbow CLI provides a way for users to create such tokens. After creating a valid token, the users are able tovoke Fogbow CLI to get information about which cloud providers are available in the federation, what are their quota in these providers, and which images the providers make available to them; users can also create, retrive information and delete compute, network, and storage resources in any of the cloud providers available; finally, they can also and attach and detach volumes to compute resources.</p>
+<h2>Installation</h2>
+<p>Follow these steps, <a  href="https://github.com/fogbow/fogbowcloud.org/blob/new-cli-documentation/content/pages/install-configure-fogbow-cli.md" target="_blank">to install and configure the Fogbow CLI</a>.</p>
+<h2>Federation token operations (<code>token</code>)</h2>
+<h3>Note</h3>
+<p>It is necessary to create the identity plugin configuration file in your configuration path before executing token operations. An example for tokens provided by an LDAP service are shown below:</p>
+<p>The ldap configuration file name must be named "ldap-identity-plugin.conf".</p>
+<div class="highlight"><pre><span></span><span class="nv">ldap_base</span> <span class="o">=</span> <span class="nv">dc</span><span class="o">=</span>site,dc<span class="o">=</span>manager
+<span class="nv">ldap_identity_url</span> <span class="o">=</span> ldap://ldap.site.manager:389
+<span class="nv">ldap_encrypt_type</span> <span class="o">=</span> 
+<span class="c1"># the same configured in the fogbow manager</span>
+<span class="nv">private_key_path</span> <span class="o">=</span> /home/ubuntu/private_key.pem
+<span class="c1"># the same configured in the fogbow manager</span>
+<span class="nv">public_key_path</span> <span class="o">=</span> /home/ubuntu/public_key.pem
+</pre></div>
+
+
+<h3>Create a new Token</h3>
+<p>Create a new federation token.</p>
+<p>Note: to pass the credentials it is necessary the use of dynamic parameters; follow the example with the <strong>ldap</strong> credentials:</p>
+<ul>
+<li><strong>--create</strong> (required): operation</li>
+<li><strong>--type</strong> (required): identity plugin type</li>
+<li><strong>--conf-path</strong> (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as an environment variable). </li>
+<li><strong>-Dpassword=</strong> (required by ldap): dynamic parameter</li>
+<li><strong>-Dusername=</strong> (required by ldap): dynamic parameter</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli token --create --type ldap --conf-path /home/user/conf-folder -Dpassword<span class="o">=</span>mypassword -Dusername<span class="o">=</span>myuser
+
+342dOiJjadsfsdfuYW1lIjoiRnJhbmNdsfsd35gZGdasdgdfbf2NRMzZlK3hJa0tSb3dZc3dkdmJ2K29SUVVpaWpCZkIwMG5JUlozdEZhQ2RPcXlEa2ZPZGFPWDIwM2lCYUIxZEVEbU43bjY0MXRlSkdIUm94OFdOWWNSbW9UlnlkIU873NJNBSDSJBAÇpHY01oWEpBVkhUbUV0Y01PbUoyV0JSUUorNUpVZWo4VWV0b2pDNGtrc0Nkb3lEU1MyVVJCNW5lVmNZNW9Wd29kOVB1UHZYNnQxRXN0KzU3eHdGdEdaTVlKZjR0eEI5Y2xaaHFzTDg3STJHNDJia3ByLzFGQ1lyM2x2eCt5a0twTEZPRHdoOXVVdUMyeWNtcExYOWIwamxDNnYzZWNEQThML3labndtNThnUU1TNXc1L1czd0VHWURUOGhjYWRnblVySjZSZzM4a0EA<span class="o">==</span>
+</pre></div>
+
+
+<h3>Check token (<code>check-token</code>)</h3>
+<p>Check if token is valid.</p>
+<ul>
+<li><strong>--type</strong> (required): identity plugin type</li>
+<li><strong>--conf-path</strong> (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as an environment variable)</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli check-token --conf-path /home/user/conf-folder --type ldap --federation-token-value my-token-value
+
+Token Valid
+</pre></div>
+
+
+<h2>User operations (<code>user</code>)</h2>
+<h3>Show user information</h3>
+<p>Get the user id and attributes associated to a particular token.</p>
+<ul>
+<li><strong>--get-user</strong> (required): operation</li>
+<li><strong>--type</strong> (required): identity plugin type</li>
+<li><strong>--conf-path</strong> (required): configuration path (you can ignore this parameter by setting FOGBOW_CONF_PATH as na environment variable)</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli user --get-user --conf-path /home/user/conf-folder --type ldap --federation-token-value my-token-value
+
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;fogbow&quot;</span>,<span class="s2">&quot;attributes&quot;</span>:<span class="o">{</span><span class="s2">&quot;user-name&quot;</span>:<span class="s2">&quot;Fogbow User&quot;</span><span class="o">}}</span>
+</pre></div>
+
+
+<h2>Compute operations (<code>compute</code>)</h2>
+<h3>Create compute</h3>
+<p>Create a compute.</p>
+<ul>
+<li><strong>--create</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager </li>
+<li><strong>--providing-member</strong> (required): member that will provide the compute</li>
+<li><strong>--public-key</strong> (optional): user's public-key</li>
+<li><strong>--image-id</strong> (required): image</li>
+<li><strong>--vcpu</strong> (required): number of cores </li>
+<li><strong>--memory</strong> (required): in MB's</li>
+<li><strong>--disk</strong> (required): in GB's</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli compute --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member-url --public-key public-key-path --image-id image-id --vcpu vcpu --memory ram --disk disk
+
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;compute-id&quot;</span><span class="o">}</span>  
+</pre></div>
+
+
+<h3>Get all computes</h3>
+<p>Get all computes associated to a particular federation token.</p>
+<ul>
+<li><strong>--get-all</strong> (required): operation </li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager </li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli compute --get-all --url manager-url --federation-token-value my-token-value
+
+<span class="o">[{</span><span class="s2">&quot;vCPU&quot;</span>: <span class="m">10</span>, <span class="s2">&quot;hostName&quot;</span>: <span class="s2">&quot;hostName&quot;</span>, <span class="s2">&quot;localIpAddress&quot;</span>: <span class="s2">&quot;localIpAddress&quot;</span>, <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;READY&quot;</span>, <span class="s2">&quot;memory&quot;</span>: <span class="m">10</span>, <span class="s2">&quot;sshTunnelConnectionData&quot;</span>: <span class="o">{</span><span class="s2">&quot;sshUserName&quot;</span>: <span class="s2">&quot;fogbowuser&quot;</span>, <span class="s2">&quot;sshPublicAddress&quot;</span>: <span class="s2">&quot;10.10.0.120&quot;</span>, <span class="s2">&quot;sshExtraPorts&quot;</span>: <span class="s2">&quot;80&quot;</span><span class="o">}</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;v2&quot;</span><span class="o">}</span>, ...<span class="o">]</span>
+</pre></div>
+
+
+<h3>Get a single compute</h3>
+<p>Get detailed information about a single compute.</p>
+<ul>
+<li><strong>--get</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--id</strong> (required): compute id</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli compute --get --id compute-id --url manager-url --federation-token-value my-token-value
+
+<span class="o">{</span><span class="s2">&quot;vCPU&quot;</span>: <span class="m">10</span>, <span class="s2">&quot;hostName&quot;</span>: <span class="s2">&quot;hostName&quot;</span>, <span class="s2">&quot;localIpAddress&quot;</span>: <span class="s2">&quot;localIpAddress&quot;</span>, <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;READY&quot;</span>, <span class="s2">&quot;memory&quot;</span>: <span class="m">10</span>, <span class="s2">&quot;sshTunnelConnectionData&quot;</span>: <span class="o">{</span><span class="s2">&quot;sshUserName&quot;</span>: <span class="s2">&quot;fogbesdras&quot;</span>, <span class="s2">&quot;sshPublicAddress&quot;</span>: <span class="s2">&quot;10.10.0.120&quot;</span>, <span class="s2">&quot;sshExtraPorts&quot;</span>: <span class="s2">&quot;80&quot;</span><span class="o">}</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;v2&quot;</span><span class="o">}</span>
+</pre></div>
+
+
+<h3>Delete a single compute</h3>
+<p>Delete a single compute.</p>
+<ul>
+<li><strong>--delete</strong>: operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--id</strong> (required):  compute id</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli compute --delete --id instance-id --url manager-url --federation-token-value my-token-value
+
+Ok
+</pre></div>
+
+
+<h3>Get compute quota</h3>
+<p>Get cloud quota information of the federation member</p>
+<ul>
+<li><strong>--get-quota</strong>: operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--member-id</strong> (required): federation member</li>
+</ul>
+<div class="highlight"><pre><span></span>$ fogbow-cli compute --get-allocation --member-id member --url manager-url --federation-token-value my-token-value
+
+<span class="o">{</span><span class="s2">&quot;totalQuota&quot;</span>: <span class="o">{</span><span class="s2">&quot;vCPU&quot;</span>: <span class="s2">&quot;1&quot;</span>, <span class="s2">&quot;ram&quot;</span>: <span class="s2">&quot;2&quot;</span>, <span class="s2">&quot;instances&quot;</span>: <span class="s2">&quot;1&quot;</span><span class="o">}</span>, <span class="s2">&quot;usedQuota&quot;</span>: <span class="o">{</span><span class="s2">&quot;vCPU&quot;</span>: <span class="s2">&quot;1&quot;</span>, <span class="s2">&quot;ram&quot;</span>: <span class="s2">&quot;2&quot;</span>, <span class="s2">&quot;instances&quot;</span>: <span class="s2">&quot;1&quot;</span><span class="o">}}</span>
+</pre></div>
+
+
+<h3>Get compute allocation</h3>
+<p>Get user allocation information of the federation member
+<em> <strong>--get-allocation</strong>: operation
+</em> <strong>--federation-token-value</strong> (required): federation token
+<em> <strong>--url</strong> (required): url of the manager
+</em> <strong>--member-id</strong> (required): federation member</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli compute --get-allocation --member-id member --url manager-url --federation-token-value my-token-value
+
+<span class="o">{</span><span class="s2">&quot;vCPU&quot;</span>: <span class="s2">&quot;1&quot;</span>, <span class="s2">&quot;ram&quot;</span>: <span class="s2">&quot;2&quot;</span>, <span class="s2">&quot;instances&quot;</span>: <span class="s2">&quot;1&quot;</span><span class="o">}</span>
+</pre></div>
+
+
+<h2>Network operations (<code>network</code>)</h2>
+<h3>Create network</h3>
+<p>Create a network.</p>
+<ul>
+<li><strong>--create</strong> (required): operation</li>
+<li><strong>--url</strong> (required): url of the manager </li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--providing-member</strong> (required): member that will provide the</li>
+<li><strong>--address</strong> (required; format: ##.##.##.##/##): cird</li>
+<li><strong>--gateway</strong> (optional)</li>
+<li><strong>--allocation</strong> (optional; options: dynamic or static; default: dynamic)</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli network --create  --url manager-url --federation-token-value my-token-value --address cidr --gateway gateway-ip --allocation allocation --providing-member providing-member
+
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;network-id&quot;</span><span class="o">}</span> 
+</pre></div>
+
+
+<h3>Get all networks</h3>
+<p>Get all networks associated to a particular federation token.</p>
+<ul>
+<li><strong>--get-all</strong>(required): operation </li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager </li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli network --get-all --url manager-url --federation-token-value my-token-value
+
+<span class="o">[{</span><span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;id&quot;</span>, <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;label&quot;</span>, <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;state&quot;</span>, <span class="s2">&quot;address&quot;</span>: <span class="s2">&quot;address&quot;</span>, <span class="s2">&quot;gateway&quot;</span>: <span class="s2">&quot;gateway&quot;</span>, <span class="s2">&quot;vLAN&quot;</span>: <span class="s2">&quot;vLAN&quot;</span>, <span class="s2">&quot;networkAllocation&quot;</span>: <span class="o">{</span><span class="s2">&quot;value&quot;</span>: <span class="s2">&quot;value&quot;</span><span class="o">}</span>, <span class="s2">&quot;networkInterface&quot;</span>: <span class="s2">&quot;networkInterface&quot;</span>, <span class="s2">&quot;MACInterface&quot;</span>: <span class="s2">&quot;MACInterface&quot;</span>, <span class="s2">&quot;interfaceState&quot;</span>: <span class="s2">&quot;interfaceState&quot;</span><span class="o">}</span>, ...<span class="o">]</span>
+</pre></div>
+
+
+<h3>Get a single network</h3>
+<p>Get detailed information about a single network.</p>
+<ul>
+<li><strong>--get</strong>(required): operation </li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--id</strong> (required):  network id</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli network --get --id network-id --url manager-url --federation-token-value my-token-value
+
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;id&quot;</span>, <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;label&quot;</span>, <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;state&quot;</span>, <span class="s2">&quot;address&quot;</span>: <span class="s2">&quot;address&quot;</span>, <span class="s2">&quot;gateway&quot;</span>: <span class="s2">&quot;gateway&quot;</span>, <span class="s2">&quot;vLAN&quot;</span>: <span class="s2">&quot;vLAN&quot;</span>, <span class="s2">&quot;networkAllocation&quot;</span>: <span class="o">{</span><span class="s2">&quot;value&quot;</span>: <span class="s2">&quot;value&quot;</span><span class="o">}</span>, <span class="s2">&quot;networkInterface&quot;</span>: <span class="s2">&quot;networkInterface&quot;</span>, <span class="s2">&quot;MACInterface&quot;</span>: <span class="s2">&quot;MACInterface&quot;</span>, <span class="s2">&quot;interfaceState&quot;</span>: <span class="s2">&quot;interfaceState&quot;</span><span class="o">}</span>
+</pre></div>
+
+
+<h3>Delete a single network</h3>
+<p>Delete a single network.</p>
+<ul>
+<li><strong>--delete</strong>(required): operation </li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--id</strong> (required):  network id</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli network --delete --id instance-id --url manager-url --federation-token-value my-token-value
+
+Ok
+</pre></div>
+
+
+<h2>Volume operations (<code>volume</code>)</h2>
+<h3>Create volume</h3>
+<p>Create a volume.</p>
+<ul>
+<li><strong>--create</strong> (required): operation</li>
+<li><strong>--url</strong> (required): url of the manager </li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--providing-member</strong> (required): member that will provide the volume</li>
+<li><strong>--volume-size</strong> (required; Unit GB)</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli volume --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member --volume-size size
+
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;volume-id&quot;</span><span class="o">}</span> 
+</pre></div>
+
+
+<h3>Get all volumes</h3>
+<p>Get all volumes associated to a particular federation token.</p>
+<ul>
+<li><strong>--get-all</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager </li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli volume --get-all --url manager-url --federation-token-value my-token-value
+
+<span class="o">[{</span><span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;name_one&quot;</span>, <span class="s2">&quot;size&quot;</span>: <span class="s2">&quot;1&quot;</span><span class="o">}</span>, <span class="o">{</span><span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;name_two&quot;</span>, <span class="s2">&quot;size&quot;</span>: <span class="s2">&quot;1&quot;</span><span class="o">}]</span>
+</pre></div>
+
+
+<h3>Get a single volume</h3>
+<p>Get detailed information about a single volume.</p>
+<ul>
+<li><strong>--get</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--id</strong> (required):  volume id</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli volume --get --id volume-id --url manager-url --federation-token-value my-token-value
+
+<span class="o">{</span><span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;size&quot;</span>: <span class="s2">&quot;1&quot;</span><span class="o">}</span>
+</pre></div>
+
+
+<h3>Delete a single volume</h3>
+<p>Delete a single volume.</p>
+<ul>
+<li><strong>--delete</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--id</strong> (required):  volume id</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli volume --delete --id volume-id --url manager-url --federation-token-value my-token-value
+
+Ok
+</pre></div>
+
+
+<h2>Attachment operations (<code>attachment</code>)</h2>
+<h3>Create attachment</h3>
+<p>Create an attachment.</p>
+<ul>
+<li><strong>--create</strong> (required): operation</li>
+<li><strong>--url</strong> (required): url of the manager </li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--providing-member</strong> (required): member that will provide the attachment</li>
+<li><strong>--source</strong> (required): compute id</li>
+<li><strong>--target</strong> (required): volume id</li>
+<li><strong>--device</strong> (optional): device's name in the virtual machine. </li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli attachment --create  --url manager-url --federation-token-value my-token-value --providing-member providing-member --source <span class="nb">source</span> --target target --device device
+
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;attachment-id&quot;</span><span class="o">}</span>
+</pre></div>
+
+
+<h3>Get all attachments</h3>
+<p>Get all attachments associated to a particular federation token.</p>
+<ul>
+<li><strong>--get-all</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager </li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli attachment --get-all --url manager-url --federation-token-value my-token-value
+
+<span class="o">[{</span><span class="s2">&quot;serverId&quot;</span>: <span class="s2">&quot;serverId&quot;</span>, <span class="s2">&quot;volumeId&quot;</span>: <span class="s2">&quot;volumeId&quot;</span>, <span class="s2">&quot;device&quot;</span>: <span class="s2">&quot;device&quot;</span><span class="o">}</span>, <span class="o">{</span><span class="s2">&quot;serverId&quot;</span>: <span class="s2">&quot;serverId&quot;</span>, <span class="s2">&quot;volumeId&quot;</span>: <span class="s2">&quot;volumeId&quot;</span>, <span class="s2">&quot;device&quot;</span>: <span class="s2">&quot;device&quot;</span><span class="o">}]</span>
+</pre></div>
+
+
+<h3>Get a single attachment</h3>
+<p>Get detailed information about a single attachment.</p>
+<ul>
+<li><strong>--get</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--id</strong> (required):  attachment id</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli attachment --get --id attachment-id --url manager-url --federation-token-value my-token-value
+
+<span class="o">{</span><span class="s2">&quot;serverId&quot;</span>: <span class="s2">&quot;serverId&quot;</span>, <span class="s2">&quot;volumeId&quot;</span>: <span class="s2">&quot;volumeId&quot;</span>, <span class="s2">&quot;device&quot;</span>: <span class="s2">&quot;device&quot;</span><span class="o">}</span>
+</pre></div>
+
+
+<h3>Delete a single attachment</h3>
+<p>Delete a single attachment.</p>
+<ul>
+<li><strong>--get</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--id</strong> (required):  attachment id</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ fogbow-cli attachment --delete --id attachment-id --url manager-url --federation-token-value my-token-value
+
+Ok
+</pre></div>
+
+
+<h2>Image operations (<code>image</code>)</h2>
+<h3>Get all images</h3>
+<p>Get all images associated to a particular member.</p>
+<ul>
+<li><strong>--get</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--member-id</strong> (required): federation member</li>
+</ul>
+<div class="highlight"><pre><span></span>$ fogbow-cli image --get-all --url manager-url --federation-token-value my-token-value --member-id member
+
+<span class="o">{</span><span class="s2">&quot;000fdc22-e5f5-4c9a-98f8-998dab72f9bf&quot;</span>: <span class="s2">&quot;ubuntu-16.04-Nov-17&quot;</span>, <span class="s2">&quot;123f7485-92d5-4533-a329-0dbaca22ae4e&quot;</span>: <span class="s2">&quot;debian-8-Oct-17&quot;</span>, <span class="s2">&quot;3211fa8f-aa38-4fa7-8ecb-3b117d98d186&quot;</span>: <span class="s2">&quot;centos-Sep-17&quot;</span><span class="o">}</span>
+</pre></div>
+
+
+<h3>Get a single image</h3>
+<p>Get detailed information about a single image.</p>
+<ul>
+<li><strong>--get</strong> (required): operation</li>
+<li><strong>--federation-token-value</strong> (required): federation token</li>
+<li><strong>--url</strong> (required): url of the manager</li>
+<li><strong>--member-id</strong> (required): federation member</li>
+<li><strong>--id</strong> (required): image id</li>
+</ul>
+<div class="highlight"><pre><span></span>$ fogbow-cli image --get --url manager-url --federation-token-value my-token-value --member-id member --id image-id
+
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;id&quot;</span>, <span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;size&quot;</span>:<span class="s2">&quot;size&quot;</span>, <span class="s2">&quot;minDisk&quot;</span>:<span class="s2">&quot;2&quot;</span>, <span class="s2">&quot;minRam&quot;</span>: <span class="s2">&quot;2&quot;</span>, <span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;status&quot;</span><span class="o">}</span>
+</pre></div>
+
+
+<h2>Federation member operations (<code>member</code>)</h2>
+<h3>Get federation members</h3>
+<ul>
+<li><strong>--get-all</strong> (required): operation</li>
+<li><strong>--url</strong> (required): url of the rendezvous</li>
+</ul>
+<div class="highlight"><pre><span></span>$ fogbow-cli member --get-all --url rendezvous-url
+
+<span class="o">[</span><span class="s2">&quot;member1&quot;</span>, <span class="s2">&quot;member2&quot;</span>, <span class="s2">&quot;member3&quot;</span><span class="o">]</span>
+</pre></div>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by <a href="http://www.cnpq.br/" target="_blank">CNPq/Brazil</a> and the <a href="http://ec.europa.eu/index_en.htm" target="_blank">European Commission</a> through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by <a href="http://www.finep.gov.br/" target="_blank">FINEP/Brazil</a> through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>
