@@ -9,11 +9,10 @@ before_install:
   - git remote set-url origin git@github.com:fogbow/fogbowcloud.org.git
   
   - git fetch origin -f master
+  - git fetch origin -f gh-pages
 install:
   - pip install --upgrade pip
   - pip install -r requirements.txt
 script:
-  - git checkout gh-pages
-  - git pull
-  - git checkout master
+  - git pull origin gh-pages
   - make github
